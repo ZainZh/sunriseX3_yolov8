@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+  <title>OpenExplorer</title>
+  <link rel="stylesheet" href="./styles/normalize.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <header>
+      <div class="logo"></div>
+      <div class="title">
+        <h1>OpenExplorer web 展示端</h1>
+      </div>
+    </header>
+
+    <section>
+      <ul class="cont-url">
+        <li>
+          <select id="pathchoice" class="pathchoice" onchange="changePathNum(value)">
+            <option value="1">1路</option>
+            <option value="2">2路</option>
+            <option value="3">3路</option>
+            <option value="4">4路</option>
+            <option value="5">5路</option>
+            <option value="6">6路</option>
+            <option value="7">7路</option>
+            <option value="8">8路</option>
+          </select>
+        </li>
+        <li><a href="./modules/" onclick="getVideoNum()">web 展示端</a></li>
+      </ul>
+    </section>
+  </div>
+  <script>
+    changePathNum(getVideoNum())
+
+    function changePathNum(value) {
+      document.cookie = `path_num=${value}`
+    }
+
+    function getVideoNum() {
+      let num = 1
+      let obj = {}
+      const cookies = document.cookie.split('; ')
+      const inp = document.getElementById('pathchoice')
+      cookies.map(item => {
+        let arr = item.split('=')
+        obj[arr[0]] = arr[1] * 1
+      })
+      if (typeof obj.path_num !== 'undefined') {
+        num = obj.path_num
+      } else {
+        if (inp && inp.value) {
+          num = inp.value
+        }
+      }
+      inp.value = num
+      return num
+    }
+  </script>
+</body>
+
+</html>

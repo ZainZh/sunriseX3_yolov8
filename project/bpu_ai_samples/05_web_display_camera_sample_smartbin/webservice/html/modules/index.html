@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" /> -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1" />
+  <title>OpenExplorer web 展示端</title>
+
+  <link rel="stylesheet" href="../styles/normalize.css">
+  <link rel="stylesheet" href="./main.css">
+  <script src="../utils/protobuf.js"></script>
+  <script src="../utils/config.js"></script>
+  <script src="../utils/helper.js"></script>
+  <script src="../utils/h-canvas.js"></script>
+  <script src="../utils/threejs/three.min.js"></script>
+  <script src="../utils/threejs/inflate.min.js"></script>
+  <script src="../utils/threejs/FBXLoader.js"></script>
+  <script src="../utils/reconnecting-websocket.js"></script>
+</head>
+
+<body>
+  <div id="wrapper">
+    <div id="wrapper-cnt">
+      <!-- <div class="video"></div> -->
+      <ul id="message">
+        <p class="message-t">
+          <a href="https://developer.horizon.ai/" target="__blank">OpenExplorer 首页链接</a>
+        </p>
+        <li id="message-t">智能信息展示</li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="boxes" checked="true">
+          <label>检测框（人体框，人头框，人脸框，车、非机动车检测框，停车位，其他检测框（宠物、椅子等））</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="handBox" checked="true">
+          <label>人手（检测框）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="handMarks" checked="true">
+          <label>人手（手势骨骼）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="body" checked="true">
+          <label>人体（人体骨骼）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="face" checked="true">
+          <label>人脸（人脸关键点，人脸姿态）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="attributes" checked="true">
+          <label>分类信息（年龄性别、口罩眼镜等）</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="corner" checked="true">
+          <label>角点</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="floatMatrixs" checked="true">
+          <label>全图分割</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="floatMatrixsMatting">
+          <label>抠图分割</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="floatMatrixsMask">
+          <label>人体分割</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="performance">
+          <label>性能数据</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="scoreShow">
+          <label>模型置信度</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="trackId">
+          <label>TrackId</label>
+        </li>
+        <li>
+          <input class="message-show" type="checkbox" name="item" dataType="depth" disabled='true'>
+          <label>深度</label>
+        </li>
+      </ul>
+      <div class="message-change message-h">
+        <img src="../assets/images/menu.png" alt="">
+      </div>
+      <div class="message-change message-v">
+        <img src="../assets/images/close.png" alt="">
+      </div>
+    </div>
+    <div id="performance">
+      <ul id="performance-message">
+      </ul>
+    </div>
+  </div>
+  <script src="./render.js"></script>
+  <script src="./main.js"></script>
+</body>
+
+</html>

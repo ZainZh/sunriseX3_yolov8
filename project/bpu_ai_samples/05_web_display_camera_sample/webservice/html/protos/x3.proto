@@ -1,0 +1,494 @@
+/*
+ * @Description: implement of x2base.proto
+ * @Author: ruoting.ding@horizonl.ai
+ * @Date: 2019-09-23 17:05:35
+ * @LastEditors: hao.tian@horizon.ai
+ * @LastEditTime: 2019-09-23 17:05:35
+ * @Copyright 2017~2019 Horizon Robotics, Inc.
+ */
+syntax = "proto3";
+package x3;
+option optimize_for = LITE_RUNTIME;
+
+/**
+ * 字节数组
+ * @type_ {1} 类型名称
+ * @score_ {2} 置信度
+ * @array_ {3} 字节数组
+ * @name_ {4} 数据名称
+ * @specific_type_ {5} 数据别称
+ */
+message CharArray {
+  string type_ = 1;
+  float score_ = 2;
+  bytes array_ = 3;
+  string name_ = 4;
+  string specific_type_ = 5;
+}
+
+/**
+ * Float 数组
+ * @type_ {1} 类型名称
+ * @score_ {2} 置信度
+ * @value_ {3} 值
+ * @name_ {4} 数据名称
+ * @specific_type_ {5} 数据别称
+ */
+message FloatArray {
+  string type_ = 1;
+  float score_ = 2;
+  repeated float value_ = 3;
+  string name_ = 4;
+  string specific_type_ = 5;
+}
+
+/**
+ * Float 2维矩阵
+ * @type_ {1} 类型名称
+ * @score_ {2} 置信度
+ * @arrays_ {3} float数组
+ * @name_ {4} 数据名称
+ * @specific_type_ {5} 数据别称
+ */
+message FloatMatrix {
+  string type_ = 1;
+  float score_ = 2;
+  repeated FloatArray arrays_ = 3;
+  string name_ = 4;
+  string specific_type_ = 5;
+}
+
+/**
+ * 坐标点
+ * @x_ {1} x坐标
+ * @y_ {2} y坐标
+ * @score_ {3} 置信度
+ */
+message Point {
+  float x_ = 1;
+  float y_ = 2;
+  float score_ = 3;
+}
+
+/**
+ * 坐标点集合
+ * @type_ {1} 类型名称
+ * @points_ {2} 坐标点集合
+ * @name_ {3} 数据名称
+ * @specific_type_ {4} 数据别称
+ */
+message Points {
+  string type_ = 1;
+  repeated Point points_ = 2;
+  string name_ = 3;
+  string specific_type_ = 4;
+}
+
+/**
+ * 检测框
+ * @type_ {1} 类型名称
+ * @top_left_ {2} 左上点
+ * @bottom_right_ {3} 右下点
+ * @score_ {4} 置信度
+ * @name_ {5} 数据名称
+ * @specific_type_ {6} 数据别称
+ */
+message Box {
+  string type_ = 1;
+  Point top_left_ = 2;
+  Point bottom_right_ = 3;
+  float score_ = 4;
+  string name_ = 5;
+  string specific_type_ = 6;
+}
+
+/**
+ * 属性
+ * @type_ {1} 类型名称，包括年龄、性别、眼镜、口罩、活体信息、车辆信息、非机动车信息,道路状况
+ * @value_ {2} 值
+ * @value_string_ {3} 字符串表示
+ * @score_ {4} 置信度
+ * @name_ {5} 数据名称
+ */
+message Attributes {
+  string type_ = 1;
+  float value_ = 2;
+  string value_string_ = 3;
+  float score_ = 4;
+  string name_ = 5;
+}
+
+/**
+ *  底库检索结果
+ * @db_type_ {1} 底库名称
+ * @match_id_ {2} 匹配目标ID
+ * @distance_ {3} 距离
+ * @similarity_ {4} 相似度
+ * @name_ {5} 数据名称
+ * @specific_type_ {6} 数据别称
+ */
+message DBResult {
+  string db_type_ = 1;
+  string match_id_ = 2;
+  float distance_ = 3;
+  float similarity_ = 4;
+  string name_ = 5;
+  string specific_type_ = 6;
+}
+
+/**
+ *  图片信息
+ * @buf_ {1} 图片二进制流
+ * @buf_ {2} 图片类型，如：灰度图、YUV420、NV21、NV12、BGR、JPEG
+ * @width_ {3} 图片宽度
+ * @height_ {4} 图片高度
+ */
+message Image {
+  bytes buf_ = 1;
+  string type_ = 2;
+  uint32 width_ = 3;
+  uint32 height_ = 4;
+}
+
+/**
+ * 能力类型
+ * @type_ {1} 能力名称名称
+ * @array_{2} 布尔值
+ */
+message Enable {
+  string type_ = 1;
+  bool value_ = 2;
+}
+
+/**
+ * 范围类型
+ * @type_ {1} 类型名称
+ * @value_ {2} 值
+ */
+message Threshold {
+  string type_ = 1;
+  float value_ = 2;
+}
+
+/**
+ * 模式类型
+ * @type_ {1} 类型名称
+ * @value_ {2} 值
+ */
+message Mode {
+  string type_ = 1;
+  string value_ = 2;
+}
+
+/**
+ * 智能帧跟踪目标信息
+ * @type_ {1} 跟踪目标类型名称，如：人、车、动物、非机动车
+ * @track_id_ {2} 跟踪目标ID号
+ * @imgs_ {3} 抓拍图
+ * @sub_targets_ {4} 子目标，目前车牌作为车的子目标存在
+ * @boxes_ {5} 检测框集合
+ * @attributes_  {6} 属性集合，如：年龄、性别、眼镜、口罩、活体信息、车辆类型、车辆颜色、车辆速度、车辆所在车道
+ * @points_  {7} 多个坐标点集合，如：人脸关键点、人体骨骼点、人体分割图的坐标点
+ * @float_arrays_  {8} Float点集合，比如人脸姿态，gis信息
+ * @float_matrixs_  {9} Float矩阵集合，比如人体分割结果
+ * @char_arrays_ {10} 字节数组集合，如加密后的特征
+ */
+message Target {
+  string type_ = 1;
+  uint64 track_id_ = 2;
+  repeated Image imgs_ = 3;
+  repeated Target sub_targets_ = 4;
+  repeated Box boxes_ = 5;
+  repeated Attributes attributes_ = 6;
+  repeated Points points_ = 7;
+  repeated FloatArray float_arrays_ = 8;
+  repeated FloatMatrix float_matrixs_ = 9;
+  repeated CharArray char_arrays_ = 10;
+}
+
+/**
+ * 智能帧信息
+ * @timestamp_ {1} 原视频帧的时间戳
+ * @error_code_ {2} 错误码
+ * @sequence_id_ {3} 图像预测序号
+ * @channel_id_ {4} 图像channel
+ * @frame_id_ {5} 预测frame id
+ * @targets {6} 跟踪目标集合
+ */
+message SmartLegibleMessage {
+  fixed64 timestamp_ = 1;
+  uint32 error_code_ = 2;
+  uint64 sequence_id_ = 3;
+  uint32 channel_id_ = 4;
+  uint64 frame_id_ = 5;
+  repeated Target targets_ = 6;
+}
+
+/**
+ *  抓拍图信息
+ * @type_ {1} 抓拍类型名称，如：人脸抓拍图、人体抓拍图、车辆抓拍图
+ * @timestamp_ {2} 抓拍图对应原视频帧的时间戳,作为ID使用
+ * @img_ {3} 抓拍图
+ * @boxes_ {4} 一个抓拍图里感兴趣的检测框集合
+ * @attributes_ {5} 属性集合，如：年龄、性别、图片质量
+ * @points_ {6} 二维坐标点集合，如：人脸关键点集合
+ * @float_arrays_ {7} Float点集合，比如人脸姿态，未加密的特征
+ * @char_arrays_ {8} 字节数组集合，如加密后的特征
+ */
+message Capture {
+  string type_ = 1;
+  fixed64 timestamp_ = 2;
+  Image img_ = 3;
+  repeated Box boxes_ = 4;
+  repeated Attributes attributes_ = 5;
+  repeated Points points_ = 6;
+  repeated FloatArray float_arrays_ = 7;
+  repeated CharArray char_arrays_ = 8;
+}
+
+/**
+ * 单目标抓拍信息
+ * @type_ {1} 跟踪目标类型名称，如：人、车、动物
+ * @track_id_ {2} 跟踪目标ID
+ * @captures_ {3} 跟踪目标抓拍图信息集合
+ * @db_results_ {4} 跟踪目标底库检索结果
+ */
+message CaptureTarget {
+  string type_ = 1;
+  uint64 track_id_ = 2;
+  repeated Capture captures_ = 3;
+  repeated DBResult db_results_ = 4;
+}
+/**
+ * 抓拍帧信息
+ * @targets {1} 抓拍目标信息集合
+ */
+message CaptureMessage {
+  repeated CaptureTarget targets_ = 1;
+}
+
+/**
+ * 统计信息
+ * @targets {1} 统计信息集合
+ */
+ message StatisticsMessage {
+   repeated Attributes attributes_ = 1;
+ }
+
+/**
+ * 控制信息
+ * @type_ {1} request/reply或其他自定义字段
+ * @timestamp_ {2} 时间戳, 返回此状态获取的时间戳
+ * @cmd_id_ {3} 控制命令id, 唯一代表一次命令请求
+ * @value_ {4} 控制命令内容
+ */
+message ControlMessage {
+  string type_ = 1;
+  fixed64 timestamp_ = 2;
+  uint64 cmd_id_ = 3;
+  bytes value_ = 4;
+}
+
+/**
+ * X3 Protobuf: Last Result Message
+ * @timestamp_ {1} timestamp
+ * @img_ {2} orc img
+ * @smart_msg_ {3} smart frame info
+ * @capture_msg_ {4} capture frame info
+ * @Statistics_msg_ {5} statistics info
+ * @control_msg_ {6} command info
+ */
+message FrameMessage {
+  fixed64 timestamp_ = 1;
+  Image img_ = 2;
+  SmartLegibleMessage smart_msg_ = 3;
+  CaptureMessage capture_msg_ = 4;
+  StatisticsMessage Statistics_msg_ = 5;
+  ControlMessage control_msg_ = 6;
+}
+/**
+ * IPC forward Message
+ * @source_session_id_ {1} source session id
+ * @version_ {2} capture frame info
+ * @msg_type_ {3} msg type
+ * @data_ {4} message data
+ */
+message ForwardMessage {
+  uint32 source_session_id_ = 1;
+  string version_ = 2;
+  string msg_type_ = 3;
+  bytes data_ = 4;
+}
+
+/**
+ * 能力配置
+ * @type_ {1} 类型名称，可以为人脸、人体、附加等
+ * @array_ {2} 能力数组
+ */
+message Capability {
+  string type_ = 1;
+  Enable cap_array_ = 2;
+}
+
+/**
+ * 版本信息
+ * @type_ {1} 类型名称，可以为系统镜像版本、APP版本等
+ * @value_ {2} 版本信息
+ */
+message Version {
+  string type_ = 1;
+  string value_ = 2;
+}
+
+/**
+ * 参数配置
+ * @type_ {1}
+ * 类型名称，可以设为人脸抓拍设置、人脸跟踪配置、人脸识别配置、系统配置等
+ * @config_ {2} 配置数组
+ */
+message Config {
+  string type_ = 1;
+  repeated Threshold threshold_ = 2;
+  repeated Mode mode_ = 3;
+  repeated Box shield_ = 4;
+}
+
+/**
+ * 状态信息
+ * @type_ {1} 类型名称，可不填，为空
+ * @timestamp_ {2} 时间戳，返回此状态获取的时间戳
+ * @run_status_ {3} 运行状态
+ */
+message Status {
+  enum RunStatus {
+    Uknown = 0;
+    Uninit = 1;
+    Init = 2;
+    Normal = 3;
+    Abnormal = 4;
+    Update = 5;
+  }
+  string type_ = 1;
+  uint64 timestamp_ = 2;
+  RunStatus run_status_ = 3;
+}
+
+/**
+ * 命令信息
+ * @type_ {1} 类型名称，可不填，为空
+ * @timestamp_ {2} 时间戳，返回此状态获取的时间戳
+ * @order_ {3} 命令类型
+ */
+message Command {
+  enum Order {
+    Unkown = 0;
+    StartX2 = 1;
+    StopX2 = 2;
+    UpdateX2 = 3;
+  }
+  string type_ = 1;
+  uint64 timestamp_ = 2;
+  Order order_ = 3;
+}
+
+/**
+ * 返回信息
+ * @type_ {1} 返回类型名称，控制命令，普通配置，能力配置
+ * @timestamp_ {2} 时间戳，返回此状态获取的时间戳
+ * @response_ {3} 回复状态
+ */
+message Response {
+  enum Ack {
+    Uknown = 0;
+    Success = 1;
+    Fail = 2;
+  }
+  string type_ = 1;
+  uint64 timestamp_ = 2;
+  Ack ack_ = 3;
+}
+
+/**
+ * 返回信息
+ * @type_ {1} 类型名称，哪个log
+ * @level_ {2} log等级
+ */
+message LogLevel {
+  enum Level {
+    X2_DEBUG = 0;
+    X2_INFO = 1;
+    X2_NOTICE = 2;
+    X2_WARN = 3;
+    X2_ERROR = 4;
+    X2_FATAL = 5;
+    X2_NONE = 6;
+  }
+  string type_ = 1;
+  Level level_ = 2;
+}
+
+/**
+ * Info信息集合
+ * @status_ {1} 状态
+ * @command_ {2} 命令
+ * @response_ {3} 回复
+ * @version_ {4} 版本
+ * @capability_ {5} 能力
+ */
+message InfoMessage {
+  Status status_ = 1;
+  Command command_ = 2;
+  LogLevel loglevel_ = 3;
+  Response response_ = 4;
+  repeated Config config_ = 5;
+  repeated Version version_ = 6;
+  repeated Capability capability_ = 7;
+}
+
+//帧的附加数据类型
+message Frame {
+  enum FrameType {
+    Unkown = 0;
+    SmartFrame = 1;
+    DropFrame = 2;
+    ErrorFrame = 3;
+  }
+  uint64 sequence_id_ = 1;
+  uint64 timestamp_ = 2;
+  FrameType frame_type_ = 3;
+}
+
+// Log数据等的附加类型
+message Check {
+  repeated bytes md5sum = 1;
+}
+
+//附加数据
+message Addition {
+  Check check_ = 1;
+  Frame frame_ = 2;
+}
+
+message MessagePack {
+  //数据流向
+  enum Flow {
+    Unknown = 0;
+    AP2CP = 1;
+    CP2AP = 2;
+  }
+
+  enum Type {
+    kUnknown = 0;
+    kXPlugin = 1;
+    kXConfig = 2;
+  }
+
+  // 封装类型
+  Flow flow_ = 1;
+  Type type_ = 2;
+  Addition addition_ = 3;
+  // content 根据type_来判断
+  // 当type_为kXPlugin时为智能数据
+  // 当type_为kXConfig时为配置数据
+  bytes content_ = 4;
+}
