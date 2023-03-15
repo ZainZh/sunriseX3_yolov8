@@ -7,20 +7,7 @@ from pathlib import Path
 
 random.seed(0)
 
-CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus',
-           'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
-           'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
-           'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe',
-           'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
-           'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat',
-           'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
-           'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
-           'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot',
-           'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
-           'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop',
-           'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven',
-           'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',
-           'scissors', 'teddy bear', 'hair drier', 'toothbrush')
+CLASSES = ('Can', 'Glass-Drink', 'paper', 'pet bottle')
 
 COLORS = {
     cls: [random.randint(0, 255) for _ in range(3)]
@@ -181,12 +168,12 @@ def print_properties(pro):
 
 if __name__ == '__main__':
 
-    images_path = Path('./coco128')
-    model_path = Path('./yolov8n.onnx')
+    images_path = Path('./images')
+    model_path = Path('./best.onnx')
 
     score_thres = 0.4
     iou_thres = 0.65
-    num_classes = 80
+    num_classes = 4
 
     try:
         session = onnxruntime.InferenceSession(str(model_path), providers=['CPUExecutionProvider'])
