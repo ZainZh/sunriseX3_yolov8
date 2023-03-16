@@ -105,17 +105,17 @@ def bgr2nv12_opencv(image):
 
 
 def postprocess(
-    output,
-    score_thres,
-    iou_thres,
-    orin_h,
-    orin_w,
-    dh,
-    dw,
-    ratio_h,
-    ratio_w,
-    reg_max,
-    num_classes,
+        output,
+        score_thres,
+        iou_thres,
+        orin_h,
+        orin_w,
+        dh,
+        dw,
+        ratio_h,
+        ratio_w,
+        reg_max,
+        num_classes,
 ):
     dfl = np.arange(0, reg_max, dtype=np.float32)
     confidences = []
@@ -159,6 +159,7 @@ def postprocess(
 
 
 def nms(boxes, confidences, classIds):
+    print("len of boxes", len(boxes))
     indices = cv2.dnn.NMSBoxes(boxes, confidences, 0.4, 0.65).flatten()
     results = []
     for i in indices:
