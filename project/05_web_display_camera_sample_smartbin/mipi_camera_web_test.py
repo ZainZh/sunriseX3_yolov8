@@ -73,6 +73,16 @@ def postprocess(model_output,
     return prediction_bbox
 
 
+def sigmoid(x):
+    return 1.0 / (1.0 + np.exp(-x))
+
+
+def softmax(x, axis=-1):
+    e_x = np.exp(x - np.max(x, axis=axis, keepdims=True))
+    y = e_x / e_x.sum(axis=axis, keepdims=True)
+    return y
+
+
 def decode(outputs, score_threshold, origin_shape, input_size=512):
     def _distance2bbox(points, distance):
         x1 = points[..., 0] - distance[..., 0]
@@ -103,25 +113,43 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
 
     bboxes = list()
     strides = [8, 16, 32, 64, 128]
-    print("len of outputs,", len(outputs))
-    for i in range(len(strides)):
-        cls = outputs[i].buffer
-        bbox = outputs[i + 5].buffer
-        ce = outputs[i + 10].buffer
-        scores = _scores(cls, ce)
+    # print("len of outputs,", len(outputs))
+    dfl = np.arange(0, 16, dtype=np.float32)
+    for i in range(len(outputs) // 2):
+        bboxes_feat = outputs[i * 2 + 0]
+        scores_feat = sigmoid(outputs[i * 2 + 1])
+        Argmax = scores_feat.argmax(-1)
+        Max = scores_feat.max(-1)
+        indices = np.where(Max > 0.4)
+        hIdx, wIdx = indices
+        num_proposal = hIdx.size
+        if not num_proposal:
+            continue
+        assert scores_feat.shape[-1] == 4
+        scores = Max[hIdx, wIdx]
+        bboxes = bboxes_feat[hIdx, wIdx].reshape(-1, 4, 16)
+        bboxes = softmax(bboxes, -1) @ dfl
+        argmax = Argmax[hIdx, wIdx]
 
-        classes = np.argmax(scores, axis=-1)
-        classes = np.reshape(classes, [-1, 1])
-        max_score = np.max(scores, axis=-1)
-        max_score = np.reshape(max_score, [-1, 1])
-        bbox = _bbox(bbox, strides[i], origin_shape, input_size)
-        bbox = np.reshape(bbox, [-1, 4])
+        for k in range(num_proposal):
+            x0, y0, x1, y1 = bboxes[k]
+            score = scores[k]
+            clsid = argmax[k]
+            h, w, stride = hIdx[k], wIdx[k], 1 << (i + 3)
+            x0 = ((w + 0.5 - x0) * stride - 1) * 1
+            y0 = ((h + 0.5 - y0) * stride - 1) * 1
+            x1 = ((w + 0.5 + x1) * stride - 1) * 1
+            y1 = ((h + 0.5 + y1) * stride - 1) * 1
+            # clip
+            x0 = min(max(x0, 0), 1)
+            y0 = min(max(y0, 0), 1)
+            x1 = min(max(x1, 0), 1)
+            y1 = min(max(y1, 0), 1)
 
-        pred_bbox = np.concatenate([bbox, max_score, classes], axis=1)
-
-        index = pred_bbox[..., 4] > score_threshold
-        pred_bbox = pred_bbox[index]
-        bboxes.append(pred_bbox)
+            pred_bbox = np.concatenate([x0, y0, x1 - x0, y1 - y0, float(score), clsid], axis=1)
+            index = pred_bbox[..., 4] > score_threshold
+            pred_bbox = pred_bbox[index]
+            bboxes.append(pred_bbox)
 
     return np.concatenate(bboxes)
 
