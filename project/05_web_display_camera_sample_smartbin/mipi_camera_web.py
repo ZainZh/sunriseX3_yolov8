@@ -244,7 +244,7 @@ async def web_service(websocket, path):
         # Do post process
 
         prediction_bbox = postprocess(outputs, input_shape, origin_img_shape=(1080, 1920))
-        print(prediction_bbox)
+        prediction_bbox = np.array(prediction_bbox)
 
         origin_image = cam.get_img(2, 1920, 1080)
         enc.encode_file(origin_image)
