@@ -151,6 +151,7 @@ def serialize(FrameMessage, prediction_bbox):
             # get class name
             Target = x3_pb2.Target()
             id = int(prediction_bbox[i][5])
+            print(classes[id])
             Target.type_ = classes[id]
             Box = x3_pb2.Box()
             Box.type_ = classes[id]
