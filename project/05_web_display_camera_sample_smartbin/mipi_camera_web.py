@@ -207,7 +207,7 @@ async def web_service(websocket, path):
         outputs = [o.buffer[0] for o in outputs]
         # Do post process
         prediction_bboxes = pre_postprocess(outputs, score_thres, iou_thres, 640,
-                                            640, dh=1, dw=1, ratio_h=1080 / 640, ratio_w=1080 / 640, reg_max=16,
+                                            640, dh=0, dw=0, ratio_h=1080 / 640, ratio_w=1080 / 640, reg_max=16,
                                             num_classes=4)
         prediction_bboxes = yolov8_nms(*prediction_bboxes)
 

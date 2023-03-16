@@ -198,6 +198,7 @@ if __name__ == "__main__":
             print(f"Warm up model error.\n{e}")
 
     cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
+    i =0
     for img_path in images_path.iterdir():
         image = cv2.imread(str(img_path))
         t0 = time.perf_counter()
@@ -241,6 +242,7 @@ if __name__ == "__main__":
             )
         t4 = time.perf_counter()
         cv2.imshow("results", image)
+        cv2.imwrite(f"{i}.jpg",image)
         print(
             f"TimeConsuming:\n"
             f"Preprocess: {(t1 - t0) * 1000} ms\n"
