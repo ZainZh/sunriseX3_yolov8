@@ -108,18 +108,36 @@ def bgr2nv12_opencv(image):
     return nv12
 
 
+def nv12_2_bgr_opencv(nv12_image):
+    """
+
+    :param nv12_image:
+    :return:
+    """
+    bgr_image = cv2.cvtColor(nv12_image, cv2.COLOR_YUV2BGR_NV12)
+    return bgr_image
+
+
+def bgr_2_nv12_opencv(bgr_image):
+    """
+
+    :param bgr_image:
+    :return:
+    """
+    nv12_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2YUV_NV12)
+
 def postprocess(
-    output,
-    score_thres,
-    iou_thres,
-    orin_h,
-    orin_w,
-    dh,
-    dw,
-    ratio_h,
-    ratio_w,
-    reg_max,
-    num_classes,
+        output,
+        score_thres,
+        iou_thres,
+        orin_h,
+        orin_w,
+        dh,
+        dw,
+        ratio_h,
+        ratio_w,
+        reg_max,
+        num_classes,
 ):
     dfl = np.arange(0, reg_max, dtype=np.float32)
     confidences = []
@@ -182,83 +200,81 @@ def print_properties(pro):
 
 
 if __name__ == "__main__":
-    model_path = Path("./yolov8n_horizon.bin")
-
-    score_thres = 0.4
-    iou_thres = 0.65
-    num_classes = 4
-    try:
-        models = dnn.load(str(model_path))
-        model_h, model_w = print_properties(models[0].inputs[0].properties)
-    except Exception as e:
-        print(f"Load model error.\n{e}")
-        exit()
-    else:
-        try:
-            for _ in range(10):
-                models[0].forward(
-                    np.random.randint(
-                        0, 255, (int(model_h * model_w * 1.5),), dtype=np.uint8
-                    )
-                )
-        except Exception as e:
-            print(f"Warm up model error.\n{e}")
-    cam = srcampy.Camera()
-    cam.open_cam(0, 1, 30, [1920, model_w], [1080, model_h])
-    cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
-
-    while True:
-        image = cam.get_img(2, model_h, model_w)
-        image = np.frombuffer(image, dtype=np.uint8)
-        t0 = time.perf_counter()
-        ## yolov8 training letterbox
-        # resized, ratio, (dw, dh) = letterbox(image, (model_h, model_w))
-        resized, ratio, (dw, dh) = ratioresize(image, (model_h, model_w))
-        nv12 = bgr2nv12_opencv(resized)
-        t1 = time.perf_counter()
-        outputs = models[0].forward(nv12)
-        outputs = [o.buffer[0] for o in outputs]
-        t2 = time.perf_counter()
-        results = postprocess(
-            outputs,
-            score_thres,
-            iou_thres,
-            image.shape[0],
-            image.shape[1],
-            dh,
-            dw,
-            ratio,
-            ratio,
-            16,
-            num_classes,
-        )
-        results = nms(*results)
-        t3 = time.perf_counter()
-        for x0, y0, x1, y1, score, label in results:
-            x0, y0, x1, y1 = map(int, [x0, y0, x1, y1])
-            cls_id = int(label)
-            cls = CLASSES[cls_id]
-            color = COLORS[cls]
-            cv2.rectangle(image, [x0, y0], [x1, y1], color, 1)
-            cv2.putText(
-                image,
-                f"{cls}:{score:.3f}",
-                (x0, y0 - 2),
-                cv2.FONT_HERSHEY_SIMPLEX,
-                0.325,
-                [0, 0, 225],
-                thickness=1,
-            )
-        t4 = time.perf_counter()
-        cv2.imshow("results", image)
-        print(
-            f"TimeConsuming:\n"
-            f"Preprocess: {(t1 - t0) * 1000} ms\n"
-            f"Inference: {(t2 - t1) * 1000} ms\n"
-            f"Postprocess: {(t3 - t2) * 1000} ms\n"
-            f"Drawing: {(t4 - t3) * 1000} ms\n"
-            f"End2END: {(t4 - t0) * 1000} ms"
-        )
-        key = cv2.waitKey(0)
-        if key & 0xFF == ord("q"):
-            break
+    # model_path = Path("./yolov8n_horizon.bin")
+    #
+    # score_thres = 0.4
+    # iou_thres = 0.65
+    # num_classes = 4
+    # try:
+    #     models = dnn.load(str(model_path))
+    #     model_h, model_w = print_properties(models[0].inputs[0].properties)
+    # except Exception as e:
+    #     print(f"Load model error.\n{e}")
+    #     exit()
+    # else:
+    #     try:
+    #         for _ in range(10):
+    #             models[0].forward(
+    #                 np.random.randint(
+    #                     0, 255, (int(model_h * model_w * 1.5),), dtype=np.uint8
+    #                 )
+    #             )
+    #     except Exception as e:
+    #         print(f"Warm up model error.\n{e}")
+    # cam = srcampy.Camera()
+    # cam.open_cam(0, 1, 30, [1920, model_w], [1080, model_h])
+    # cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
+    #
+    # while True:
+    #     nv12_image = cam.get_img(2, model_h, model_w)
+    #     nv12_image = np.frombuffer(nv12_image, dtype=np.uint8)
+    #     t1 = time.perf_counter()
+    #     outputs = models[0].forward(nv12_image)
+    #     outputs = [o.buffer[0] for o in outputs]
+    #     t2 = time.perf_counter()
+    #     results = postprocess(
+    #         outputs,
+    #         score_thres,
+    #         iou_thres,
+    #         image.shape[0],
+    #         image.shape[1],
+    #         dh,
+    #         dw,
+    #         ratio,
+    #         ratio,
+    #         16,
+    #         num_classes,
+    #     )
+    #     results = nms(*results)
+    #     t3 = time.perf_counter()
+    #     for x0, y0, x1, y1, score, label in results:
+    #         x0, y0, x1, y1 = map(int, [x0, y0, x1, y1])
+    #         cls_id = int(label)
+    #         cls = CLASSES[cls_id]
+    #         color = COLORS[cls]
+    #         cv2.rectangle(image, [x0, y0], [x1, y1], color, 1)
+    #         cv2.putText(
+    #             image,
+    #             f"{cls}:{score:.3f}",
+    #             (x0, y0 - 2),
+    #             cv2.FONT_HERSHEY_SIMPLEX,
+    #             0.325,
+    #             [0, 0, 225],
+    #             thickness=1,
+    #         )
+    #     t4 = time.perf_counter()
+    #     cv2.imshow("results", image)
+    #     print(
+    #         f"TimeConsuming:\n"
+    #         f"Inference: {(t2 - t1) * 1000} ms\n"
+    #         f"Postprocess: {(t3 - t2) * 1000} ms\n"
+    #         f"Drawing: {(t4 - t3) * 1000} ms\n"
+    #         f"End2END: {(t4 - t0) * 1000} ms"
+    #     )
+    #     key = cv2.waitKey(0)
+    #     if key & 0xFF == ord("q"):
+    #         break
+    bgr_image = cv2.imread("/home/clover/Downloads/test2.bmp")
+    nv12_image = bgr2nv12_opencv(bgr_image)
+    transformed_bgr_image = nv12_2_bgr_opencv(nv12_image)
+    a = 1

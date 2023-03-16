@@ -1,2 +1,0 @@
-2022/12/31 18:14:51 [error] 3363#0: *1 open() "./html/favicon.ico" failed (2: No such file or directory), client: 192.168.31.84, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.31.90", referrer: "http://192.168.31.90/"
-2023/03/13 17:59:03 [error] 3245#0: *1 open() "./html/favicon.ico" failed (2: No such file or directory), client: 100.120.95.123, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "100.76.133.127", referrer: "http://100.76.133.127/"
