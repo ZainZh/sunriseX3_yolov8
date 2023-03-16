@@ -252,8 +252,8 @@ async def web_service(websocket, path):
         outputs = models[0].forward(img)
         # Do post process
         prediction_bbox = postprocess(outputs, input_shape, origin_img_shape=(1080, 1920))
-        print(prediction_bbox)
 
+        print("the shape of prediction_bbox is ", np.shape(prediction_bbox))
         origin_image = cam.get_img(2, 1920, 1080)
         enc.encode_file(origin_image)
         FrameMessage.img_.buf_ = enc.get_img()
