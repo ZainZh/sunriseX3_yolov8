@@ -136,6 +136,7 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
             x0, y0, x1, y1 = bboxes[k]
             score = scores[k]
             clsid = argmax[k]
+            print(clsid, " clsid")
             h, w, stride = hIdx[k], wIdx[k], 1 << (i + 3)
             x0 = ((w + 0.5 - x0) * stride - 1) * 1
             y0 = ((h + 0.5 - y0) * stride - 1) * 1
