@@ -56,7 +56,7 @@ def postprocess(model_output,
     else:
         origin_image_shape = origin_img_shape
     # resized, ratio, (dw, dh) = ratioresize(origin_image, (input_height, input_width))
-    results = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
+    prediction_bboxes = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
                               origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
                               num_classes=4)
     # prediction_bboxes = yolov8_nms(*results)
