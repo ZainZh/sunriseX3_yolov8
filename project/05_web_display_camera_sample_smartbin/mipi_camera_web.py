@@ -181,7 +181,7 @@ sensor_reset_shell()
 models = pyeasy_dnn.load('../models/yolov8n_smartbin.bin')
 input_shape = (640, 640)
 cam = srcampy.Camera()
-cam.open_cam(0, 1, fps, [640, 1920], [640, 1080])
+cam.open_cam(0, 1, fps, [640, 640], [640, 640])
 enc = srcampy.Encoder()
 enc.encode(0, 3, 1920, 1080)
 classes = get_classes()
@@ -194,8 +194,8 @@ num_classes = 4
 async def web_service(websocket, path):
     while True:
         FrameMessage = x3_pb2.FrameMessage()
-        FrameMessage.img_.height_ = 1080
-        FrameMessage.img_.width_ = 1920
+        FrameMessage.img_.height_ = 640
+        FrameMessage.img_.width_ = 640
         FrameMessage.img_.type_ = "JPEG"
 
         img = cam.get_img(2, 640, 640)
@@ -206,15 +206,15 @@ async def web_service(websocket, path):
             continue
         outputs = [o.buffer[0] for o in outputs]
         # Do post process
-        prediction_bboxes = pre_postprocess(outputs, score_thres, iou_thres, 1080,
-                                  1920, dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
+        prediction_bboxes = pre_postprocess(outputs, score_thres, iou_thres, 640,
+                                  640, dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
                                   num_classes=4)
         # prediction_bboxes = yolov8_nms(*results)
 
         print("the shape of results", np.shape(prediction_bboxes))
         prediction_bboxes = np.array(prediction_bboxes)
 
-        origin_image = cam.get_img(2, 1920, 1080)
+        origin_image = cam.get_img(2, 640, 640)
         enc.encode_file(origin_image)
         FrameMessage.img_.buf_ = enc.get_img()
         FrameMessage.smart_msg_.timestamp_ = int(time.time())
