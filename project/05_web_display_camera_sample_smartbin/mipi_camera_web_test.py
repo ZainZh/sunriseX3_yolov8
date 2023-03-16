@@ -147,7 +147,7 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
             x1 = min(max(x1, 0), 1)
             y1 = min(max(y1, 0), 1)
 
-            pred_bbox = np.concatenate((np.array(x0, y0, x1 - x0, y1 - y0), float(score), clsid),  dtype=np.float32)
+            pred_bbox = np.concatenate((np.array([x0, y0, x1 - x0, y1 - y0]), float(score), clsid), axis=1, dtype=np.float32)
             index = pred_bbox[..., 4] > score_threshold
             pred_bbox = pred_bbox[index]
             BBOXES.append(pred_bbox)
