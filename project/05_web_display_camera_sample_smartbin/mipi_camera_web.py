@@ -64,19 +64,19 @@ def postprocess(model_output,
     #                          score_threshold=score_threshold,
     #                          origin_shape=origin_image_shape,
     #                          input_size=512)
-
-    for i, prediction_bbox, in enumerate(prediction_bboxes):
-        prediction_bboxes[i] = nms(prediction_bbox, iou_threshold=nms_threshold)
-
-    prediction_bboxes = np.array(prediction_bboxes)
-    topk = min(prediction_bboxes.shape[0], 1000)
-
-    if topk != 0:
-        idx = np.argpartition(prediction_bboxes[..., 4], -topk)[-topk:]
-        prediction_bbox = prediction_bboxes[idx]
-
-    if dump_image and origin_image is not None:
-        draw_bboxs(origin_image, prediction_bboxes)
+    # 
+    # for i, prediction_bbox, in enumerate(prediction_bboxes):
+    #     prediction_bboxes[i] = nms(prediction_bbox, iou_threshold=nms_threshold)
+    #
+    # prediction_bboxes = np.array(prediction_bboxes)
+    # topk = min(prediction_bboxes.shape[0], 1000)
+    #
+    # if topk != 0:
+    #     idx = np.argpartition(prediction_bboxes[..., 4], -topk)[-topk:]
+    #     prediction_bbox = prediction_bboxes[idx]
+    #
+    # if dump_image and origin_image is not None:
+    #     draw_bboxs(origin_image, prediction_bboxes)
     return prediction_bboxes
 
 
