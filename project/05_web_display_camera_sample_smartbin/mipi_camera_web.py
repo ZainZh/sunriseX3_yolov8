@@ -241,6 +241,7 @@ async def web_service(websocket, path):
         img = np.frombuffer(img, dtype=np.uint8)
         outputs = models[0].forward(img)
         if not outputs:
+            print("no outputs")
             continue
         outputs = [o.buffer[0] for o in outputs]
         # Do post process
