@@ -152,7 +152,7 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
             pred_bbox = pred_bbox[index]
             results.append(pred_bbox)
 
-    return results
+    return np.concatenate(results)
 
 
 def nms(bboxes, iou_threshold, sigma=0.3, method='nms'):
