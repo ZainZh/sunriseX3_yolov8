@@ -56,10 +56,10 @@ def postprocess(model_output,
     else:
         origin_image_shape = origin_img_shape
     # resized, ratio, (dw, dh) = ratioresize(origin_image, (input_height, input_width))
-    prediction_bboxes = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
+    results = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
                               origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
                               num_classes=4)
-    # prediction_bboxes = yolov8_nms(*results)
+    prediction_bboxes = yolov8_nms(*results)
     print("the shape of results", np.shape(prediction_bboxes))
     # prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
     # prediction_bbox = decode(outputs=model_output,
@@ -240,7 +240,7 @@ async def web_service(websocket, path):
         img = cam.get_img(2, 640, 640)
         img = np.frombuffer(img, dtype=np.uint8)
         outputs = models[0].forward(img)
-        if not outputs:
+        if not outputs[0]:
             print("no outputs")
             continue
         outputs = [o.buffer[0] for o in outputs]
