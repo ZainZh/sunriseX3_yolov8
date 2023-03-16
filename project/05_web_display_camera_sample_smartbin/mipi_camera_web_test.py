@@ -1,21 +1,23 @@
-import sys, os
-import numpy as np
-import cv2
-import google.protobuf
 import asyncio
-import websockets
-import x3_pb2
+import os
 import time
-import subprocess
 
+import cv2
+import numpy as np
+import websockets
+from hobot_dnn import pyeasy_dnn
 # Camera API libs
 from hobot_vio import libsrcampy as srcampy
-from hobot_dnn import pyeasy_dnn
+
+import x3_pb2
+
 fps = 30
+
 
 # detection model class names
 def get_classes():
     return np.array(['Can', 'Glass-Drink', 'paper', 'pet bottle'])
+
 
 def bgr2nv12_opencv(image):
     height, width = image.shape[0], image.shape[1]
@@ -101,7 +103,7 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
 
     bboxes = list()
     strides = [8, 16, 32, 64, 128]
-
+    print("len of outputs,", len(outputs))
     for i in range(len(strides)):
         cls = outputs[i].buffer
         bbox = outputs[i + 5].buffer
@@ -194,6 +196,7 @@ def serialize(FrameMessage, prediction_bbox):
     prot_buf = FrameMessage.SerializeToString()
     return prot_buf
 
+
 def sensor_reset_shell():
     os.system("echo 19 > /sys/class/gpio/export")
     os.system("echo out > /sys/class/gpio/gpio19/direction")
@@ -202,6 +205,7 @@ def sensor_reset_shell():
     os.system("echo 1 > /sys/class/gpio/gpio19/value")
     os.system("echo 19 > /sys/class/gpio/unexport")
     os.system("echo 1 > /sys/class/vps/mipi_host0/param/stop_check_instart")
+
 
 sensor_reset_shell()
 models = pyeasy_dnn.load('../models/yolov8n_smartbin.bin')
