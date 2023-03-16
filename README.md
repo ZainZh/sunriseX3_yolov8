@@ -129,11 +129,11 @@ sudo python3 step4_interence.py
 
 下面三张图片是在旭日x3派上运行在yoloV8中训练的模型得到的结果，可以看到左侧的识别结果bounding box的大小正合适，同时在右边的终端控制台可以得出每张图片的预测运行时间大概在220ms-264ms不等，基本与在主机端运行大正系统的时间相当。当然这可能与数据集的选取有关，因为该数据集是yoloV8给的示例数据集。
 
-![截屏2023-03-11 上午11.51.25.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/57c08159-1465-44fe-b87e-5f2544a2b2ee/%E6%88%AA%E5%B1%8F2023-03-11_%E4%B8%8A%E5%8D%8811.51.25.png)
+![截屏2023-03-11 上午11.51.25.png](#pictures/pic1.png)
 
-![截屏2023-03-11 上午11.47.18.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/97a9a01a-440b-4e37-a978-3ae10607b217/%E6%88%AA%E5%B1%8F2023-03-11_%E4%B8%8A%E5%8D%8811.47.18.png)
+![截屏2023-03-11 上午11.47.18.png](#pictures/pic2.png)
 
-![截屏2023-03-11 上午11.47.34.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/55899191-e5fa-467b-ae72-c6279cf45e4b/%E6%88%AA%E5%B1%8F2023-03-11_%E4%B8%8A%E5%8D%8811.47.34.png)
+![截屏2023-03-11 上午11.47.34.png](#pictures/pic3.png)
 
 ## 未来计划
 
