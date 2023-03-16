@@ -153,11 +153,11 @@ def postprocess(
             x1 = min(max(x1, 0), orin_w)
             y1 = min(max(y1, 0), orin_h)
             results.append(np.array([x0, y0, x1 - x0, y1 - y0, float(score), clsid], dtype=np.float32))
-            # confidences.append(float(score))
-            # boxes.append(np.array([x0, y0, x1 - x0, y1 - y0], dtype=np.float32))
-            # classIds.append(clsid)
+            confidences.append(float(score))
+            boxes.append(np.array([x0, y0, x1 - x0, y1 - y0], dtype=np.float32))
+            classIds.append(clsid)
 
-    return results
+    return boxes, confidences, classIds
 
 
 def nms(boxes, confidences, classIds):
