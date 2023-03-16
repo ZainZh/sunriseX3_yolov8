@@ -209,7 +209,7 @@ async def web_service(websocket, path):
         results = pre_postprocess(outputs, score_thres, iou_thres, 640,
                                   640, dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
                                   num_classes=4)
-        prediction_bboxes = yolov8_nms(*results)
+        # prediction_bboxes = yolov8_nms(*results)
 
         print("the shape of results", np.shape(prediction_bboxes))
         prediction_bboxes = np.array(prediction_bboxes)
