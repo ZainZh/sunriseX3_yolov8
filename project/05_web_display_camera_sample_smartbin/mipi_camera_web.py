@@ -64,7 +64,7 @@ def postprocess(model_output,
     #                          score_threshold=score_threshold,
     #                          origin_shape=origin_image_shape,
     #                          input_size=512)
-    # 
+    #
     # for i, prediction_bbox, in enumerate(prediction_bboxes):
     #     prediction_bboxes[i] = nms(prediction_bbox, iou_threshold=nms_threshold)
     #
@@ -238,6 +238,8 @@ async def web_service(websocket, path):
         img = cam.get_img(2, 640, 640)
         img = np.frombuffer(img, dtype=np.uint8)
         outputs = models[0].forward(img)
+        if not outputs[0]:
+            continue
         outputs = [o.buffer[0] for o in outputs]
         # Do post process
 
