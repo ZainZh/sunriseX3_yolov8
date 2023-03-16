@@ -174,7 +174,7 @@ def print_properties(pro):
 
 if __name__ == "__main__":
     images_path = Path("./images")
-    model_path = Path("./yolov8n_horizon.bin")
+    model_path = Path("./yolov8n_smartbin.bin")
 
     score_thres = 0.4
     iou_thres = 0.65
