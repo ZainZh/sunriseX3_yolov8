@@ -187,7 +187,7 @@ enc = srcampy.Encoder()
 enc.encode(0, 3, 640, 640)
 classes = get_classes()
 
-score_thres = 0.8
+score_thres = 0.4
 iou_thres = 0.65
 num_classes = 4
 
