@@ -55,12 +55,10 @@ def postprocess(model_output,
     else:
         origin_image_shape = origin_img_shape
     # resized, ratio, (dw, dh) = ratioresize(origin_image, (input_height, input_width))
-    boxes, confidences, classIds = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
+    prediction_bbox = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
                                                    origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16, num_classes=4)
-    print("the shape of boxes",np.shape(boxes))
-    print("the shape of confidences",np.shape(confidences))
-    print("the shape of classIds",np.shape(classIds))
-    prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
+    print("the shape of results",np.shape(prediction_bbox))
+    # prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
     # prediction_bbox = decode(outputs=model_output,
     #                          score_threshold=score_threshold,
     #                          origin_shape=origin_image_shape,

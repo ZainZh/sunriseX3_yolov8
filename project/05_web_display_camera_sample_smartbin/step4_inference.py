@@ -12,11 +12,10 @@ from pathlib import Path
 
 random.seed(0)
 
-CLASSES = ('Can', 'Glass-Drink', 'paper', 'pet bottle')
+CLASSES = ("Can", "Glass-Drink", "paper", "pet bottle")
 
 COLORS = {
-    cls: [random.randint(0, 255) for _ in range(3)]
-    for i, cls in enumerate(CLASSES)
+    cls: [random.randint(0, 255) for _ in range(3)] for i, cls in enumerate(CLASSES)
 }
 
 
@@ -40,9 +39,9 @@ def letterbox(im, new_shape=(640, 640), color=114):
         im = cv2.resize(im, new_unpad, interpolation=cv2.INTER_LINEAR)
     top, bottom = int(round(dh - 0.1)), int(round(dh + 0.1))
     left, right = int(round(dw - 0.1)), int(round(dw + 0.1))
-    im = cv2.copyMakeBorder(im, top, bottom, left, right,
-                            cv2.BORDER_CONSTANT,
-                            value=(color, color, color))  # add border
+    im = cv2.copyMakeBorder(
+        im, top, bottom, left, right, cv2.BORDER_CONSTANT, value=(color, color, color)
+    )  # add border
     return im, 1 / r, (dw, dh)
 
 
@@ -78,7 +77,7 @@ def blob(im):
     im = im.transpose(2, 0, 1)
     im = im[np.newaxis, ...]
     im = np.ascontiguousarray(im).astype(np.float32)
-    return im / 255.
+    return im / 255.0
 
 
 def softmax(x, axis=-1):
@@ -88,7 +87,7 @@ def softmax(x, axis=-1):
 
 
 def sigmoid(x):
-    return 1. / (1. + np.exp(-x))
+    return 1.0 / (1.0 + np.exp(-x))
 
 
 def bgr2nv12_opencv(image):
@@ -106,17 +105,20 @@ def bgr2nv12_opencv(image):
 
 
 def postprocess(
-        output,
-        score_thres, iou_thres,
-        orin_h, orin_w,
-        dh, dw, ratio_h, ratio_w,
-        reg_max,
-        num_classes
+    output,
+    score_thres,
+    iou_thres,
+    orin_h,
+    orin_w,
+    dh,
+    dw,
+    ratio_h,
+    ratio_w,
+    reg_max,
+    num_classes,
 ):
     dfl = np.arange(0, reg_max, dtype=np.float32)
-    confidences = []
-    boxes = []
-    classIds = []
+    results = []
     for i in range(len(output) // 2):
         bboxes_feat = output[i * 2 + 0]
         scores_feat = sigmoid(output[i * 2 + 1])
@@ -147,10 +149,13 @@ def postprocess(
             y0 = min(max(y0, 0), orin_h)
             x1 = min(max(x1, 0), orin_w)
             y1 = min(max(y1, 0), orin_h)
-            confidences.append(float(score))
-            boxes.append(np.array([x0, y0, x1 - x0, y1 - y0], dtype=np.float32))
-            classIds.append(clsid)
-    return boxes, confidences, classIds
+            results.append(
+                np.array(
+                    [x0, y0, x1 - x0, y1 - y0, float(score), clsid], dtype=np.float32
+                )
+            )
+
+    return results
 
 
 def nms(boxes, confidences, classIds):
@@ -158,7 +163,9 @@ def nms(boxes, confidences, classIds):
     results = []
     for i in indices:
         boxes[i][2:] += boxes[i][:2]
-        res = np.array([*boxes[i].round(), confidences[i], classIds[i]], dtype=np.float32)
+        res = np.array(
+            [*boxes[i].round(), confidences[i], classIds[i]], dtype=np.float32
+        )
         results.append(res)
     return results
 
@@ -171,10 +178,9 @@ def print_properties(pro):
     return get_hw(pro)
 
 
-if __name__ == '__main__':
-
-    images_path = Path('./images')
-    model_path = Path('./yolov8n_horizon.bin')
+if __name__ == "__main__":
+    images_path = Path("./images")
+    model_path = Path("./yolov8n_horizon.bin")
 
     score_thres = 0.4
     iou_thres = 0.65
@@ -184,16 +190,18 @@ if __name__ == '__main__':
         models = dnn.load(str(model_path))
         model_h, model_w = print_properties(models[0].inputs[0].properties)
     except Exception as e:
-        print(f'Load model error.\n{e}')
+        print(f"Load model error.\n{e}")
         exit()
     else:
         try:
             for _ in range(10):
                 models[0].forward(
-                    np.random.randint(0, 255, (int(model_h * model_w * 1.5),), dtype=np.uint8)
+                    np.random.randint(
+                        0, 255, (int(model_h * model_w * 1.5),), dtype=np.uint8
+                    )
                 )
         except Exception as e:
-            print(f'Warm up model error.\n{e}')
+            print(f"Warm up model error.\n{e}")
 
     cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
     for img_path in images_path.iterdir():
@@ -208,30 +216,45 @@ if __name__ == '__main__':
         outputs = [o.buffer[0] for o in outputs]
         t2 = time.perf_counter()
         results = postprocess(
-            outputs, score_thres, iou_thres,
-            image.shape[0], image.shape[1], dh, dw, ratio, ratio,
-            16, num_classes)
+            outputs,
+            score_thres,
+            iou_thres,
+            image.shape[0],
+            image.shape[1],
+            dh,
+            dw,
+            ratio,
+            ratio,
+            16,
+            num_classes,
+        )
         results = nms(*results)
         t3 = time.perf_counter()
-        for (x0, y0, x1, y1, score, label) in results:
+        for x0, y0, x1, y1, score, label in results:
             x0, y0, x1, y1 = map(int, [x0, y0, x1, y1])
             cls_id = int(label)
             cls = CLASSES[cls_id]
             color = COLORS[cls]
             cv2.rectangle(image, [x0, y0], [x1, y1], color, 1)
-            cv2.putText(image,
-                        f'{cls}:{score:.3f}', (x0, y0 - 2),
-                        cv2.FONT_HERSHEY_SIMPLEX,
-                        0.325, [0, 0, 225],
-                        thickness=1)
+            cv2.putText(
+                image,
+                f"{cls}:{score:.3f}",
+                (x0, y0 - 2),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.325,
+                [0, 0, 225],
+                thickness=1,
+            )
         t4 = time.perf_counter()
-        cv2.imshow('results', image)
-        print(f'TimeConsuming:\n'
-              f'Preprocess: {(t1 - t0) * 1000} ms\n'
-              f'Inference: {(t2 - t1) * 1000} ms\n'
-              f'Postprocess: {(t3 - t2) * 1000} ms\n'
-              f'Drawing: {(t4 - t3) * 1000} ms\n'
-              f'End2END: {(t4 - t0) * 1000} ms')
+        cv2.imshow("results", image)
+        print(
+            f"TimeConsuming:\n"
+            f"Preprocess: {(t1 - t0) * 1000} ms\n"
+            f"Inference: {(t2 - t1) * 1000} ms\n"
+            f"Postprocess: {(t3 - t2) * 1000} ms\n"
+            f"Drawing: {(t4 - t3) * 1000} ms\n"
+            f"End2END: {(t4 - t0) * 1000} ms"
+        )
         key = cv2.waitKey(0)
-        if key & 0xFF == ord('q'):
+        if key & 0xFF == ord("q"):
             break
