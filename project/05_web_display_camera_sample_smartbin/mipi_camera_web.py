@@ -12,6 +12,7 @@ from hobot_vio import libsrcampy as srcampy
 import x3_pb2
 from step4_inference import nms as yolov8_nms
 from step4_inference import postprocess as pre_postprocess
+from step4_inference import ratioresize
 
 fps = 30
 
@@ -40,46 +41,6 @@ def get_hw(pro):
         return pro.shape[2], pro.shape[3]
     else:
         return pro.shape[1], pro.shape[2]
-
-
-def postprocess(model_output,
-                model_hw_shape,
-                origin_image=None,
-                origin_img_shape=None,
-                score_threshold=0.5,
-                nms_threshold=0.6,
-                dump_image=False):
-    input_height = model_hw_shape[0]
-    input_width = model_hw_shape[1]
-    if origin_image is not None:
-        origin_image_shape = origin_image.shape[0:2]
-    else:
-        origin_image_shape = origin_img_shape
-    # resized, ratio, (dw, dh) = ratioresize(origin_image, (input_height, input_width))
-    results = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
-                              origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
-                              num_classes=4)
-    prediction_bboxes = yolov8_nms(*results)
-    print("the shape of results", np.shape(prediction_bboxes))
-    # prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
-    # prediction_bbox = decode(outputs=model_output,
-    #                          score_threshold=score_threshold,
-    #                          origin_shape=origin_image_shape,
-    #                          input_size=512)
-    #
-    # for i, prediction_bbox, in enumerate(prediction_bboxes):
-    #     prediction_bboxes[i] = nms(prediction_bbox, iou_threshold=nms_threshold)
-    #
-    # prediction_bboxes = np.array(prediction_bboxes)
-    # topk = min(prediction_bboxes.shape[0], 1000)
-    #
-    # if topk != 0:
-    #     idx = np.argpartition(prediction_bboxes[..., 4], -topk)[-topk:]
-    #     prediction_bbox = prediction_bboxes[idx]
-    #
-    # if dump_image and origin_image is not None:
-    #     draw_bboxs(origin_image, prediction_bboxes)
-    return prediction_bboxes
 
 
 def decode(outputs, score_threshold, origin_shape, input_size=512):
@@ -245,16 +206,20 @@ async def web_service(websocket, path):
             continue
         outputs = [o.buffer[0] for o in outputs]
         # Do post process
+        results = pre_postprocess(outputs, score_thres, iou_thres, 640,
+                                  640, dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
+                                  num_classes=4)
+        prediction_bboxes = yolov8_nms(*results)
 
-        prediction_bbox = postprocess(outputs, input_shape, origin_img_shape=(1080, 1920))
-        prediction_bbox = np.array(prediction_bbox)
+        print("the shape of results", np.shape(prediction_bboxes))
+        prediction_bboxes = np.array(prediction_bboxes)
 
         origin_image = cam.get_img(2, 1920, 1080)
         enc.encode_file(origin_image)
         FrameMessage.img_.buf_ = enc.get_img()
         FrameMessage.smart_msg_.timestamp_ = int(time.time())
 
-        prot_buf = serialize(FrameMessage, prediction_bbox)
+        prot_buf = serialize(FrameMessage, prediction_bboxes)
 
         await websocket.send(prot_buf)
     cam.close_cam()

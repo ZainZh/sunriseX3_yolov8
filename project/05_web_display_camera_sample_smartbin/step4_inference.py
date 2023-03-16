@@ -162,7 +162,7 @@ def postprocess(
 
 def nms(boxes, confidences, classIds):
     print("boxes", boxes)
-    indices = cv2.dnn.NMSBoxes(boxes, confidences, 0.4, 0.65)
+    indices = cv2.dnn.NMSBoxes(boxes, confidences, 0.4, 0.65).flatten()
     results = []
     for i in indices:
         boxes[i][2:] += boxes[i][:2]
