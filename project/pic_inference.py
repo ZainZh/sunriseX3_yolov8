@@ -198,13 +198,16 @@ if __name__ == "__main__":
             print(f"Warm up model error.\n{e}")
 
     cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
-    i =0
+    i = 0
     for img_path in images_path.iterdir():
         image = cv2.imread(str(img_path))
         t0 = time.perf_counter()
         ## yolov8 training letterbox
         # resized, ratio, (dw, dh) = letterbox(image, (model_h, model_w))
         resized, ratio, (dw, dh) = ratioresize(image, (model_h, model_w))
+        print("ration,", ratio)
+        print("dw,", dw)
+        print("dh,", dh)
         nv12 = bgr2nv12_opencv(resized)
         t1 = time.perf_counter()
         outputs = models[0].forward(nv12)
@@ -242,7 +245,7 @@ if __name__ == "__main__":
             )
         t4 = time.perf_counter()
         cv2.imshow("results", image)
-        cv2.imwrite(f"{i}.jpg",image)
+        cv2.imwrite(f"{i}.jpg", image)
         print(
             f"TimeConsuming:\n"
             f"Preprocess: {(t1 - t0) * 1000} ms\n"
@@ -251,7 +254,7 @@ if __name__ == "__main__":
             f"Drawing: {(t4 - t3) * 1000} ms\n"
             f"End2END: {(t4 - t0) * 1000} ms"
         )
+        i += 1
         key = cv2.waitKey(0)
         if key & 0xFF == ord("q"):
             break
-
