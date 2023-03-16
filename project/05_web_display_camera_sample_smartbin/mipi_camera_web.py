@@ -59,7 +59,7 @@ def postprocess(model_output,
     results = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
                               origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
                               num_classes=4)
-    prediction_bboxes = yolov8_nms(*results)
+    # prediction_bboxes = yolov8_nms(*results)
     print("the shape of results", np.shape(prediction_bboxes))
     # prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
     # prediction_bbox = decode(outputs=model_output,
