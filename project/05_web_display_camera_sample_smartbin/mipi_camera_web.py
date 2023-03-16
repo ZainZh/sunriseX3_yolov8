@@ -183,7 +183,7 @@ input_shape = (640, 640)
 cam = srcampy.Camera()
 cam.open_cam(0, 1, fps, [640, 640], [640, 640])
 enc = srcampy.Encoder()
-enc.encode(0, 3, 1920, 1080)
+enc.encode(0, 3, 640, 640)
 classes = get_classes()
 
 score_thres = 0.4
