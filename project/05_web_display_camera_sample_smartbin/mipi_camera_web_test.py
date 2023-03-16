@@ -227,6 +227,10 @@ async def web_service(websocket, path):
         img = cam.get_img(2, 640, 640)
         img = np.frombuffer(img, dtype=np.uint8)
         outputs = models[0].forward(img)
+        if not outputs:
+            print("no outputs")
+            continue
+        outputs = [o.buffer[0] for o in outputs]
         # Do post process
         prediction_bbox = postprocess(outputs, input_shape, origin_img_shape=(1080, 1920))
 
