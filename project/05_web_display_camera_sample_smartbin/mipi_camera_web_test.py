@@ -115,6 +115,7 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
     strides = [8, 16, 32, 64, 128]
     # print("len of outputs,", len(outputs))
     dfl = np.arange(0, 16, dtype=np.float32)
+    results = []
     for i in range(len(outputs) // 2):
         bboxes_feat = outputs[i * 2 + 0]
         scores_feat = sigmoid(outputs[i * 2 + 1])
@@ -149,9 +150,9 @@ def decode(outputs, score_threshold, origin_shape, input_size=512):
             pred_bbox = np.array([x0, y0, x1 - x0, y1 - y0, float(score), clsid],  dtype=np.float32)
             index = pred_bbox[..., 4] > score_threshold
             pred_bbox = pred_bbox[index]
-            bboxes.append(pred_bbox)
+            results.append(pred_bbox)
 
-    return np.concatenate(bboxes)
+    return np.concatenate(results)
 
 
 def nms(bboxes, iou_threshold, sigma=0.3, method='nms'):
