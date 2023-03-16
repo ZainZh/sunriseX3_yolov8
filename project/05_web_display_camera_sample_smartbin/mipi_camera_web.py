@@ -1,8 +1,9 @@
 import asyncio
-import cv2
-import numpy as np
 import os
 import time
+
+import cv2
+import numpy as np
 import websockets
 from hobot_dnn import pyeasy_dnn
 # Camera API libs
@@ -10,7 +11,6 @@ from hobot_vio import libsrcampy as srcampy
 
 import x3_pb2
 from step4_inference import postprocess as pre_postprocess
-from step4_inference import ratioresize
 
 fps = 30
 
@@ -55,27 +55,29 @@ def postprocess(model_output,
     else:
         origin_image_shape = origin_img_shape
     # resized, ratio, (dw, dh) = ratioresize(origin_image, (input_height, input_width))
-    prediction_bbox = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
-                                                   origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16, num_classes=4)
-    print("the shape of results",np.shape(prediction_bbox))
+    prediction_bboxes = pre_postprocess(model_output, score_threshold, iou_thres, origin_image_shape[0],
+                                        origin_image_shape[1], dh=1, dw=1, ratio_h=1, ratio_w=1, reg_max=16,
+                                        num_classes=4)
+    print("the shape of results", np.shape(prediction_bboxes))
     # prediction_bbox = np.concatenate([boxes, confidences, classIds], axis=1)
     # prediction_bbox = decode(outputs=model_output,
     #                          score_threshold=score_threshold,
     #                          origin_shape=origin_image_shape,
     #                          input_size=512)
 
-    prediction_bbox = nms(prediction_bbox, iou_threshold=nms_threshold)
+    for i, prediction_bbox, in enumerate(prediction_bboxes):
+        prediction_bboxes[i] = nms(prediction_bbox, iou_threshold=nms_threshold)
 
-    prediction_bbox = np.array(prediction_bbox)
-    topk = min(prediction_bbox.shape[0], 1000)
+    prediction_bboxes = np.array(prediction_bboxes)
+    topk = min(prediction_bboxes.shape[0], 1000)
 
     if topk != 0:
-        idx = np.argpartition(prediction_bbox[..., 4], -topk)[-topk:]
-        prediction_bbox = prediction_bbox[idx]
+        idx = np.argpartition(prediction_bboxes[..., 4], -topk)[-topk:]
+        prediction_bbox = prediction_bboxes[idx]
 
     if dump_image and origin_image is not None:
-        draw_bboxs(origin_image, prediction_bbox)
-    return prediction_bbox
+        draw_bboxs(origin_image, prediction_bboxes)
+    return prediction_bboxes
 
 
 def decode(outputs, score_threshold, origin_shape, input_size=512):
