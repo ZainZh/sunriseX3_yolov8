@@ -150,7 +150,7 @@ def serialize(FrameMessage, prediction_bbox):
             # get class name
             Target = x3_pb2.Target()
             id = int(prediction_bbox[i][5])
-            print(classes[id])
+            print("Detect object:", classes[id])
             Target.type_ = classes[id]
             Box = x3_pb2.Box()
             Box.type_ = classes[id]
@@ -200,7 +200,10 @@ async def web_service(websocket, path):
 
         img = cam.get_img(2, 640, 640)
         img = np.frombuffer(img, dtype=np.uint8)
+        time1 = time.perf_counter()
         outputs = models[0].forward(img)
+        time2 = time.perf_counter()
+        print("The prediction time is ", time2 - time1)
         if not outputs[0]:
             print("no outputs")
             continue
@@ -211,7 +214,6 @@ async def web_service(websocket, path):
                                             num_classes=4)
         prediction_bboxes = yolov8_nms(*prediction_bboxes)
 
-        print("the shape of results", np.shape(prediction_bboxes))
         prediction_bboxes = np.array(prediction_bboxes)
 
         origin_image = cam.get_img(2, 1920, 1080)
