@@ -1,13 +1,8 @@
 # 导入 YOLOv8
 import click
 from ultralytics import YOLO
-from common import print_info,print_error
-
-
-def print_help():
-    ctx = click.get_current_context()
-    click.echo(ctx.get_help())
-    ctx.exit()
+from common import print_info, print_error,print_help
+import os.path as osp
 
 
 @click.command()
@@ -16,6 +11,10 @@ def print_help():
     help="Path of the trained 'pt' type model that you want to transform to the 'onnx' type.",
 )
 def main(model_path):
+    if not model_path or not osp.exists(model_path):
+        print_help()
+        print_error(f"Path '{model_path}' is not valid, exit.")
+        exit(-1)
     # 载入预训练权重
     model = YOLO(model_path)
     # 指定 opset=11 并且使用 onnx-sim 简化 ONNX

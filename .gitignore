@@ -6,3 +6,5 @@ project/images/
 project/05_web_display_camera_sample_smartbin/webservice/
 
 project/coco128/
+
+project/tools/__pycache__/

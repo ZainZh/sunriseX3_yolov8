@@ -4,7 +4,11 @@ import numpy as np
 from numpy import ndarray
 from typing import List, Tuple, Union
 import random
-
+import click
+import os.path as osp
+import os
+from common import print_help, print_error, print_info
+import glob
 
 def letterbox(
         im: ndarray,
@@ -47,9 +51,23 @@ def blob(im: ndarray) -> ndarray:
     return im
 
 
-if __name__ == '__main__':
-    path = Path('./coco128')
-    save = Path('./calib_f32')
+@click.command()
+@click.option(
+    "--pictures_path",
+    help="Path of the training pictures for calibrate models",
+)
+def main(pictures_path):
+    if not pictures_path or not osp.exists(pictures_path):
+        print_help()
+        print_error(f"Path '{pictures_path}' is not valid, exit.")
+        exit(-1)
+    path = Path(pictures_path)
+
+    files = glob.glob('../calib_f32/*')
+    for f in files:
+        os.remove(f)
+    save = Path('../calib_f32')
+    print_info("The calibration pictures are saved in the calib_f32 folder.")
     cnt = 0
     all_dirs = [i for i in path.iterdir()]
     random.shuffle(all_dirs)
@@ -62,3 +80,7 @@ if __name__ == '__main__':
         print(img.shape)
         img.astype(np.float32).tofile(str(save / (i.stem + '.rgbchw')))
         cnt += 1
+
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,5 @@
 import numpy as np
-
+import click
 
 def _preprocess_print(*args):
     """Preprocess the input for colorful printing.
@@ -41,3 +41,9 @@ def print_warning(*args):
 def print_error(*args):
     """Print error with red."""
     print("".join(["\033[1m\033[91m", _preprocess_print(*args), "\033[0m"]))
+
+
+def print_help():
+    ctx = click.get_current_context()
+    click.echo(ctx.get_help())
+    ctx.exit()
