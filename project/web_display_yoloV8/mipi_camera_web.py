@@ -10,8 +10,8 @@ from hobot_dnn import pyeasy_dnn
 from hobot_vio import libsrcampy as srcampy
 
 import x3_pb2
-from step4_inference import nms as yolov8_nms
-from step4_inference import postprocess as pre_postprocess
+from inference import nms as yolov8_nms
+from inference import postprocess as pre_postprocess
 
 fps = 30
 
