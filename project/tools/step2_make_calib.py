@@ -1,19 +1,22 @@
+import glob
+import os
+import os.path as osp
+import random
 from pathlib import Path
+from typing import List, Tuple, Union
+
+import click
 import cv2
 import numpy as np
 from numpy import ndarray
-from typing import List, Tuple, Union
-import random
-import click
-import os.path as osp
-import os
+
 from common import print_help, print_error, print_info
-import glob
+
 
 def letterbox(
-        im: ndarray,
-        new_shape: Union[Tuple, List] = (640, 640),
-        color: Union[Tuple, List] = (114, 114, 114)
+    im: ndarray,
+    new_shape: Union[Tuple, List] = (640, 640),
+    color: Union[Tuple, List] = (114, 114, 114),
 ) -> Tuple[ndarray, float, Tuple[float, float]]:
     # Resize and pad image while meeting stride-multiple constraints
     shape = im.shape[:2]  # current shape [height, width]
@@ -25,8 +28,7 @@ def letterbox(
 
     # Compute padding
     new_unpad = int(round(shape[1] * r)), int(round(shape[0] * r))
-    dw, dh = new_shape[1] - new_unpad[0], new_shape[0] - new_unpad[
-        1]  # wh padding
+    dw, dh = new_shape[1] - new_unpad[0], new_shape[0] - new_unpad[1]  # wh padding
 
     dw /= 2  # divide padding into 2 sides
     dh /= 2
@@ -35,13 +37,9 @@ def letterbox(
         im = cv2.resize(im, new_unpad, interpolation=cv2.INTER_LINEAR)
     top, bottom = int(round(dh - 0.1)), int(round(dh + 0.1))
     left, right = int(round(dw - 0.1)), int(round(dw + 0.1))
-    im = cv2.copyMakeBorder(im,
-                            top,
-                            bottom,
-                            left,
-                            right,
-                            cv2.BORDER_CONSTANT,
-                            value=color)  # add border
+    im = cv2.copyMakeBorder(
+        im, top, bottom, left, right, cv2.BORDER_CONSTANT, value=color
+    )  # add border
     return im, r, (dw, dh)
 
 
@@ -63,10 +61,10 @@ def main(pictures_path):
         exit(-1)
     path = Path(pictures_path)
 
-    files = glob.glob('../calib_f32/*')
+    files = glob.glob("../calib_f32/*")
     for f in files:
         os.remove(f)
-    save = Path('../calib_f32')
+    save = Path("../calib_f32")
     print_info("The calibration pictures are saved in the calib_f32 folder.")
     cnt = 0
     all_dirs = [i for i in path.iterdir()]
@@ -78,9 +76,9 @@ def main(pictures_path):
         img = letterbox(img)[0]
         img = blob(img[:, :, ::-1])  # bgr -> rgb
         print(img.shape)
-        img.astype(np.float32).tofile(str(save / (i.stem + '.rgbchw')))
+        img.astype(np.float32).tofile(str(save / (i.stem + ".rgbchw")))
         cnt += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

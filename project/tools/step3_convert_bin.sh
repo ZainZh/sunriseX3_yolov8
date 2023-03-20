@@ -3,7 +3,7 @@
 # check
 hb_mapper checker \
   --model-type onnx \
-  --model yolov8n.onnx \
+  --model mighty.onnx \
   --march bernoulli2
 
 # export
