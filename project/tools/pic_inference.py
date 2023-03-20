@@ -239,7 +239,7 @@ if __name__ == "__main__":
                 f"{cls}:{score:.3f}",
                 (x0, y0 - 2),
                 cv2.FONT_HERSHEY_SIMPLEX,
-                0.325,
+                6,
                 [0, 0, 225],
                 thickness=1,
             )
