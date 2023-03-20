@@ -186,3 +186,5 @@ sudo python3 tools/step4_inference.py
 cd web_display_yoloV8
 sudo python3 mipi_camera_web.py
 ```
+运行效果：
+![](images/20230318_005658000_iOS.gif)
