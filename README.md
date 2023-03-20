@@ -5,10 +5,12 @@
   - [模型转换操作思路](#模型转换操作思路)
   - [操作步骤](#操作步骤)
     - [训练模型](#训练模型)
+    - [获得标定图片](#获得标定图片)
     - [导出onnx模型，bin模型](#导出onnx模型bin模型)
       - [快速使用](#快速使用)
       - [手动调整最新commit](#手动调整最新commit)
-    - [对导出的模型进行测试](#对导出的模型进行测试)
+    - [对导出的onnx模型进行测试](#对导出的onnx模型进行测试)
+    - [导出板载运行bin模型](#导出板载运行bin模型)
     - [板载运行测试](#板载运行测试)
       - [静态监测](#静态监测)
       - [实时跟踪监测](#实时跟踪监测)
@@ -30,7 +32,7 @@
 - 在forward函数中得到预测result后, 对于结果进行Transpose处理，把`NCHW`结构的模型提前转换为`NHWC`结构。
 
 ## 操作步骤
-
+❗请将本仓库clone到地平线开发板工具文件夹内。并在地平线开发板工具文件夹内创建名为`images`的文件夹，将50张训练图片存入。
 ### 训练模型
 
 1. 创建虚拟python环境yoloV8，并进入安装依赖项
@@ -49,6 +51,12 @@ pip install -r requirements.txt
 
 本步目标：得到yoloV8训练框架训练得到的后缀为.pt的模型。
 
+### 获得标定图片
+标定图片可以帮助我们将后续获得的onnx模型进行校准。校准后的图片将被存在地平线开发板工具文件夹的`calib_f32`文件中供后续使用。
+
+```bash
+python step2_make_calib.py images_path ../images
+```
 ### 导出onnx模型，bin模型
 
 在得到正常训练框架训练得到的.pt后缀模型后，本步骤最终要将其转换为X3计算板可以运行的.bin后缀模型，为了实现这一目标，我们要先将其转换为中间步骤的.onnx模型。
@@ -141,20 +149,40 @@ cd ../project/tools
 python step1_export_onnx.py --model_path best.pt
 ```
 
-### 对导出的模型进行测试
+### 对导出的onnx模型进行测试
 
 运行代码库（bpu_yolov8）中onnxruntime-infer.py文件，对得到的.onnx文件进行检查，因为在板载上，.bin模型的预测处理方式和.onnx模型的预测处理方式是一致的，两者之间在代码层面只存在读取模型方面的差异，所以如果onnx文件的检查没有问题，在板载运行上一般也问题不大。
+```bash
+python tools/onnxruntime-infer.py
+```
 
 正常情况下，该步会对训练集的一些图片进行试预测，如果可以正常在画面上输出预测后的图像，则证明.onnx模型的转换没有问题。则可以对其进行.bin后缀模型的导出。
 
+### 导出板载运行bin模型
+进入地平线开发机docker环境
 ```bash
-bash step3_convert_bin.sh
+cd ../../
+bash run_docker.sh images
+```
+导出bin模型
+``` bash
+bash step4_convert_bin.sh
 ```
 
 ### 板载运行测试
 
-将转换好的bin模型和代码库通过云端拷贝到X3运行板上，进行运行测试
+将转换好的bin模型和代码库通过云端拷贝到X3运行板上，进行运行测试。
 
 #### 静态监测
+将本库和导出的bin模型通过云端储存到板载上，运行静态监测代码。会对images文件夹中的图片进行预测并输出结果显示。
+```bash
+## 板载上不加sudo无法触发bpu运行
+sudo python3 tools/step4_inference.py
+```
 
 #### 实时跟踪监测
+板载上运行实时跟踪程序后，在上位机浏览器输入板载ip，在网页端查看结果
+```bash
+cd web_display_yoloV8
+sudo python3 mipi_camera_web.py
+```

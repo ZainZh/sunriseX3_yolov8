@@ -51,20 +51,20 @@ def blob(im: ndarray) -> ndarray:
 
 @click.command()
 @click.option(
-    "--pictures_path",
+    "--images_path",
     help="Path of the training pictures for calibrate models",
 )
-def main(pictures_path):
-    if not pictures_path or not osp.exists(pictures_path):
+def main(images_path):
+    if not images_path or not osp.exists(images_path):
         print_help()
-        print_error(f"Path '{pictures_path}' is not valid, exit.")
+        print_error(f"Path '{images_path}' is not valid, exit.")
         exit(-1)
-    path = Path(pictures_path)
+    path = Path(images_path)
 
     files = glob.glob("../calib_f32/*")
     for f in files:
         os.remove(f)
-    save = Path("../calib_f32")
+    save = Path("../../calib_f32")
     print_info("The calibration pictures are saved in the calib_f32 folder.")
     cnt = 0
     all_dirs = [i for i in path.iterdir()]
