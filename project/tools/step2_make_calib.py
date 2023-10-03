@@ -61,10 +61,10 @@ def main(images_path):
         exit(-1)
     path = Path(images_path)
 
-    files = glob.glob("../calib_f32/*")
+    files = glob.glob(f"{path}/../calib_f32/*")
     for f in files:
         os.remove(f)
-    save = Path("../../calib_f32")
+    save = Path(f"{path}/../calib_f32")
     print_info("The calibration pictures are saved in the calib_f32 folder.")
     cnt = 0
     all_dirs = [i for i in path.iterdir()]

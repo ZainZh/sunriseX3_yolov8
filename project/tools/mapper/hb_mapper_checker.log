@@ -1,0 +1,221 @@
+2023-09-26 16:14:29,389 file: tool_utils.py func: tool_utils line No: 73 log will be stored in /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/hb_mapper_checker.log
+2023-09-26 16:14:29,389 file: hb_mapper.py func: hb_mapper line No: 68 Start hb_mapper....
+2023-09-26 16:14:29,389 file: hb_mapper.py func: hb_mapper line No: 69 hbdk version 3.46.4
+2023-09-26 16:14:29,390 file: hb_mapper.py func: hb_mapper line No: 70 horizon_nn version 0.19.3
+2023-09-26 16:14:29,390 file: hb_mapper.py func: hb_mapper line No: 71 hb_mapper version 1.18.2
+2023-09-26 16:14:29,407 file: helper.py func: helper line No: 145 Model input names: ['data']
+2023-09-26 16:14:29,408 file: hb_mapper_checker.py func: hb_mapper_checker line No: 103 Model type: onnx
+2023-09-26 16:14:29,408 file: hb_mapper_checker.py func: hb_mapper_checker line No: 104 march: bayes
+2023-09-26 16:14:29,408 file: hb_mapper_checker.py func: hb_mapper_checker line No: 109 input names []
+2023-09-26 16:14:29,408 file: hb_mapper_checker.py func: hb_mapper_checker line No: 110 input shapes {}
+2023-09-26 16:14:29,408 file: hb_mapper_checker.py func: hb_mapper_checker line No: 116 Begin model checking....
+2023-09-26 16:14:29,418 file: build.py func: build line No: 34 [Tue Sep 26 16:14:29 2023] Start to Horizon NN Model Convert.
+2023-09-26 16:14:29,418 file: model_debug.py func: model_debug line No: 61 Loading horizon_nn debug methods:[]
+2023-09-26 16:14:29,418 file: hbdk_dict_parser.py func: hbdk_dict_parser line No: 36 Parsing the hbdk parameter:{'hbdk_pass_through_params': '--O0'}
+2023-09-26 16:14:29,419 file: build.py func: build line No: 140 HorizonNN version: 0.19.3
+2023-09-26 16:14:29,419 file: build.py func: build line No: 144 HBDK version: 3.46.4
+2023-09-26 16:14:29,419 file: build.py func: build line No: 34 [Tue Sep 26 16:14:29 2023] Start to parse the onnx model.
+2023-09-26 16:14:29,478 file: onnx_parser.py func: onnx_parser line No: 129 Input ONNX model infomation:
+ONNX IR version:          6
+Opset version:            [10, 1]
+Producer:                 pytorch1.6
+Domain:                   none
+Input name:               data, [1, 3, 672, 672]
+Output name:              output, [1, 84, 84, 255]
+Output name:              641, [1, 42, 42, 255]
+Output name:              643, [1, 21, 21, 255]
+2023-09-26 16:14:29,510 file: build.py func: build line No: 37 [Tue Sep 26 16:14:29 2023] End to parse the onnx model.
+2023-09-26 16:14:29,522 file: build.py func: build line No: 428 Saving the original float model: ./.hb_check/original_float_model.onnx.
+2023-09-26 16:14:29,522 file: build.py func: build line No: 34 [Tue Sep 26 16:14:29 2023] Start to optimize the model.
+2023-09-26 16:14:30,084 file: build.py func: build line No: 37 [Tue Sep 26 16:14:30 2023] End to optimize the model.
+2023-09-26 16:14:30,098 file: build.py func: build line No: 452 Saving the optimized model: ./.hb_check/optimized_float_model.onnx.
+2023-09-26 16:14:30,098 file: build.py func: build line No: 34 [Tue Sep 26 16:14:30 2023] Start to calibrate the model.
+2023-09-26 16:14:30,136 file: calibration_data_set.py func: calibration_data_set line No: 89 input name: data,  number_of_samples: 1
+2023-09-26 16:14:30,136 file: calibration_data_set.py func: calibration_data_set line No: 100 There are 1 samples in the calibration data set.
+2023-09-26 16:14:30,403 file: max_calibrater.py func: max_calibrater line No: 74 Run calibration model with max method.
+2023-09-26 16:14:30,506 file: calibrater.py func: calibrater line No: 195 Calibration using batch 8
+2023-09-26 16:14:31,004 file: build.py func: build line No: 335 Saving the calibrated model: ./.hb_check/calibrated_model.onnx.
+2023-09-26 16:14:31,004 file: build.py func: build line No: 37 [Tue Sep 26 16:14:31 2023] End to calibrate the model.
+2023-09-26 16:14:31,004 file: build.py func: build line No: 34 [Tue Sep 26 16:14:31 2023] Start to quantize the model.
+2023-09-26 16:14:32,504 file: build.py func: build line No: 37 [Tue Sep 26 16:14:32 2023] End to quantize the model.
+2023-09-26 16:14:32,670 file: build.py func: build line No: 465 Saving the quantized model: ./.hb_check/quantized_model.onnx.
+2023-09-26 16:14:33,150 file: build.py func: build line No: 34 [Tue Sep 26 16:14:33 2023] Start to compile the model with march bayes.
+2023-09-26 16:14:33,150 file: build.py func: build line No: 37 [Tue Sep 26 16:14:33 2023] End to compile the model with march bayes.
+2023-09-26 16:14:33,373 file: hybrid_build.py func: hybrid_build line No: 133 Compile submodel: torch-jit-export_subgraph_0
+2023-09-26 16:14:33,696 file: hbdk_cc.py func: hbdk_cc line No: 115 hbdk-cc parameters:['--O0', '--input-layout', 'NHWC', '--output-layout', 'NHWC']
+2023-09-26 16:14:33,696 file: hbdk_cc.py func: hbdk_cc line No: 116 hbdk-cc command used:hbdk-cc -f hbir -m /tmp/tmpl8cs132u/torch-jit-export_subgraph_0.hbir -o /tmp/tmpl8cs132u/torch-jit-export_subgraph_0.hbm --march bayes --progressbar --O0 --input-layout NHWC --output-layout NHWC
+2023-09-26 16:14:34,171 file: tool_utils.py func: tool_utils line No: 322 consumed time 0.452357
+2023-09-26 16:14:34,238 file: tool_utils.py func: tool_utils line No: 322 FPS=27.51, latency = 36355.0 us   (see ./.hb_check/torch-jit-export_subgraph_0.html)
+2023-09-26 16:14:34,341 file: node_info.py func: node_info line No: 55 The converted model node information:
+====================================================================
+Node                       ON   Subgraph  Type                       
+---------------------------------------------------------------------
+Slice_4                    BPU  id(0)     Slice                      
+Slice_9                    BPU  id(0)     Slice                      
+Slice_14                   BPU  id(0)     Slice                      
+Slice_19                   BPU  id(0)     Slice                      
+Slice_24                   BPU  id(0)     Slice                      
+Slice_29                   BPU  id(0)     Slice                      
+Slice_34                   BPU  id(0)     Slice                      
+Slice_39                   BPU  id(0)     Slice                      
+Concat_40                  BPU  id(0)     Concat                     
+Conv_41                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_43               BPU  id(0)     HzLut                      
+Conv_44                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_46               BPU  id(0)     HzLut                      
+Conv_47                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_49               BPU  id(0)     HzLut                      
+Conv_50                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_52               BPU  id(0)     HzLut                      
+Conv_53                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_55               BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_56       BPU  id(0)     HzSQuantizedConv           
+Conv_57                    BPU  id(0)     HzSQuantizedConv           
+Conv_58                    BPU  id(0)     HzSQuantizedConv           
+Concat_59                  BPU  id(0)     Concat                     
+LeakyRelu_61               BPU  id(0)     HzLut                      
+Conv_62                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_64               BPU  id(0)     HzLut                      
+Conv_65                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_67               BPU  id(0)     HzLut                      
+Conv_68                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_70               BPU  id(0)     HzLut                      
+Conv_71                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_73               BPU  id(0)     HzLut                      
+Conv_74                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_76               BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_77       BPU  id(0)     HzSQuantizedConv           
+Conv_78                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_80               BPU  id(0)     HzLut                      
+Conv_81                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_83               BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_84       BPU  id(0)     HzSQuantizedConv           
+Conv_85                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_87               BPU  id(0)     HzLut                      
+Conv_88                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_90               BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_91       BPU  id(0)     HzSQuantizedConv           
+Conv_92                    BPU  id(0)     HzSQuantizedConv           
+Conv_93                    BPU  id(0)     HzSQuantizedConv           
+Concat_94                  BPU  id(0)     Concat                     
+LeakyRelu_96               BPU  id(0)     HzLut                      
+Conv_97                    BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_99               BPU  id(0)     HzLut                      
+Conv_100                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_102              BPU  id(0)     HzLut                      
+Conv_103                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_105              BPU  id(0)     HzLut                      
+Conv_106                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_108              BPU  id(0)     HzLut                      
+Conv_109                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_111              BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_112      BPU  id(0)     HzSQuantizedConv           
+Conv_113                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_115              BPU  id(0)     HzLut                      
+Conv_116                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_118              BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_119      BPU  id(0)     HzSQuantizedConv           
+Conv_120                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_122              BPU  id(0)     HzLut                      
+Conv_123                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_125              BPU  id(0)     HzLut                      
+UNIT_CONV_FOR_Add_126      BPU  id(0)     HzSQuantizedConv           
+Conv_127                   BPU  id(0)     HzSQuantizedConv           
+Conv_128                   BPU  id(0)     HzSQuantizedConv           
+Concat_129                 BPU  id(0)     Concat                     
+LeakyRelu_131              BPU  id(0)     HzLut                      
+Conv_132                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_134              BPU  id(0)     HzLut                      
+Conv_135                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_137              BPU  id(0)     HzLut                      
+Conv_138                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_140              BPU  id(0)     HzLut                      
+MaxPool_141                BPU  id(0)     HzQuantizedMaxPool         
+MaxPool_142                BPU  id(0)     HzQuantizedMaxPool         
+MaxPool_143                BPU  id(0)     HzQuantizedMaxPool         
+Concat_144                 BPU  id(0)     Concat                     
+Conv_145                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_147              BPU  id(0)     HzLut                      
+Conv_148                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_150              BPU  id(0)     HzLut                      
+Conv_151                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_153              BPU  id(0)     HzLut                      
+Conv_154                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_156              BPU  id(0)     HzLut                      
+Conv_157                   BPU  id(0)     HzSQuantizedConv           
+Conv_158                   BPU  id(0)     HzSQuantizedConv           
+Concat_159                 BPU  id(0)     Concat                     
+LeakyRelu_161              BPU  id(0)     HzLut                      
+Conv_162                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_164              BPU  id(0)     HzLut                      
+Conv_165                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_167              BPU  id(0)     HzLut                      
+Resize_168                 BPU  id(0)     HzQuantizedResizeUpsample  
+547_calibrated_Requantize  BPU  id(0)     HzRequantize               
+Concat_169                 BPU  id(0)     Concat                     
+Conv_170                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_172              BPU  id(0)     HzLut                      
+Conv_173                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_175              BPU  id(0)     HzLut                      
+Conv_176                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_178              BPU  id(0)     HzLut                      
+Conv_179                   BPU  id(0)     HzSQuantizedConv           
+Conv_180                   BPU  id(0)     HzSQuantizedConv           
+Concat_181                 BPU  id(0)     Concat                     
+LeakyRelu_183              BPU  id(0)     HzLut                      
+Conv_184                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_186              BPU  id(0)     HzLut                      
+Conv_187                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_189              BPU  id(0)     HzLut                      
+Resize_190                 BPU  id(0)     HzQuantizedResizeUpsample  
+577_calibrated_Requantize  BPU  id(0)     HzRequantize               
+Concat_191                 BPU  id(0)     Concat                     
+Conv_192                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_194              BPU  id(0)     HzLut                      
+Conv_195                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_197              BPU  id(0)     HzLut                      
+Conv_198                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_200              BPU  id(0)     HzLut                      
+Conv_201                   BPU  id(0)     HzSQuantizedConv           
+Conv_202                   BPU  id(0)     HzSQuantizedConv           
+Concat_203                 BPU  id(0)     Concat                     
+LeakyRelu_205              BPU  id(0)     HzLut                      
+Conv_206                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_208              BPU  id(0)     HzLut                      
+Conv_209                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_211              BPU  id(0)     HzLut                      
+Concat_212                 BPU  id(0)     Concat                     
+Conv_213                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_215              BPU  id(0)     HzLut                      
+Conv_216                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_218              BPU  id(0)     HzLut                      
+Conv_219                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_221              BPU  id(0)     HzLut                      
+Conv_222                   BPU  id(0)     HzSQuantizedConv           
+Conv_223                   BPU  id(0)     HzSQuantizedConv           
+Concat_224                 BPU  id(0)     Concat                     
+LeakyRelu_226              BPU  id(0)     HzLut                      
+Conv_227                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_229              BPU  id(0)     HzLut                      
+Conv_230                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_232              BPU  id(0)     HzLut                      
+Concat_233                 BPU  id(0)     Concat                     
+Conv_234                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_236              BPU  id(0)     HzLut                      
+Conv_237                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_239              BPU  id(0)     HzLut                      
+Conv_240                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_242              BPU  id(0)     HzLut                      
+Conv_243                   BPU  id(0)     HzSQuantizedConv           
+Conv_244                   BPU  id(0)     HzSQuantizedConv           
+Concat_245                 BPU  id(0)     Concat                     
+LeakyRelu_247              BPU  id(0)     HzLut                      
+Conv_248                   BPU  id(0)     HzSQuantizedConv           
+LeakyRelu_250              BPU  id(0)     HzLut                      
+Conv_251                   BPU  id(0)     HzSQuantizedConv           
+Conv_253                   BPU  id(0)     HzSQuantizedConv           
+Conv_255                   BPU  id(0)     HzSQuantizedConv
+2023-09-26 16:14:34,342 file: build.py func: build line No: 37 [Tue Sep 26 16:14:34 2023] End to Horizon NN Model Convert.
+2023-09-26 16:14:34,349 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4128 ONNX model output num : 3
+2023-09-26 16:14:34,352 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3862 model_deps_info: {'hb_mapper_version': '1.18.2'}
+2023-09-26 16:14:34,356 file: hb_mapper_checker.py func: hb_mapper_checker line No: 167 End model checking....

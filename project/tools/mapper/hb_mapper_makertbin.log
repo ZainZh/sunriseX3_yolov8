@@ -1,0 +1,1476 @@
+2023-09-26 16:26:46,314 file: tool_utils.py func: tool_utils line No: 73 log will be stored in /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/hb_mapper_makertbin.log
+2023-09-26 16:26:46,314 file: hb_mapper.py func: hb_mapper line No: 115 Start hb_mapper....
+2023-09-26 16:26:46,314 file: hb_mapper.py func: hb_mapper line No: 116 hbdk version 3.46.4
+2023-09-26 16:26:46,314 file: hb_mapper.py func: hb_mapper line No: 117 horizon_nn version 0.19.3
+2023-09-26 16:26:46,314 file: hb_mapper.py func: hb_mapper line No: 118 hb_mapper version 1.18.2
+2023-09-26 16:26:46,314 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 521 Start Model Convert....
+2023-09-26 16:26:46,319 file: mapper_conf_parser.py func: mapper_conf_parser line No: 103 validating model_parameters...
+2023-09-26 16:26:46,319 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/YOLOv5s.onnx
+2023-09-26 16:26:46,319 file: mapper_conf_parser.py func: mapper_conf_parser line No: 257 Using onnx model file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/YOLOv5s.onnx
+2023-09-26 16:26:46,336 file: helper.py func: helper line No: 145 Model input names: ['data']
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 261 Model has 1 inputs according to model file
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 286 working_dir does not exist. Creating working_dir: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 465 node_dict: {self.node_dict}
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 118 validating model_parameters finished
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 122 validating input_parameters...
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 519 Model name not given in yaml_file, using model name from model file: ['data']
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 568 Model input shape not given in yaml_file, using shape from model file: [[1, 3, 672, 672]]
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 670 nv12 input type rt received.
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 133 validating input_parameters finished
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 137 validating calibration_parameters...
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1039 The calibration dir name suffix is the same as the value float32 of the cal_data_type parameter and will be read with the value of cal_data_type.
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 153 validating calibration_parameters finished
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 157 validating custom_op...
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1114 custom_op does not exist, skipped
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 163 validating custom_op finished
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 166 validating compiler_parameters...
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1195 Input node data's input_source not set, it will be set to pyramid by default
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 180 validating compiler_parameters finished
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 184 validating deprecated parameters...
+2023-09-26 16:26:46,336 file: mapper_conf_parser.py func: mapper_conf_parser line No: 190 validating deprecated parameters finished
+2023-09-26 16:26:46,336 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 57 Dump config:
+2023-09-26 16:26:46,336 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 58 calibration_parameters:
+  cal_data_dir: ./calibration_data_rgb_f32
+  cal_data_type: float32
+  calibration_type: default
+compiler_parameters:
+  compile_mode: latency
+  debug: false
+  optimize_level: O3
+input_parameters:
+  input_layout_train: NCHW
+  input_name: ''
+  input_shape: ''
+  input_type_rt: nv12
+  input_type_train: rgb
+  mean_value: ''
+  norm_type: data_scale
+  scale_value: '0.003921568627451'
+model_parameters:
+  layer_out_dump: false
+  march: bayes
+  onnx_model: ./YOLOv5s.onnx
+  output_model_file_prefix: yolov5s_672x672_nv12
+  remove_node_type: Dequantize
+  working_dir: model_output
+
+2023-09-26 16:26:46,337 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 63 input 'data' : original model shape: [1, 3, 672, 672]
+2023-09-26 16:26:46,338 file: loader.py func: loader line No: 44 *******************************************
+2023-09-26 16:26:46,338 file: loader.py func: loader line No: 45 First calibration picture name: COCO_val2014_000000181007.rgb
+2023-09-26 16:26:46,338 file: loader.py func: loader line No: 47 First calibration picture md5:
+2023-09-26 16:26:46,344 file: loader.py func: loader line No: 51 *******************************************
+2023-09-26 16:26:46,345 file: loader.py func: loader line No: 125 created RawImageDirLoader of shape:[1, 3, 672, 672]
+2023-09-26 16:26:46,345 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181007.rgb
+2023-09-26 16:26:46,377 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181013.rgb
+2023-09-26 16:26:46,409 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181026.rgb
+2023-09-26 16:26:46,440 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181030.rgb
+2023-09-26 16:26:46,469 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181058.rgb
+2023-09-26 16:26:46,499 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181065.rgb
+2023-09-26 16:26:46,530 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181118.rgb
+2023-09-26 16:26:46,559 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181132.rgb
+2023-09-26 16:26:46,590 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181133.rgb
+2023-09-26 16:26:46,620 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181139.rgb
+2023-09-26 16:26:46,651 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181169.rgb
+2023-09-26 16:26:46,681 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181179.rgb
+2023-09-26 16:26:46,712 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181237.rgb
+2023-09-26 16:26:46,742 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181249.rgb
+2023-09-26 16:26:46,772 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181256.rgb
+2023-09-26 16:26:46,802 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181265.rgb
+2023-09-26 16:26:46,832 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181267.rgb
+2023-09-26 16:26:46,862 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181278.rgb
+2023-09-26 16:26:46,892 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181296.rgb
+2023-09-26 16:26:46,922 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181303.rgb
+2023-09-26 16:26:46,952 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181359.rgb
+2023-09-26 16:26:46,982 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181383.rgb
+2023-09-26 16:26:47,012 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181386.rgb
+2023-09-26 16:26:47,042 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181403.rgb
+2023-09-26 16:26:47,072 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181409.rgb
+2023-09-26 16:26:47,102 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181421.rgb
+2023-09-26 16:26:47,132 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181446.rgb
+2023-09-26 16:26:47,162 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181449.rgb
+2023-09-26 16:26:47,192 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181462.rgb
+2023-09-26 16:26:47,222 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181466.rgb
+2023-09-26 16:26:47,252 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181485.rgb
+2023-09-26 16:26:47,281 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181488.rgb
+2023-09-26 16:26:47,311 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181499.rgb
+2023-09-26 16:26:47,341 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181506.rgb
+2023-09-26 16:26:47,371 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181518.rgb
+2023-09-26 16:26:47,401 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181524.rgb
+2023-09-26 16:26:47,431 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181542.rgb
+2023-09-26 16:26:47,461 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181572.rgb
+2023-09-26 16:26:47,491 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181574.rgb
+2023-09-26 16:26:47,521 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181576.rgb
+2023-09-26 16:26:47,551 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181586.rgb
+2023-09-26 16:26:47,581 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181591.rgb
+2023-09-26 16:26:47,612 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181601.rgb
+2023-09-26 16:26:47,642 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181627.rgb
+2023-09-26 16:26:47,672 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181643.rgb
+2023-09-26 16:26:47,702 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181655.rgb
+2023-09-26 16:26:47,732 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181666.rgb
+2023-09-26 16:26:47,762 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181677.rgb
+2023-09-26 16:26:47,791 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181714.rgb
+2023-09-26 16:26:47,821 file: loader.py func: loader line No: 130 Read raw file: /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32/COCO_val2014_000000181739.rgb
+2023-09-26 16:26:47,851 file: tool_utils.py func: tool_utils line No: 364 num of calibration data: 50
+2023-09-26 16:26:47,851 file: tool_utils.py func: tool_utils line No: 365 calibration data shape: (1, 3, 672, 672)
+2023-09-26 16:26:47,865 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 510 call build params:
+ {'march': 'bayes', 'save_model': True, 'name_prefix': 'yolov5s_672x672_nv12', 'input_dict': {'data': {'input_shape': [1, 3, 672, 672], 'expected_input_type': 'YUV444_128', 'original_input_type': 'RGB', 'original_input_layout': 'NCHW', 'scales': array([0.00392157], dtype=float32)}}, 'cali_dict': {'calibration_type': 'default', 'calibration_data': {'data': [array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[126., 126., 126., ..., 123., 113.,  43.],
+         [126., 126., 126., ..., 123., 113.,  43.],
+         [126., 126., 126., ..., 124., 113.,  43.],
+         ...,
+         [125., 125., 125., ..., 123., 110.,  48.],
+         [114., 113., 113., ..., 113., 102.,  40.],
+         [ 48.,  47.,  47., ...,  49.,  40., -20.]],
+
+        [[ -1.,  -1.,  -1., ...,   0.,   0.,   0.],
+         [ -1.,  -1.,  -1., ...,   0.,   0.,   0.],
+         [ -1.,  -1.,  -1., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         ...,
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.],
+         [-1., -1., -1., ..., -1., -1., -1.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]],
+
+        [[ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         ...,
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.],
+         [ 0.,  0.,  0., ...,  0.,  0.,  0.]]]], dtype=float32), array([[[[ 20.,  20.,  18., ...,  -4.,  -6.,  -7.],
+         [ 21.,  21.,  20., ...,  -4.,  -5.,  -6.],
+         [ 23.,  23.,  22., ...,  -3.,  -4.,  -4.],
+         ...,
+         [-82., -82., -83., ...,   1.,   1.,   2.],
+         [-82., -82., -83., ...,  -1.,  -1.,   0.],
+         [-81., -82., -82., ...,  -2.,  -2.,  -1.]],
+
+        [[ -7.,  -7.,  -7., ..., -17., -19., -19.],
+         [ -7.,  -7.,  -7., ..., -17., -19., -19.],
+         [ -7.,  -7.,  -9., ..., -14., -16., -16.],
+         ...,
+         [  0.,   0.,   0., ..., -39., -38., -38.],
+         [  0.,   0.,   0., ..., -36., -36., -36.],
+         [  0.,   0.,   0., ..., -36., -36., -36.]],
+
+        [[  9.,   9.,   9., ...,  15.,  14.,  14.],
+         [  9.,   9.,   9., ...,  15.,  14.,  14.],
+         [  5.,   5.,   7., ...,  15.,  15.,  15.],
+         ...,
+         [  0.,   0.,   0., ...,  38.,  34.,  34.],
+         [  0.,   0.,   0., ...,  36.,  36.,  36.],
+         [  0.,   0.,   0., ...,  36.,  36.,  36.]]]], dtype=float32)]}}, 'hbdk_dict': {'hbdk_pass_through_params': '--O3 --cache /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json --core-num 1 --fast ', 'input-source': {'data': 'pyramid', '_default_value': 'ddr'}}, 'node_dict': {}, 'check_mode': False}
+2023-09-26 16:26:47,876 file: build.py func: build line No: 34 [Tue Sep 26 16:26:47 2023] Start to Horizon NN Model Convert.
+2023-09-26 16:26:47,876 file: model_debug.py func: model_debug line No: 61 Loading horizon_nn debug methods:[]
+2023-09-26 16:26:47,876 file: cali_dict_parser.py func: cali_dict_parser line No: 38 Parsing the calibration parameter
+2023-09-26 16:26:47,876 file: hbdk_dict_parser.py func: hbdk_dict_parser line No: 36 Parsing the hbdk parameter:{'hbdk_pass_through_params': '--O3 --cache /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json --core-num 1 --fast ', 'input-source': {'data': 'pyramid', '_default_value': 'ddr'}}
+2023-09-26 16:26:47,876 file: input_dict_parser.py func: input_dict_parser line No: 226 input data is from pyramid. Its layout is set to NHWC
+2023-09-26 16:26:47,876 file: build.py func: build line No: 140 HorizonNN version: 0.19.3
+2023-09-26 16:26:47,876 file: build.py func: build line No: 144 HBDK version: 3.46.4
+2023-09-26 16:26:47,876 file: build.py func: build line No: 34 [Tue Sep 26 16:26:47 2023] Start to parse the onnx model.
+2023-09-26 16:26:47,938 file: onnx_parser.py func: onnx_parser line No: 129 Input ONNX model infomation:
+ONNX IR version:          6
+Opset version:            [10, 1]
+Producer:                 pytorch1.6
+Domain:                   none
+Input name:               data, [1, 3, 672, 672]
+Output name:              output, [1, 84, 84, 255]
+Output name:              641, [1, 42, 42, 255]
+Output name:              643, [1, 21, 21, 255]
+2023-09-26 16:26:47,971 file: build.py func: build line No: 37 [Tue Sep 26 16:26:47 2023] End to parse the onnx model.
+2023-09-26 16:26:48,063 file: build.py func: build line No: 428 Saving the original float model: yolov5s_672x672_nv12_original_float_model.onnx.
+2023-09-26 16:26:48,063 file: build.py func: build line No: 34 [Tue Sep 26 16:26:48 2023] Start to optimize the model.
+2023-09-26 16:26:48,653 file: build.py func: build line No: 37 [Tue Sep 26 16:26:48 2023] End to optimize the model.
+2023-09-26 16:26:48,667 file: build.py func: build line No: 452 Saving the optimized model: yolov5s_672x672_nv12_optimized_float_model.onnx.
+2023-09-26 16:26:48,667 file: build.py func: build line No: 34 [Tue Sep 26 16:26:48 2023] Start to calibrate the model.
+2023-09-26 16:26:48,702 file: calibration_data_set.py func: calibration_data_set line No: 89 input name: data,  number_of_samples: 50
+2023-09-26 16:26:48,702 file: calibration_data_set.py func: calibration_data_set line No: 100 There are 50 samples in the calibration data set.
+2023-09-26 16:26:48,986 file: default_calibrater.py func: default_calibrater line No: 154 Run calibration model with default calibration method.
+2023-09-26 16:26:49,584 file: calibrater.py func: calibrater line No: 195 Calibration using batch 8
+2023-09-26 16:27:23,623 file: default_calibrater.py func: default_calibrater line No: 183 Select max-percentile:percentile=0.99995 method.
+2023-09-26 16:27:23,805 file: build.py func: build line No: 335 Saving the calibrated model: yolov5s_672x672_nv12_calibrated_model.onnx.
+2023-09-26 16:27:23,805 file: build.py func: build line No: 37 [Tue Sep 26 16:27:23 2023] End to calibrate the model.
+2023-09-26 16:27:23,805 file: build.py func: build line No: 34 [Tue Sep 26 16:27:23 2023] Start to quantize the model.
+2023-09-26 16:27:30,633 file: build.py func: build line No: 37 [Tue Sep 26 16:27:30 2023] End to quantize the model.
+2023-09-26 16:27:30,802 file: build.py func: build line No: 465 Saving the quantized model: yolov5s_672x672_nv12_quantized_model.onnx.
+2023-09-26 16:27:31,290 file: build.py func: build line No: 34 [Tue Sep 26 16:27:31 2023] Start to compile the model with march bayes.
+2023-09-26 16:27:31,290 file: build.py func: build line No: 37 [Tue Sep 26 16:27:31 2023] End to compile the model with march bayes.
+2023-09-26 16:27:31,509 file: hybrid_build.py func: hybrid_build line No: 133 Compile submodel: torch-jit-export_subgraph_0
+2023-09-26 16:27:31,834 file: hbdk_cc.py func: hbdk_cc line No: 115 hbdk-cc parameters:['--O3', '--cache', '/home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json', '--core-num', '1', '--fast', '--input-layout', 'NHWC', '--output-layout', 'NHWC', '--input-source', 'pyramid']
+2023-09-26 16:27:31,835 file: hbdk_cc.py func: hbdk_cc line No: 116 hbdk-cc command used:hbdk-cc -f hbir -m /tmp/tmpa5yfrrr6/torch-jit-export_subgraph_0.hbir -o /tmp/tmpa5yfrrr6/torch-jit-export_subgraph_0.hbm --march bayes --progressbar --O3 --cache /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json --core-num 1 --fast --input-layout NHWC --output-layout NHWC --input-source pyramid
+2023-09-26 16:31:05,833 file: tool_utils.py func: tool_utils line No: 322 /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache90477.json
+2023-09-26 16:31:06,285 file: tool_utils.py func: tool_utils line No: 322 consumed time 214.422
+2023-09-26 16:31:06,366 file: tool_utils.py func: tool_utils line No: 322 FPS=276.62, latency = 3615.1 us   (see torch-jit-export_subgraph_0.html)
+2023-09-26 16:31:06,474 file: node_info.py func: node_info line No: 55 The converted model node information:
+====================================================================================================================
+Node                       ON   Subgraph  Type                       Cosine Similarity  Threshold   In/Out DataType  
+---------------------------------------------------------------------------------------------------------------------
+HZ_PREPROCESS_FOR_data     BPU  id(0)     HzSQuantizedPreprocess     1.000249           127.000000  int8/int8        
+Slice_4                    BPU  id(0)     Slice                      0.999995           1.065925    int8/int8        
+Slice_9                    BPU  id(0)     Slice                      0.999896           1.065925    int8/int8        
+Slice_14                   BPU  id(0)     Slice                      0.999992           1.065925    int8/int8        
+Slice_19                   BPU  id(0)     Slice                      0.999895           1.065925    int8/int8        
+Slice_24                   BPU  id(0)     Slice                      0.999995           1.065925    int8/int8        
+Slice_29                   BPU  id(0)     Slice                      0.999894           1.065925    int8/int8        
+Slice_34                   BPU  id(0)     Slice                      0.999992           1.065925    int8/int8        
+Slice_39                   BPU  id(0)     Slice                      0.999894           1.065925    int8/int8        
+Concat_40                  BPU  id(0)     Concat                     1.000201           1.065925    int8/int8        
+Conv_41                    BPU  id(0)     HzSQuantizedConv           1.000417           1.065925    int8/int8        
+LeakyRelu_43               BPU  id(0)     HzLut                      0.999316           9.565388    int8/int8        
+Conv_44                    BPU  id(0)     HzSQuantizedConv           0.998296           9.565388    int8/int8        
+LeakyRelu_46               BPU  id(0)     HzLut                      0.998608           13.493938   int8/int8        
+Conv_47                    BPU  id(0)     HzSQuantizedConv           0.999359           13.493938   int8/int8        
+LeakyRelu_49               BPU  id(0)     HzLut                      0.999476           4.795215    int8/int8        
+Conv_50                    BPU  id(0)     HzSQuantizedConv           0.993689           4.795215    int8/int8        
+LeakyRelu_52               BPU  id(0)     HzLut                      0.997137           7.377336    int8/int8        
+Conv_53                    BPU  id(0)     HzSQuantizedConv           0.995450           7.377336    int8/int8        
+LeakyRelu_55               BPU  id(0)     HzLut                      0.996501           12.893383   int8/int8        
+UNIT_CONV_FOR_Add_56       BPU  id(0)     HzSQuantizedConv           0.997656           4.795215    int8/int8        
+Conv_57                    BPU  id(0)     HzSQuantizedConv           0.993521           13.701491   int8/int8        
+Conv_58                    BPU  id(0)     HzSQuantizedConv           0.995230           13.493938   int8/int8        
+Concat_59                  BPU  id(0)     Concat                     0.994057           11.856925   int8/int8        
+LeakyRelu_61               BPU  id(0)     HzLut                      0.995561           11.856925   int8/int8        
+Conv_62                    BPU  id(0)     HzSQuantizedConv           0.991101           11.856925   int8/int8        
+LeakyRelu_64               BPU  id(0)     HzLut                      0.993746           7.449783    int8/int8        
+Conv_65                    BPU  id(0)     HzSQuantizedConv           0.990481           7.449783    int8/int8        
+LeakyRelu_67               BPU  id(0)     HzLut                      0.992248           7.031975    int8/int8        
+Conv_68                    BPU  id(0)     HzSQuantizedConv           0.997415           7.031975    int8/int8        
+LeakyRelu_70               BPU  id(0)     HzLut                      0.998055           3.502887    int8/int8        
+Conv_71                    BPU  id(0)     HzSQuantizedConv           0.994208           3.502887    int8/int8        
+LeakyRelu_73               BPU  id(0)     HzLut                      0.994661           6.069211    int8/int8        
+Conv_74                    BPU  id(0)     HzSQuantizedConv           0.992795           6.069211    int8/int8        
+LeakyRelu_76               BPU  id(0)     HzLut                      0.993639           4.123940    int8/int8        
+UNIT_CONV_FOR_Add_77       BPU  id(0)     HzSQuantizedConv           0.997011           3.502887    int8/int8        
+Conv_78                    BPU  id(0)     HzSQuantizedConv           0.989521           5.291677    int8/int8        
+LeakyRelu_80               BPU  id(0)     HzLut                      0.985669           5.891102    int8/int8        
+Conv_81                    BPU  id(0)     HzSQuantizedConv           0.990021           5.891102    int8/int8        
+LeakyRelu_83               BPU  id(0)     HzLut                      0.991027           7.603921    int8/int8        
+UNIT_CONV_FOR_Add_84       BPU  id(0)     HzSQuantizedConv           0.995986           5.291677    int8/int8        
+Conv_85                    BPU  id(0)     HzSQuantizedConv           0.992545           8.904430    int8/int8        
+LeakyRelu_87               BPU  id(0)     HzLut                      0.993395           5.469590    int8/int8        
+Conv_88                    BPU  id(0)     HzSQuantizedConv           0.989166           5.469590    int8/int8        
+LeakyRelu_90               BPU  id(0)     HzLut                      0.990410           10.865228   int8/int8        
+UNIT_CONV_FOR_Add_91       BPU  id(0)     HzSQuantizedConv           0.995680           8.904430    int8/int8        
+Conv_92                    BPU  id(0)     HzSQuantizedConv           0.989041           13.730002   int8/int8        
+Conv_93                    BPU  id(0)     HzSQuantizedConv           0.990181           7.031975    int8/int8        
+Concat_94                  BPU  id(0)     Concat                     0.989563           7.262249    int8/int8        
+LeakyRelu_96               BPU  id(0)     HzLut                      0.990977           7.262249    int8/int8        
+Conv_97                    BPU  id(0)     HzSQuantizedConv           0.993138           7.262249    int8/int8        
+LeakyRelu_99               BPU  id(0)     HzLut                      0.991414           5.496812    int8/int8        
+Conv_100                   BPU  id(0)     HzSQuantizedConv           0.993867           5.496812    int8/int8        
+LeakyRelu_102              BPU  id(0)     HzLut                      0.992168           5.719972    int8/int8        
+Conv_103                   BPU  id(0)     HzSQuantizedConv           0.996145           5.719972    int8/int8        
+LeakyRelu_105              BPU  id(0)     HzLut                      0.996993           2.621932    int8/int8        
+Conv_106                   BPU  id(0)     HzSQuantizedConv           0.994760           2.621932    int8/int8        
+LeakyRelu_108              BPU  id(0)     HzLut                      0.994253           5.975686    int8/int8        
+Conv_109                   BPU  id(0)     HzSQuantizedConv           0.995797           5.975686    int8/int8        
+LeakyRelu_111              BPU  id(0)     HzLut                      0.994043           3.731829    int8/int8        
+UNIT_CONV_FOR_Add_112      BPU  id(0)     HzSQuantizedConv           0.995604           2.621932    int8/int8        
+Conv_113                   BPU  id(0)     HzSQuantizedConv           0.994912           4.103075    int8/int8        
+LeakyRelu_115              BPU  id(0)     HzLut                      0.990456           5.049542    int8/int8        
+Conv_116                   BPU  id(0)     HzSQuantizedConv           0.994156           5.049542    int8/int8        
+LeakyRelu_118              BPU  id(0)     HzLut                      0.993085           6.516913    int8/int8        
+UNIT_CONV_FOR_Add_119      BPU  id(0)     HzSQuantizedConv           0.994730           4.103075    int8/int8        
+Conv_120                   BPU  id(0)     HzSQuantizedConv           0.995056           7.711994    int8/int8        
+LeakyRelu_122              BPU  id(0)     HzLut                      0.991183           4.603847    int8/int8        
+Conv_123                   BPU  id(0)     HzSQuantizedConv           0.992945           4.603847    int8/int8        
+LeakyRelu_125              BPU  id(0)     HzLut                      0.992417           10.031747   int8/int8        
+UNIT_CONV_FOR_Add_126      BPU  id(0)     HzSQuantizedConv           0.994696           7.711994    int8/int8        
+Conv_127                   BPU  id(0)     HzSQuantizedConv           0.993086           11.763662   int8/int8        
+Conv_128                   BPU  id(0)     HzSQuantizedConv           0.992798           5.719972    int8/int8        
+Concat_129                 BPU  id(0)     Concat                     0.992924           5.999934    int8/int8        
+LeakyRelu_131              BPU  id(0)     HzLut                      0.992653           5.999934    int8/int8        
+Conv_132                   BPU  id(0)     HzSQuantizedConv           0.994815           5.999934    int8/int8        
+LeakyRelu_134              BPU  id(0)     HzLut                      0.991477           5.092212    int8/int8        
+Conv_135                   BPU  id(0)     HzSQuantizedConv           0.995896           5.092212    int8/int8        
+LeakyRelu_137              BPU  id(0)     HzLut                      0.993500           4.080043    int8/int8        
+Conv_138                   BPU  id(0)     HzSQuantizedConv           0.996668           4.080043    int8/int8        
+LeakyRelu_140              BPU  id(0)     HzLut                      0.997379           7.308180    int8/int8        
+MaxPool_141                BPU  id(0)     HzQuantizedMaxPool         0.998945           7.308180    int8/int8        
+MaxPool_142                BPU  id(0)     HzQuantizedMaxPool         0.999197           7.308180    int8/int8        
+MaxPool_143                BPU  id(0)     HzQuantizedMaxPool         0.999324           7.308180    int8/int8        
+Concat_144                 BPU  id(0)     Concat                     0.999078           7.308180    int8/int8        
+Conv_145                   BPU  id(0)     HzSQuantizedConv           0.997644           7.308180    int8/int8        
+LeakyRelu_147              BPU  id(0)     HzLut                      0.992709           3.540069    int8/int8        
+Conv_148                   BPU  id(0)     HzSQuantizedConv           0.995711           3.540069    int8/int8        
+LeakyRelu_150              BPU  id(0)     HzLut                      0.992684           4.885417    int8/int8        
+Conv_151                   BPU  id(0)     HzSQuantizedConv           0.994588           4.885417    int8/int8        
+LeakyRelu_153              BPU  id(0)     HzLut                      0.992687           4.912245    int8/int8        
+Conv_154                   BPU  id(0)     HzSQuantizedConv           0.995928           4.912245    int8/int8        
+LeakyRelu_156              BPU  id(0)     HzLut                      0.992822           4.840213    int8/int8        
+Conv_157                   BPU  id(0)     HzSQuantizedConv           0.994330           4.840213    int8/int8        
+Conv_158                   BPU  id(0)     HzSQuantizedConv           0.994238           3.540069    int8/int8        
+Concat_159                 BPU  id(0)     Concat                     0.994263           4.888761    int8/int8        
+LeakyRelu_161              BPU  id(0)     HzLut                      0.989384           4.888761    int8/int8        
+Conv_162                   BPU  id(0)     HzSQuantizedConv           0.993368           4.888761    int8/int8        
+LeakyRelu_164              BPU  id(0)     HzLut                      0.987211           4.201016    int8/int8        
+Conv_165                   BPU  id(0)     HzSQuantizedConv           0.990750           4.201016    int8/int8        
+LeakyRelu_167              BPU  id(0)     HzLut                      0.988675           6.185248    int8/int8        
+Resize_168                 BPU  id(0)     HzQuantizedResizeUpsample  0.988667           6.185248    int8/int8        
+547_calibrated_Requantize  BPU  id(0)     HzRequantize                                              int8/int8        
+505_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+Concat_169                 BPU  id(0)     Concat                     0.989709           6.185248    int8/int8        
+Conv_170                   BPU  id(0)     HzSQuantizedConv           0.993871           5.000985    int8/int8        
+LeakyRelu_172              BPU  id(0)     HzLut                      0.994205           3.854206    int8/int8        
+Conv_173                   BPU  id(0)     HzSQuantizedConv           0.993640           3.854206    int8/int8        
+LeakyRelu_175              BPU  id(0)     HzLut                      0.991972           4.369511    int8/int8        
+Conv_176                   BPU  id(0)     HzSQuantizedConv           0.992136           4.369511    int8/int8        
+LeakyRelu_178              BPU  id(0)     HzLut                      0.991930           5.215518    int8/int8        
+Conv_179                   BPU  id(0)     HzSQuantizedConv           0.990461           5.215518    int8/int8        
+Conv_180                   BPU  id(0)     HzSQuantizedConv           0.989634           5.000985    int8/int8        
+Concat_181                 BPU  id(0)     Concat                     0.989990           5.397383    int8/int8        
+LeakyRelu_183              BPU  id(0)     HzLut                      0.988861           5.397383    int8/int8        
+Conv_184                   BPU  id(0)     HzSQuantizedConv           0.989846           5.397383    int8/int8        
+LeakyRelu_186              BPU  id(0)     HzLut                      0.985940           5.141273    int8/int8        
+Conv_187                   BPU  id(0)     HzSQuantizedConv           0.990013           5.141273    int8/int8        
+LeakyRelu_189              BPU  id(0)     HzLut                      0.992428           6.489001    int8/int8        
+Resize_190                 BPU  id(0)     HzQuantizedResizeUpsample  0.992453           6.489001    int8/int8        
+577_calibrated_Requantize  BPU  id(0)     HzRequantize                                              int8/int8        
+470_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+Concat_191                 BPU  id(0)     Concat                     0.992120           6.489001    int8/int8        
+Conv_192                   BPU  id(0)     HzSQuantizedConv           0.993794           6.019610    int8/int8        
+LeakyRelu_194              BPU  id(0)     HzLut                      0.996878           3.829432    int8/int8        
+Conv_195                   BPU  id(0)     HzSQuantizedConv           0.994904           3.829432    int8/int8        
+LeakyRelu_197              BPU  id(0)     HzLut                      0.997220           3.844464    int8/int8        
+Conv_198                   BPU  id(0)     HzSQuantizedConv           0.994712           3.844464    int8/int8        
+LeakyRelu_200              BPU  id(0)     HzLut                      0.996474           5.467258    int8/int8        
+Conv_201                   BPU  id(0)     HzSQuantizedConv           0.991781           5.467258    int8/int8        
+Conv_202                   BPU  id(0)     HzSQuantizedConv           0.991583           6.019610    int8/int8        
+Concat_203                 BPU  id(0)     Concat                     0.991654           5.914805    int8/int8        
+LeakyRelu_205              BPU  id(0)     HzLut                      0.993344           5.914805    int8/int8        
+Conv_206                   BPU  id(0)     HzSQuantizedConv           0.980784           5.914805    int8/int8        
+LeakyRelu_208              BPU  id(0)     HzLut                      0.984046           19.009319   int8/int8        
+Conv_209                   BPU  id(0)     HzSQuantizedConv           0.982418           19.009319   int8/int8        
+LeakyRelu_211              BPU  id(0)     HzLut                      0.984265           6.489001    int8/int8        
+Concat_212                 BPU  id(0)     Concat                     0.989066           6.489001    int8/int8        
+Conv_213                   BPU  id(0)     HzSQuantizedConv           0.983979           6.489001    int8/int8        
+LeakyRelu_215              BPU  id(0)     HzLut                      0.983878           6.002916    int8/int8        
+Conv_216                   BPU  id(0)     HzSQuantizedConv           0.984817           6.002916    int8/int8        
+LeakyRelu_218              BPU  id(0)     HzLut                      0.981785           5.994791    int8/int8        
+Conv_219                   BPU  id(0)     HzSQuantizedConv           0.986648           5.994791    int8/int8        
+LeakyRelu_221              BPU  id(0)     HzLut                      0.986292           6.025104    int8/int8        
+Conv_222                   BPU  id(0)     HzSQuantizedConv           0.982974           6.025104    int8/int8        
+Conv_223                   BPU  id(0)     HzSQuantizedConv           0.985689           6.489001    int8/int8        
+Concat_224                 BPU  id(0)     Concat                     0.984145           7.844817    int8/int8        
+LeakyRelu_226              BPU  id(0)     HzLut                      0.986805           7.844817    int8/int8        
+Conv_227                   BPU  id(0)     HzSQuantizedConv           0.977195           7.844817    int8/int8        
+LeakyRelu_229              BPU  id(0)     HzLut                      0.978781           18.134787   int8/int8        
+Conv_230                   BPU  id(0)     HzSQuantizedConv           0.981309           18.134787   int8/int8        
+LeakyRelu_232              BPU  id(0)     HzLut                      0.981454           6.185248    int8/int8        
+Concat_233                 BPU  id(0)     Concat                     0.984077           6.185248    int8/int8        
+Conv_234                   BPU  id(0)     HzSQuantizedConv           0.983651           6.185248    int8/int8        
+LeakyRelu_236              BPU  id(0)     HzLut                      0.982617           6.477486    int8/int8        
+Conv_237                   BPU  id(0)     HzSQuantizedConv           0.979204           6.477486    int8/int8        
+LeakyRelu_239              BPU  id(0)     HzLut                      0.976919           8.212425    int8/int8        
+Conv_240                   BPU  id(0)     HzSQuantizedConv           0.982621           8.212425    int8/int8        
+LeakyRelu_242              BPU  id(0)     HzLut                      0.980989           6.408384    int8/int8        
+Conv_243                   BPU  id(0)     HzSQuantizedConv           0.977618           6.408384    int8/int8        
+Conv_244                   BPU  id(0)     HzSQuantizedConv           0.985454           6.185248    int8/int8        
+Concat_245                 BPU  id(0)     Concat                     0.981295           6.350357    int8/int8        
+LeakyRelu_247              BPU  id(0)     HzLut                      0.983693           6.350357    int8/int8        
+Conv_248                   BPU  id(0)     HzSQuantizedConv           0.976500           6.350357    int8/int8        
+LeakyRelu_250              BPU  id(0)     HzLut                      0.979037           13.301775   int8/int8        
+Conv_251                   BPU  id(0)     HzSQuantizedConv           0.999055           19.009319   int8/int32       
+Conv_253                   BPU  id(0)     HzSQuantizedConv           0.999048           18.134787   int8/int32       
+Conv_255                   BPU  id(0)     HzSQuantizedConv           0.999212           13.301775   int8/int32
+2023-09-26 16:31:06,475 file: build.py func: build line No: 37 [Tue Sep 26 16:31:06 2023] End to Horizon NN Model Convert.
+2023-09-26 16:31:06,551 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 592 start convert to *.bin file....
+2023-09-26 16:31:06,579 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4128 ONNX model output num : 3
+2023-09-26 16:31:06,582 file: layout_util.py func: layout_util line No: 15 set_featuremap_layout start
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3862 model_deps_info: {'hb_mapper_version': '1.18.2', 'hbdk_version': '3.46.4', 'hbdk_runtime_version': ' 3.15.29.0', 'horizon_nn_version': '0.19.3', 'onnx_model': '/home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/YOLOv5s.onnx', 'march': 'bayes', 'layer_out_dump': False, 'log_level': 'DEBUG', 'working_dir': '/home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output', 'model_prefix': 'yolov5s_672x672_nv12', 'remove_node_type': ['Dequantize'], 'input_names': ['data'], 'input_type_rt': ['nv12'], 'input_space_and_range': ['regular'], 'input_type_train': ['rgb'], 'input_layout_rt': [''], 'input_layout_train': ['NCHW'], 'norm_type': ['data_scale'], 'scale_value': ['0.003921568627451,'], 'mean_value': [''], 'input_shape': ['1x3x672x672'], 'input_batch': [], 'cal_dir': ['/home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32'], 'cal_data_type': ['float32'], 'preprocess_on': False, 'calibration_type': 'default', 'per_channel': 'False', 'hbdk_params': {'hbdk_pass_through_params': '--O3 --cache /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json --core-num 1 --fast ', 'input-source': {'data': 'pyramid', '_default_value': 'ddr'}}, 'debug': False, 'compile_mode': 'latency'}
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3985 ############# model deps info #############
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3986 hb_mapper version   : 1.18.2
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3989 hbdk version        : 3.46.4
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3991 hbdk runtime version: 3.15.29.0
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3994 horizon_nn version  : 0.19.3
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3998 ############# model_parameters info #############
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4004 onnx_model          : /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/YOLOv5s.onnx
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4005 BPU march           : bayes
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4006 layer_out_dump      : False
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4007 log_level           : DEBUG
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4008 working dir         : /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4009 output_model_file_prefix: yolov5s_672x672_nv12
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4017 remove node type    : ['Dequantize']
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4030 ############# input_parameters info #############
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4048 ------------------------------------------
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4050 ---------input info : data ---------
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4051 input_name          : data
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4052 input_type_rt       : nv12
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4054 input_space&range   : regular
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4056 input_layout_rt     : None
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4057 input_type_train    : rgb
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4058 input_layout_train  : NCHW
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4059 norm_type           : data_scale
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4060 input_shape         : 1x3x672x672
+2023-09-26 16:31:06,582 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4068 scale_value         : 0.003921568627451,
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4070 cal_data_dir        : /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/calibration_data_rgb_f32
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4072 cal_data_type       : float32
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4073 ---------input info : data end -------
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4074 ------------------------------------------
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4076 ############# calibration_parameters info #############
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4077 preprocess_on       : False
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4078 calibration_type:   : default
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4086 per_channel         : False
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4105 ############# compiler_parameters info #############
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4107 debug               : False
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4109 compile_mode        : latency
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4112 hbdk_pass_through_params: --O3 --cache /home/zain/Ai_Toolchain_Package-release-v1.1.57-OE-v1.0.0/yolov5s_v2.0/04_detection/03_yolov5s/mapper/model_output/cache.json --core-num 1 --fast
+2023-09-26 16:31:06,583 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4112 input-source        : {'data': 'pyramid', '_default_value': 'ddr'}
+2023-09-26 16:31:07,234 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 773 Convert to runtime bin file successfully!
+2023-09-26 16:31:07,235 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 774 End Model Convert
