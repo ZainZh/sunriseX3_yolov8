@@ -1,18 +1,25 @@
 import random
 import time
-from pathlib import Path
 
 import cv2
 import numpy as np
 import onnxruntime
 import click
-from common import print_info, print_error, print_help
-import os.path as osp
+import glob
+from ultralytics import YOLO
 
 
 random.seed(0)
 
-CLASSES = ("Can", "Glass-Drink", "paper", "pet bottle")
+CLASSES = ('person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light',
+         'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
+         'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
+         'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard',
+         'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
+         'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
+         'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone',
+         'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear',
+         'hair drier', 'toothbrush')
 
 COLORS = {
     cls: [random.randint(0, 255) for _ in range(3)] for i, cls in enumerate(CLASSES)
@@ -186,7 +193,7 @@ def print_properties(pro):
 def main(model_path, images_path):
     score_thres = 0.4
     iou_thres = 0.65
-    num_classes = 4
+    num_classes = len(CLASSES)
 
     try:
         session = onnxruntime.InferenceSession(
@@ -211,7 +218,8 @@ def main(model_path, images_path):
             print(f"Warm up model error.\n{e}")
 
     cv2.namedWindow("results", cv2.WINDOW_AUTOSIZE)
-    for img_path in images_path.iterdir():
+    images = sorted([p for p in glob.glob(f"{images_path}/*.*")])
+    for img_path in images:
         image = cv2.imread(str(img_path))
         t0 = time.perf_counter()
         ## yolov8 training letterbox
