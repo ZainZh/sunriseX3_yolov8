@@ -184,19 +184,4 @@ class YOLOv8BIN(YOLOv8):
         for key, value in model_info.items():
             print_info(f"{key}:", value)
 
-if __name__ == "__main__":
-    model_path = "/home/clover/Downloads/yolov8x.onnx"
 
-    # Initialize YOLOv8 object detector
-    yolov8_detector = YOLOv8(model_path, conf_thres=0.3, iou_thres=0.5)
-
-    img = cv2.imread("/home/clover/Downloads/coco128/images/train2017/test2.jpg")
-
-    # Detect Objects
-    yolov8_detector(img)
-
-    # Draw detections
-    combined_img = yolov8_detector.draw_detections(img)
-    cv2.namedWindow("Output", cv2.WINDOW_NORMAL)
-    cv2.imshow("Output", combined_img)
-    cv2.waitKey(0)
