@@ -176,12 +176,12 @@ class YOLOv8BIN(YOLOv8):
     @staticmethod
     def print_model_info(property_name):
         model_info = {
-            "tensor type:", property_name.tensor_type,
-            "data type:", property_name.dtype,
-            "layout:", property_name.layout,
-            "shape:", property_name.shape,
-
+            "tensor type": property_name.tensor_type,
+            "data type": property_name.dtype,
+            "layout": property_name.layout,
+            "shape": property_name.shape,
         }
+
         for key, value in model_info.items():
             print_info(f"{key}:", value)
 
