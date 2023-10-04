@@ -36,7 +36,7 @@ input_parameters:
   # data_mean 减去通道均值mean_value，对应的 mean_value 需要配置，并注释掉scale_value
   # data_scale 对图像像素乘以data_scale系数，对应的 scale_value需要配置，并注释掉mean_value
   # data_mean_and_scale 减去通道均值后再乘以scale系数，标识下方对应的 mean_value  和 scale_value 均需配置
-  norm_type: 'no_preprocess'
+  norm_type: 'data_scale'
 
   # 必选参数
   # 图像减去的均值, 如果是通道均值，value之间必须用空格分隔
@@ -46,7 +46,7 @@ input_parameters:
   # 必选参数
   # 图像预处理缩放比例，如果是通道缩放比例，value之间必须用空格分隔，计算公式：scale = 1/std
   # 例如：scale_value: 0.0078125 或者 scale_value: 0.0078125 0.001215 0.003680
-  scale_value:
+  scale_value: 0.00392156862745098
 
 # 模型量化相关参数
 calibration_parameters:

@@ -1,46 +1,1627 @@
-2023-10-04 16:11:42,834 file: tool_utils.py func: tool_utils line No: 73 log will be stored in /home/clover/sunriseX3_yolov8/project/tools/hb_mapper_makertbin.log
-2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 115 Start hb_mapper....
-2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 116 hbdk version 3.46.4
-2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 117 horizon_nn version 0.19.3
-2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 118 hb_mapper version 1.18.2
-2023-10-04 16:11:42,834 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 521 Start Model Convert....
-2023-10-04 16:11:42,838 file: mapper_conf_parser.py func: mapper_conf_parser line No: 103 validating model_parameters...
-2023-10-04 16:11:42,839 file: mapper_conf_parser.py func: mapper_conf_parser line No: 257 Using onnx model file: /home/clover/Downloads/yolov8x.onnx
-2023-10-04 16:11:42,998 file: helper.py func: helper line No: 145 Model input names: ['images']
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 261 Model has 1 inputs according to model file
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/clover/sunriseX3_yolov8/project/config/model_output
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 465 node_dict: {self.node_dict}
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 118 validating model_parameters finished
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 122 validating input_parameters...
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 519 Model name not given in yaml_file, using model name from model file: ['images']
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 568 Model input shape not given in yaml_file, using shape from model file: [[1, 3, 640, 640]]
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 133 validating input_parameters finished
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 137 validating calibration_parameters...
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/clover/sunriseX3_yolov8/project/config/cal_data
-2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 150 Parse 'calibration_parameters' failed!
-2023-10-04 16:11:42,998 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 52 yaml file parse failed. Please double check your config file inputs
-2023-10-04 16:11:42,998 file: tool_utils.py func: tool_utils line No: 131 exception in command: makertbin
-2023-10-04 16:11:42,999 file: tool_utils.py func: tool_utils line No: 132 Traceback (most recent call last):
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/utils/tool_utils.py", line 129, in __decorator
-    func(*args, **kargs)
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper.py", line 131, in makertbin
-    MakertbinRunner(config, model_type).run(__version__)
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 522, in run
-    self._parse_model()
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 61, in _parse_model
-    self._parse_conf()
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 55, in _parse_conf
-    raise e
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 50, in _parse_conf
-    self.mp_conf = MpConf(self.conf_file, self.model_type)
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 95, in __init__
-    self._validate_parameters()
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 151, in _validate_parameters
-    raise e
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 140, in _validate_parameters
-    self._validate_cal_data_dir()
-  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 987, in _validate_cal_data_dir
-    raise ValueError("Cal_data_dir does not exist: "
-ValueError: Cal_data_dir does not exist: /home/clover/sunriseX3_yolov8/project/config/cal_data
+2023-10-04 18:32:32,224 file: tool_utils.py func: tool_utils line No: 73 log will be stored in /home/clover/sunriseX3_yolov8/project/tools/hb_mapper_makertbin.log
+2023-10-04 18:32:32,224 file: hb_mapper.py func: hb_mapper line No: 115 Start hb_mapper....
+2023-10-04 18:32:32,224 file: hb_mapper.py func: hb_mapper line No: 116 hbdk version 3.46.4
+2023-10-04 18:32:32,224 file: hb_mapper.py func: hb_mapper line No: 117 horizon_nn version 0.19.3
+2023-10-04 18:32:32,225 file: hb_mapper.py func: hb_mapper line No: 118 hb_mapper version 1.18.2
+2023-10-04 18:32:32,225 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 521 Start Model Convert....
+2023-10-04 18:32:32,227 file: mapper_conf_parser.py func: mapper_conf_parser line No: 103 validating model_parameters...
+2023-10-04 18:32:32,227 file: mapper_conf_parser.py func: mapper_conf_parser line No: 257 Using onnx model file: /home/clover/Downloads/yolov8x.onnx
+2023-10-04 18:32:32,380 file: helper.py func: helper line No: 145 Model input names: ['images']
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 261 Model has 1 inputs according to model file
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/clover/sunriseX3_yolov8/project/config/model_output
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 465 node_dict: {self.node_dict}
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 118 validating model_parameters finished
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 122 validating input_parameters...
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 670 nv12 input type rt received.
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 133 validating input_parameters finished
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 137 validating calibration_parameters...
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1039 The calibration dir name suffix is the same as the value float32 of the cal_data_type parameter and will be read with the value of cal_data_type.
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 153 validating calibration_parameters finished
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 157 validating custom_op...
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1114 custom_op does not exist, skipped
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 163 validating custom_op finished
+2023-10-04 18:32:32,380 file: mapper_conf_parser.py func: mapper_conf_parser line No: 166 validating compiler_parameters...
+2023-10-04 18:32:32,381 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1195 Input node images's input_source not set, it will be set to pyramid by default
+2023-10-04 18:32:32,381 file: mapper_conf_parser.py func: mapper_conf_parser line No: 180 validating compiler_parameters finished
+2023-10-04 18:32:32,381 file: mapper_conf_parser.py func: mapper_conf_parser line No: 184 validating deprecated parameters...
+2023-10-04 18:32:32,381 file: mapper_conf_parser.py func: mapper_conf_parser line No: 190 validating deprecated parameters finished
+2023-10-04 18:32:32,381 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 57 Dump config:
+2023-10-04 18:32:32,381 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 58 calibration_parameters:
+  cal_data_dir: /home/clover/Downloads/coco128/images/calib_f32
+  cal_data_type: float32
+  calibration_type: max
+  max_percentile: 0.99999
+compiler_parameters:
+  compile_mode: latency
+  debug: false
+  optimize_level: O3
+input_parameters:
+  input_batch: '1'
+  input_layout_rt: ''
+  input_layout_train: NCHW
+  input_name: images
+  input_shape: 1x3x640x640
+  input_type_rt: nv12
+  input_type_train: bgr
+  mean_value: None
+  norm_type: data_scale
+  scale_value: '0.00392156862745098'
+model_parameters:
+  layer_out_dump: false
+  march: bayes
+  onnx_model: /home/clover/Downloads/yolov8x.onnx
+  output_model_file_prefix: horizon_ultra
+  working_dir: model_output
 
-2023-10-04 16:11:42,999 file: tool_utils.py func: tool_utils line No: 133 Cal_data_dir does not exist: /home/clover/sunriseX3_yolov8/project/config/cal_data
+2023-10-04 18:32:32,382 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 63 input 'images' : original model shape: [1, 3, 640, 640]
+2023-10-04 18:32:32,382 file: loader.py func: loader line No: 44 *******************************************
+2023-10-04 18:32:32,382 file: loader.py func: loader line No: 45 First calibration picture name: 000000000030.rgbchw
+2023-10-04 18:32:32,382 file: loader.py func: loader line No: 47 First calibration picture md5:
+2023-10-04 18:32:32,388 file: loader.py func: loader line No: 51 *******************************************
+2023-10-04 18:32:32,388 file: loader.py func: loader line No: 125 created RawImageDirLoader of shape:[1, 3, 640, 640]
+2023-10-04 18:32:32,388 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000030.rgbchw
+2023-10-04 18:32:32,419 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000042.rgbchw
+2023-10-04 18:32:32,448 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000049.rgbchw
+2023-10-04 18:32:32,477 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000064.rgbchw
+2023-10-04 18:32:32,504 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000077.rgbchw
+2023-10-04 18:32:32,533 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000089.rgbchw
+2023-10-04 18:32:32,561 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000092.rgbchw
+2023-10-04 18:32:32,588 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000110.rgbchw
+2023-10-04 18:32:32,615 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000113.rgbchw
+2023-10-04 18:32:32,643 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000127.rgbchw
+2023-10-04 18:32:32,671 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000136.rgbchw
+2023-10-04 18:32:32,698 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000138.rgbchw
+2023-10-04 18:32:32,726 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000142.rgbchw
+2023-10-04 18:32:32,754 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000143.rgbchw
+2023-10-04 18:32:32,782 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000149.rgbchw
+2023-10-04 18:32:32,813 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000247.rgbchw
+2023-10-04 18:32:32,841 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000257.rgbchw
+2023-10-04 18:32:32,869 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000307.rgbchw
+2023-10-04 18:32:32,897 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000308.rgbchw
+2023-10-04 18:32:32,925 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000309.rgbchw
+2023-10-04 18:32:32,953 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000332.rgbchw
+2023-10-04 18:32:32,982 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000338.rgbchw
+2023-10-04 18:32:33,009 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000368.rgbchw
+2023-10-04 18:32:33,037 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000382.rgbchw
+2023-10-04 18:32:33,064 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000384.rgbchw
+2023-10-04 18:32:33,091 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000395.rgbchw
+2023-10-04 18:32:33,118 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000400.rgbchw
+2023-10-04 18:32:33,146 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000404.rgbchw
+2023-10-04 18:32:33,173 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000419.rgbchw
+2023-10-04 18:32:33,200 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000436.rgbchw
+2023-10-04 18:32:33,228 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000450.rgbchw
+2023-10-04 18:32:33,256 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000486.rgbchw
+2023-10-04 18:32:33,283 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000502.rgbchw
+2023-10-04 18:32:33,311 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000508.rgbchw
+2023-10-04 18:32:33,338 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000514.rgbchw
+2023-10-04 18:32:33,365 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000540.rgbchw
+2023-10-04 18:32:33,392 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000560.rgbchw
+2023-10-04 18:32:33,420 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000562.rgbchw
+2023-10-04 18:32:33,449 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000569.rgbchw
+2023-10-04 18:32:33,477 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000572.rgbchw
+2023-10-04 18:32:33,504 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000581.rgbchw
+2023-10-04 18:32:33,532 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000584.rgbchw
+2023-10-04 18:32:33,560 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000597.rgbchw
+2023-10-04 18:32:33,587 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000599.rgbchw
+2023-10-04 18:32:33,614 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000605.rgbchw
+2023-10-04 18:32:33,641 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000620.rgbchw
+2023-10-04 18:32:33,669 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000623.rgbchw
+2023-10-04 18:32:33,696 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000625.rgbchw
+2023-10-04 18:32:33,724 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000626.rgbchw
+2023-10-04 18:32:33,751 file: loader.py func: loader line No: 130 Read raw file: /home/clover/Downloads/coco128/images/calib_f32/000000000629.rgbchw
+2023-10-04 18:32:33,780 file: tool_utils.py func: tool_utils line No: 364 num of calibration data: 50
+2023-10-04 18:32:33,780 file: tool_utils.py func: tool_utils line No: 365 calibration data shape: (1, 3, 640, 640)
+2023-10-04 18:32:33,795 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 510 call build params:
+ {'march': 'bayes', 'save_model': True, 'name_prefix': 'horizon_ultra', 'input_dict': {'images': {'input_shape': [1, 3, 640, 640], 'input_batch': 1, 'expected_input_type': 'YUV444_128', 'original_input_type': 'BGR', 'original_input_layout': 'NCHW', 'scales': array([0.00392157], dtype=float32)}}, 'cali_dict': {'calibration_type': 'max', 'calibration_data': {'images': [array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[126., 126., 126., ..., 121., 124., 121.],
+         [126., 126., 126., ..., 117., 117., 124.],
+         [126., 126., 126., ..., 120., 120., 125.],
+         ...,
+         [127., 127., 127., ..., 125., 125., 121.],
+         [127., 127., 127., ..., 124., 124., 126.],
+         [127., 127., 127., ..., 122., 121., 126.]],
+
+        [[  0.,   0.,   0., ...,   8.,   1.,   1.],
+         [  0.,   0.,   0., ...,   8.,   1.,   1.],
+         [ -1.,  -1.,  -1., ...,   7.,   3.,   3.],
+         ...,
+         [  0.,   0.,   0., ...,  -1.,  -1.,  -1.],
+         [  0.,   0.,   0., ...,  -2.,  -3.,  -3.],
+         [  0.,   0.,   0., ...,  -2.,  -3.,  -3.]],
+
+        [[  0.,   0.,   0., ...,  -3.,  -2.,  -2.],
+         [  0.,   0.,   0., ...,  -3.,  -2.,  -2.],
+         [ -1.,  -1.,  -1., ...,  -4.,  -2.,  -2.],
+         ...,
+         [  0.,   0.,   0., ...,  -2.,  -1.,  -1.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14.,  84.,  82., ...,  45.,  49., -14.],
+         [-14.,  83.,  81., ...,  45.,  45., -14.],
+         [-14.,  79.,  78., ...,  55.,  52., -14.],
+         ...,
+         [-14., -65., -63., ..., -36., -40., -14.],
+         [-14., -48., -46., ...,  -5., -12., -14.],
+         [-14., -42., -45., ...,  40.,  36., -14.]],
+
+        [[  0.,   0.,  -1., ...,  -1.,  -1.,  -1.],
+         [  0.,   0.,  -1., ...,  -1.,  -1.,  -1.],
+         [  0.,   0.,  -1., ...,  -1.,  -1.,  -1.],
+         ...,
+         [  0.,   0.,  -5., ...,  -1.,  -1.,  -1.],
+         [  0.,   0.,  -5., ...,   0.,   0.,   0.],
+         [  0.,   0.,  -5., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   2., ...,   2.,   2.,   2.],
+         [  0.,   0.,   2., ...,   2.,   2.,   2.],
+         [  0.,   0.,   2., ...,   2.,   2.,   2.],
+         ...,
+         [  0.,   0.,   6., ...,   4.,   4.,   4.],
+         [  0.,   0.,   7., ...,   5.,   5.,   5.],
+         [  0.,   0.,   7., ...,   5.,   5.,   5.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32), array([[[[-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         ...,
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.],
+         [-14., -14., -14., ..., -14., -14., -14.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]],
+
+        [[  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         ...,
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.],
+         [  0.,   0.,   0., ...,   0.,   0.,   0.]]]], dtype=float32)]}, 'max_percentile': 0.99999}, 'hbdk_dict': {'hbdk_pass_through_params': '--O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast ', 'input-source': {'images': 'pyramid', '_default_value': 'ddr'}}, 'node_dict': {}, 'check_mode': False}
+2023-10-04 18:32:33,806 file: build.py func: build line No: 34 [Wed Oct  4 18:32:33 2023] Start to Horizon NN Model Convert.
+2023-10-04 18:32:33,806 file: model_debug.py func: model_debug line No: 61 Loading horizon_nn debug methods:[]
+2023-10-04 18:32:33,806 file: cali_dict_parser.py func: cali_dict_parser line No: 38 Parsing the calibration parameter
+2023-10-04 18:32:33,806 file: hbdk_dict_parser.py func: hbdk_dict_parser line No: 36 Parsing the hbdk parameter:{'hbdk_pass_through_params': '--O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast ', 'input-source': {'images': 'pyramid', '_default_value': 'ddr'}}
+2023-10-04 18:32:33,806 file: input_dict_parser.py func: input_dict_parser line No: 226 input images is from pyramid. Its layout is set to NHWC
+2023-10-04 18:32:33,806 file: build.py func: build line No: 140 HorizonNN version: 0.19.3
+2023-10-04 18:32:33,806 file: build.py func: build line No: 144 HBDK version: 3.46.4
+2023-10-04 18:32:33,806 file: build.py func: build line No: 34 [Wed Oct  4 18:32:33 2023] Start to parse the onnx model.
+2023-10-04 18:32:34,481 file: onnx_parser.py func: onnx_parser line No: 129 Input ONNX model infomation:
+ONNX IR version:          6
+Opset version:            [11, 1]
+Producer:                 pytorch1.13.1
+Domain:                   none
+Input name:               images, [1, 3, 640, 640]
+Output name:              output0, [1, 84, 8400]
+2023-10-04 18:32:34,874 file: build.py func: build line No: 37 [Wed Oct  4 18:32:34 2023] End to parse the onnx model.
+2023-10-04 18:32:35,983 file: build.py func: build line No: 428 Saving the original float model: horizon_ultra_original_float_model.onnx.
+2023-10-04 18:32:35,983 file: build.py func: build line No: 34 [Wed Oct  4 18:32:35 2023] Start to optimize the model.
+2023-10-04 18:32:36,979 file: build.py func: build line No: 37 [Wed Oct  4 18:32:36 2023] End to optimize the model.
+2023-10-04 18:32:37,230 file: build.py func: build line No: 452 Saving the optimized model: horizon_ultra_optimized_float_model.onnx.
+2023-10-04 18:32:37,231 file: build.py func: build line No: 34 [Wed Oct  4 18:32:37 2023] Start to calibrate the model.
+2023-10-04 18:32:37,617 file: calibration_data_set.py func: calibration_data_set line No: 89 input name: images,  number_of_samples: 50
+2023-10-04 18:32:37,618 file: calibration_data_set.py func: calibration_data_set line No: 100 There are 50 samples in the calibration data set.
+2023-10-04 18:32:38,520 file: max_calibrater.py func: max_calibrater line No: 69 Run calibration model with max-percentile=0.999990 method.
+2023-10-04 18:32:39,272 file: calibrater.py func: calibrater line No: 195 Calibration using batch 8
+2023-10-04 18:32:50,376 file: calibrater.py func: calibrater line No: 218 [ONNXRuntimeError] : 6 : RUNTIME_EXCEPTION : Non-zero status code returned while running Reshape node. Name:'/model.22/Reshape_2' Status Message: /home/jenkins/agent/workspace/model_convert/onnxruntime/onnxruntime/core/providers/cpu/tensor/reshape_helper.h:43 onnxruntime::ReshapeHelper::ReshapeHelper(const onnxruntime::TensorShape&, std::vector<long int>&) gsl::narrow_cast<int64_t>(input_shape.Size()) == size was false. The input tensor cannot be reshaped to the requested shape. Input shape:{8,144,20,20}, requested shape:{1,144,400}
+
+2023-10-04 18:32:50,376 file: calibrater.py func: calibrater line No: 219 Above info is caused by batch mode infer and can be ignored
+2023-10-04 18:32:50,376 file: calibrater.py func: calibrater line No: 221 Reset batch_size=1 and execute calibration again...
+2023-10-04 18:34:03,724 file: build.py func: build line No: 335 Saving the calibrated model: horizon_ultra_calibrated_model.onnx.
+2023-10-04 18:34:03,724 file: build.py func: build line No: 37 [Wed Oct  4 18:34:03 2023] End to calibrate the model.
+2023-10-04 18:34:03,724 file: build.py func: build line No: 34 [Wed Oct  4 18:34:03 2023] Start to quantize the model.
+2023-10-04 18:35:06,215 file: build.py func: build line No: 37 [Wed Oct  4 18:35:06 2023] End to quantize the model.
+2023-10-04 18:35:07,809 file: build.py func: build line No: 465 Saving the quantized model: horizon_ultra_quantized_model.onnx.
+2023-10-04 18:35:12,279 file: build.py func: build line No: 34 [Wed Oct  4 18:35:12 2023] Start to compile the model with march bayes.
+2023-10-04 18:35:12,279 file: build.py func: build line No: 37 [Wed Oct  4 18:35:12 2023] End to compile the model with march bayes.
+2023-10-04 18:35:14,315 file: hybrid_build.py func: hybrid_build line No: 133 Compile submodel: torch_jit_subgraph_0
+2023-10-04 18:35:17,285 file: hbdk_cc.py func: hbdk_cc line No: 115 hbdk-cc parameters:['--O3', '--cache', '/home/clover/sunriseX3_yolov8/project/config/model_output/cache.json', '--core-num', '1', '--fast', '--input-layout', 'NHWC', '--output-layout', 'NHWC', '--input-source', 'pyramid']
+2023-10-04 18:35:17,285 file: hbdk_cc.py func: hbdk_cc line No: 116 hbdk-cc command used:hbdk-cc -f hbir -m /tmp/tmpu1sh5wci/torch_jit_subgraph_0.hbir -o /tmp/tmpu1sh5wci/torch_jit_subgraph_0.hbm --march bayes --progressbar --O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast --input-layout NHWC --output-layout NHWC --input-source pyramid
+2023-10-04 18:44:46,769 file: tool_utils.py func: tool_utils line No: 322 /home/clover/sunriseX3_yolov8/project/config/model_output/cache17436.json
+2023-10-04 18:45:22,786 file: tool_utils.py func: tool_utils line No: 322 consumed time 605.393
+2023-10-04 18:45:23,247 file: tool_utils.py func: tool_utils line No: 322 FPS=42.77, latency = 23382.6 us   (see torch_jit_subgraph_0.html)
+2023-10-04 18:45:23,271 file: hybrid_build.py func: hybrid_build line No: 133 Compile submodel: torch_jit_subgraph_1
+2023-10-04 18:45:23,396 file: hbdk_cc.py func: hbdk_cc line No: 115 hbdk-cc parameters:['--O3', '--cache', '/home/clover/sunriseX3_yolov8/project/config/model_output/cache.json', '--core-num', '1', '--fast', '--input-layout', 'NHWC', '--output-layout', 'NHWC', '--input-source', 'ddr']
+2023-10-04 18:45:23,396 file: hbdk_cc.py func: hbdk_cc line No: 116 hbdk-cc command used:hbdk-cc -f hbir -m /tmp/tmpu1sh5wci/torch_jit_subgraph_1.hbir -o /tmp/tmpu1sh5wci/torch_jit_subgraph_1.hbm --march bayes --progressbar --O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast --input-layout NHWC --output-layout NHWC --input-source ddr
+2023-10-04 18:45:23,620 file: tool_utils.py func: tool_utils line No: 322 consumed time 0.124863
+2023-10-04 18:45:23,732 file: tool_utils.py func: tool_utils line No: 322 FPS=326.56, latency = 3062.2 us   (see torch_jit_subgraph_1.html)
+2023-10-04 18:45:24,964 file: node_info.py func: node_info line No: 55 The converted model node information:
+==========================================================================================================================================
+Node                                             ON   Subgraph  Type                       Cosine Similarity  Threshold   In/Out DataType  
+-------------------------------------------------------------------------------------------------------------------------------------------
+HZ_PREPROCESS_FOR_images                         BPU  id(0)     HzSQuantizedPreprocess     1.000154           127.000000  int8/int8        
+/model.0/conv/Conv                               BPU  id(0)     HzSQuantizedConv           0.996790           1.125202    int8/int8        
+/model.0/act/Mul                                 BPU  id(0)     HzLut                      0.994147           48.950195   int8/int8        
+/model.1/conv/Conv                               BPU  id(0)     HzSQuantizedConv           0.035944           46.503918   int8/int8        
+/model.1/act/Mul                                 BPU  id(0)     HzLut                      0.217489           58.476612   int8/int8        
+/model.2/cv1/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.119071           41.045670   int8/int8        
+/model.2/cv1/act/Mul                             BPU  id(0)     HzLut                      0.409227           34.044552   int8/int8        
+/model.2/Split                                   BPU  id(0)     Split                                                     int8/int8        
+/model.2/m.0/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.964720           14.482546   int8/int8        
+/model.2/m.0/cv1/act/Mul                         BPU  id(0)     HzLut                      0.943183           15.334250   int8/int8        
+/model.2/m.0/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.950861           7.937353    int8/int8        
+/model.2/m.0/cv2/act/Mul                         BPU  id(0)     HzLut                      0.948166           9.874712    int8/int8        
+UNIT_CONV_FOR_/model.2/m.0/Add                   BPU  id(0)     HzSQuantizedConv           0.982710           14.482546   int8/int8        
+/model.2/m.1/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.950690           7.199402    int8/int8        
+/model.2/m.1/cv1/act/Mul                         BPU  id(0)     HzLut                      0.930409           10.868408   int8/int8        
+/model.2/m.1/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.963702           8.719429    int8/int8        
+/model.2/m.1/cv2/act/Mul                         BPU  id(0)     HzLut                      0.961834           11.062204   int8/int8        
+UNIT_CONV_FOR_/model.2/m.1/Add                   BPU  id(0)     HzSQuantizedConv           0.985387           7.199402    int8/int8        
+/model.2/m.2/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.980806           8.446383    int8/int8        
+/model.2/m.2/cv1/act/Mul                         BPU  id(0)     HzLut                      0.969700           6.848346    int8/int8        
+/model.2/m.2/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.934560           3.203708    int8/int8        
+/model.2/m.2/cv2/act/Mul                         BPU  id(0)     HzLut                      0.935516           11.432046   int8/int8        
+UNIT_CONV_FOR_/model.2/m.2/Add                   BPU  id(0)     HzSQuantizedConv           0.980427           8.446383    int8/int8        
+/model.2/Split_output_0_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.2/Split_output_1_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.2/m.0/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.2/m.1/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.2/Concat                                  BPU  id(0)     Concat                     0.981123           14.482546   int8/int8        
+/model.2/cv2/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.262206           12.691570   int8/int8        
+/model.2/cv2/act/Mul                             BPU  id(0)     HzLut                      0.027412           12.248631   int8/int8        
+/model.3/conv/Conv                               BPU  id(0)     HzSQuantizedConv           0.951697           4.747838    int8/int8        
+/model.3/act/Mul                                 BPU  id(0)     HzLut                      0.930306           6.597548    int8/int8        
+/model.4/cv1/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.923116           4.872232    int8/int8        
+/model.4/cv1/act/Mul                             BPU  id(0)     HzLut                      0.933390           9.256852    int8/int8        
+/model.4/Split                                   BPU  id(0)     Split                                                     int8/int8        
+/model.4/m.0/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.941109           8.723600    int8/int8        
+/model.4/m.0/cv1/act/Mul                         BPU  id(0)     HzLut                      0.865359           7.106253    int8/int8        
+/model.4/m.0/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.909419           4.963763    int8/int8        
+/model.4/m.0/cv2/act/Mul                         BPU  id(0)     HzLut                      0.831071           4.508941    int8/int8        
+UNIT_CONV_FOR_/model.4/m.0/Add                   BPU  id(0)     HzSQuantizedConv           0.923956           8.723600    int8/int8        
+/model.4/m.1/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.945451           3.996197    int8/int8        
+/model.4/m.1/cv1/act/Mul                         BPU  id(0)     HzLut                      0.900051           6.871463    int8/int8        
+/model.4/m.1/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.926326           5.389128    int8/int8        
+/model.4/m.1/cv2/act/Mul                         BPU  id(0)     HzLut                      0.905678           5.417031    int8/int8        
+UNIT_CONV_FOR_/model.4/m.1/Add                   BPU  id(0)     HzSQuantizedConv           0.910419           3.996197    int8/int8        
+/model.4/m.2/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.961975           5.419231    int8/int8        
+/model.4/m.2/cv1/act/Mul                         BPU  id(0)     HzLut                      0.912569           5.860078    int8/int8        
+/model.4/m.2/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.922567           4.677879    int8/int8        
+/model.4/m.2/cv2/act/Mul                         BPU  id(0)     HzLut                      0.889127           7.744373    int8/int8        
+UNIT_CONV_FOR_/model.4/m.2/Add                   BPU  id(0)     HzSQuantizedConv           0.899748           5.419231    int8/int8        
+/model.4/m.3/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.960180           7.156190    int8/int8        
+/model.4/m.3/cv1/act/Mul                         BPU  id(0)     HzLut                      0.916345           6.134218    int8/int8        
+/model.4/m.3/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.897295           5.061105    int8/int8        
+/model.4/m.3/cv2/act/Mul                         BPU  id(0)     HzLut                      0.859681           8.386142    int8/int8        
+UNIT_CONV_FOR_/model.4/m.3/Add                   BPU  id(0)     HzSQuantizedConv           0.888294           7.156190    int8/int8        
+/model.4/m.4/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.963462           8.041401    int8/int8        
+/model.4/m.4/cv1/act/Mul                         BPU  id(0)     HzLut                      0.929461           5.723979    int8/int8        
+/model.4/m.4/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.851264           4.928841    int8/int8        
+/model.4/m.4/cv2/act/Mul                         BPU  id(0)     HzLut                      0.791410           7.708483    int8/int8        
+UNIT_CONV_FOR_/model.4/m.4/Add                   BPU  id(0)     HzSQuantizedConv           0.866687           8.041401    int8/int8        
+/model.4/m.5/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.955345           8.349020    int8/int8        
+/model.4/m.5/cv1/act/Mul                         BPU  id(0)     HzLut                      0.893727           5.745151    int8/int8        
+/model.4/m.5/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.772671           4.529129    int8/int8        
+/model.4/m.5/cv2/act/Mul                         BPU  id(0)     HzLut                      0.762214           12.195465   int8/int8        
+UNIT_CONV_FOR_/model.4/m.5/Add                   BPU  id(0)     HzSQuantizedConv           0.807230           8.349020    int8/int8        
+/model.4/Split_output_0_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/Split_output_1_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/m.0/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/m.1/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/m.2/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/m.3/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/m.4/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/Concat                                  BPU  id(0)     Concat                     0.872261           8.723600    int8/int8        
+/model.4/cv2/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.903361           11.391312   int8/int8        
+/model.4/cv2/act/Mul                             BPU  id(0)     HzLut                      0.847445           7.371430    int8/int8        
+/model.5/conv/Conv                               BPU  id(0)     HzSQuantizedConv           0.897127           5.891179    int8/int8        
+/model.5/act/Mul                                 BPU  id(0)     HzLut                      0.840502           7.058984    int8/int8        
+/model.6/cv1/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.881310           6.535861    int8/int8        
+/model.6/cv1/act/Mul                             BPU  id(0)     HzLut                      0.875904           9.356175    int8/int8        
+/model.6/Split                                   BPU  id(0)     Split                                                     int8/int8        
+/model.6/m.0/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.914827           9.183313    int8/int8        
+/model.6/m.0/cv1/act/Mul                         BPU  id(0)     HzLut                      0.846480           7.209634    int8/int8        
+/model.6/m.0/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.877838           6.066860    int8/int8        
+/model.6/m.0/cv2/act/Mul                         BPU  id(0)     HzLut                      0.827714           6.539863    int8/int8        
+UNIT_CONV_FOR_/model.6/m.0/Add                   BPU  id(0)     HzSQuantizedConv           0.887459           9.183313    int8/int8        
+/model.6/m.1/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.913188           6.522853    int8/int8        
+/model.6/m.1/cv1/act/Mul                         BPU  id(0)     HzLut                      0.803822           6.589810    int8/int8        
+/model.6/m.1/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.896840           5.745735    int8/int8        
+/model.6/m.1/cv2/act/Mul                         BPU  id(0)     HzLut                      0.837206           5.809227    int8/int8        
+UNIT_CONV_FOR_/model.6/m.1/Add                   BPU  id(0)     HzSQuantizedConv           0.888249           6.522853    int8/int8        
+/model.6/m.2/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.906912           6.709517    int8/int8        
+/model.6/m.2/cv1/act/Mul                         BPU  id(0)     HzLut                      0.784843           6.356049    int8/int8        
+/model.6/m.2/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.873194           5.471025    int8/int8        
+/model.6/m.2/cv2/act/Mul                         BPU  id(0)     HzLut                      0.810726           6.559623    int8/int8        
+UNIT_CONV_FOR_/model.6/m.2/Add                   BPU  id(0)     HzSQuantizedConv           0.889032           6.709517    int8/int8        
+/model.6/m.3/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.909971           7.425458    int8/int8        
+/model.6/m.3/cv1/act/Mul                         BPU  id(0)     HzLut                      0.803046           6.455973    int8/int8        
+/model.6/m.3/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.859372           5.538110    int8/int8        
+/model.6/m.3/cv2/act/Mul                         BPU  id(0)     HzLut                      0.791297           7.593102    int8/int8        
+UNIT_CONV_FOR_/model.6/m.3/Add                   BPU  id(0)     HzSQuantizedConv           0.883594           7.425458    int8/int8        
+/model.6/m.4/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.906177           8.270384    int8/int8        
+/model.6/m.4/cv1/act/Mul                         BPU  id(0)     HzLut                      0.795905           7.703286    int8/int8        
+/model.6/m.4/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.823591           6.234599    int8/int8        
+/model.6/m.4/cv2/act/Mul                         BPU  id(0)     HzLut                      0.761889           9.108003    int8/int8        
+UNIT_CONV_FOR_/model.6/m.4/Add                   BPU  id(0)     HzSQuantizedConv           0.849600           8.270384    int8/int8        
+/model.6/m.5/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.893405           9.654359    int8/int8        
+/model.6/m.5/cv1/act/Mul                         BPU  id(0)     HzLut                      0.740539           8.380957    int8/int8        
+/model.6/m.5/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.746638           6.575702    int8/int8        
+/model.6/m.5/cv2/act/Mul                         BPU  id(0)     HzLut                      0.710542           11.260861   int8/int8        
+UNIT_CONV_FOR_/model.6/m.5/Add                   BPU  id(0)     HzSQuantizedConv           0.777755           9.654359    int8/int8        
+/model.6/Split_output_0_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/Split_output_1_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/m.0/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/m.1/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/m.2/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/m.3/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/m.4/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/Concat                                  BPU  id(0)     Concat                     0.850054           9.183313    int8/int8        
+/model.6/cv2/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.913400           9.582524    int8/int8        
+/model.6/cv2/act/Mul                             BPU  id(0)     HzLut                      0.824374           7.697333    int8/int8        
+/model.7/conv/Conv                               BPU  id(0)     HzSQuantizedConv           0.869480           6.689258    int8/int8        
+/model.7/act/Mul                                 BPU  id(0)     HzLut                      0.794603           8.892171    int8/int8        
+/model.8/cv1/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.844795           8.525602    int8/int8        
+/model.8/cv1/act/Mul                             BPU  id(0)     HzLut                      0.845123           10.443836   int8/int8        
+/model.8/Split                                   BPU  id(0)     Split                                                     int8/int8        
+/model.8/m.0/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.856635           10.346339   int8/int8        
+/model.8/m.0/cv1/act/Mul                         BPU  id(0)     HzLut                      0.820418           11.681148   int8/int8        
+/model.8/m.0/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.875074           10.137677   int8/int8        
+/model.8/m.0/cv2/act/Mul                         BPU  id(0)     HzLut                      0.837557           11.540645   int8/int8        
+UNIT_CONV_FOR_/model.8/m.0/Add                   BPU  id(0)     HzSQuantizedConv           0.817190           10.346339   int8/int8        
+/model.8/m.1/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.881707           9.164613    int8/int8        
+/model.8/m.1/cv1/act/Mul                         BPU  id(0)     HzLut                      0.830362           10.692708   int8/int8        
+/model.8/m.1/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.869846           8.167516    int8/int8        
+/model.8/m.1/cv2/act/Mul                         BPU  id(0)     HzLut                      0.844805           9.574002    int8/int8        
+UNIT_CONV_FOR_/model.8/m.1/Add                   BPU  id(0)     HzSQuantizedConv           0.827992           9.164613    int8/int8        
+/model.8/m.2/cv1/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.890895           9.928161    int8/int8        
+/model.8/m.2/cv1/act/Mul                         BPU  id(0)     HzLut                      0.855328           9.196491    int8/int8        
+/model.8/m.2/cv2/conv/Conv                       BPU  id(0)     HzSQuantizedConv           0.877495           7.100121    int8/int8        
+/model.8/m.2/cv2/act/Mul                         BPU  id(0)     HzLut                      0.865075           8.725504    int8/int8        
+UNIT_CONV_FOR_/model.8/m.2/Add                   BPU  id(0)     HzSQuantizedConv           0.853177           9.928161    int8/int8        
+/model.8/Split_output_0_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.8/Split_output_1_Requantize               BPU  id(0)     HzRequantize                                              int8/int8        
+/model.8/m.0/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.8/m.1/Add_output_0_Requantize             BPU  id(0)     HzRequantize                                              int8/int8        
+/model.8/Concat                                  BPU  id(0)     Concat                     0.841402           10.346339   int8/int8        
+/model.8/cv2/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.872592           10.248556   int8/int8        
+/model.8/cv2/act/Mul                             BPU  id(0)     HzLut                      0.865215           9.808098    int8/int8        
+/model.9/cv1/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.875140           6.923358    int8/int8        
+/model.9/cv1/act/Mul                             BPU  id(0)     HzLut                      0.910807           6.528628    int8/int8        
+/model.9/m/MaxPool                               BPU  id(0)     HzQuantizedMaxPool         0.971059           8.830138    int8/int8        
+/model.9/m_1/MaxPool                             BPU  id(0)     HzQuantizedMaxPool         0.982284           8.830138    int8/int8        
+/model.9/m_2/MaxPool                             BPU  id(0)     HzQuantizedMaxPool         0.987020           8.830138    int8/int8        
+/model.9/Concat                                  BPU  id(0)     Concat                     0.977873           8.830138    int8/int8        
+/model.9/cv2/conv/Conv                           BPU  id(0)     HzSQuantizedConv           0.943913           8.830138    int8/int8        
+/model.9/cv2/act/Mul                             BPU  id(0)     HzLut                      0.886210           6.798032    int8/int8        
+/model.10/Resize                                 BPU  id(0)     HzQuantizedResizeUpsample  0.886228           6.790454    int8/int8        
+/model.10/Resize_output_0_calibrated_Requantize  BPU  id(0)     HzRequantize                                              int8/int8        
+/model.6/cv2/act/Mul_output_0_Requantize         BPU  id(0)     HzRequantize                                              int8/int8        
+/model.11/Concat                                 BPU  id(0)     Concat                     0.850882           6.790454    int8/int8        
+/model.12/cv1/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.917908           6.336581    int8/int8        
+/model.12/cv1/act/Mul                            BPU  id(0)     HzLut                      0.851515           8.271946    int8/int8        
+/model.12/Split                                  BPU  id(0)     Split                                                     int8/int8        
+/model.12/m.0/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.890823           7.372270    int8/int8        
+/model.12/m.0/cv1/act/Mul                        BPU  id(0)     HzLut                      0.796824           9.063207    int8/int8        
+/model.12/m.0/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.880081           7.491782    int8/int8        
+/model.12/m.0/cv2/act/Mul                        BPU  id(0)     HzLut                      0.810147           9.620846    int8/int8        
+/model.12/m.1/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.868535           6.825639    int8/int8        
+/model.12/m.1/cv1/act/Mul                        BPU  id(0)     HzLut                      0.779962           8.260148    int8/int8        
+/model.12/m.1/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.899497           6.912077    int8/int8        
+/model.12/m.1/cv2/act/Mul                        BPU  id(0)     HzLut                      0.806219           6.737532    int8/int8        
+/model.12/m.2/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.818481           5.270726    int8/int8        
+/model.12/m.2/cv1/act/Mul                        BPU  id(0)     HzLut                      0.749231           7.492499    int8/int8        
+/model.12/m.2/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.834371           7.101219    int8/int8        
+/model.12/m.2/cv2/act/Mul                        BPU  id(0)     HzLut                      0.750052           6.338624    int8/int8        
+/model.12/Split_output_0_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.12/Split_output_1_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.12/m.0/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.12/m.1/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.12/Concat                                 BPU  id(0)     Concat                     0.818794           7.372270    int8/int8        
+/model.12/cv2/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.916581           6.744172    int8/int8        
+/model.12/cv2/act/Mul                            BPU  id(0)     HzLut                      0.834145           7.517965    int8/int8        
+/model.13/Resize                                 BPU  id(0)     HzQuantizedResizeUpsample  0.834472           6.267919    int8/int8        
+/model.13/Resize_output_0_calibrated_Requantize  BPU  id(0)     HzRequantize                                              int8/int8        
+/model.4/cv2/act/Mul_output_0_Requantize         BPU  id(0)     HzRequantize                                              int8/int8        
+/model.14/Concat                                 BPU  id(0)     Concat                     0.838522           6.267919    int8/int8        
+/model.15/cv1/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.919328           5.698278    int8/int8        
+/model.15/cv1/act/Mul                            BPU  id(0)     HzLut                      0.906539           6.049291    int8/int8        
+/model.15/Split                                  BPU  id(0)     Split                                                     int8/int8        
+/model.15/m.0/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.923085           4.975399    int8/int8        
+/model.15/m.0/cv1/act/Mul                        BPU  id(0)     HzLut                      0.860058           5.573627    int8/int8        
+/model.15/m.0/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.919877           4.162949    int8/int8        
+/model.15/m.0/cv2/act/Mul                        BPU  id(0)     HzLut                      0.844450           6.062801    int8/int8        
+/model.15/m.1/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.887794           4.596314    int8/int8        
+/model.15/m.1/cv1/act/Mul                        BPU  id(0)     HzLut                      0.817066           7.417393    int8/int8        
+/model.15/m.1/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.890934           4.996300    int8/int8        
+/model.15/m.1/cv2/act/Mul                        BPU  id(0)     HzLut                      0.839968           7.306264    int8/int8        
+/model.15/m.2/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.883241           4.743297    int8/int8        
+/model.15/m.2/cv1/act/Mul                        BPU  id(0)     HzLut                      0.767097           7.772330    int8/int8        
+/model.15/m.2/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.750599           5.222953    int8/int8        
+/model.15/m.2/cv2/act/Mul                        BPU  id(0)     HzLut                      0.703355           15.944646   int8/int8        
+/model.15/Split_output_0_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.15/Split_output_1_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.15/m.0/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.15/m.1/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.15/Concat                                 BPU  id(0)     Concat                     0.836248           4.975399    int8/int8        
+/model.15/cv2/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.892611           5.858747    int8/int8        
+/model.15/cv2/act/Mul                            BPU  id(0)     HzLut                      0.876234           15.733217   int8/int8        
+/model.16/conv/Conv                              BPU  id(0)     HzSQuantizedConv           0.852922           5.265540    int8/int8        
+/model.16/act/Mul                                BPU  id(0)     HzLut                      0.799164           7.685351    int8/int8        
+/model.17/Concat                                 BPU  id(0)     Concat                     0.821372           6.267919    int8/int8        
+/model.18/cv1/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.853571           6.267919    int8/int8        
+/model.18/cv1/act/Mul                            BPU  id(0)     HzLut                      0.787589           8.767052    int8/int8        
+/model.18/Split                                  BPU  id(0)     Split                                                     int8/int8        
+/model.18/m.0/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.886844           8.170006    int8/int8        
+/model.18/m.0/cv1/act/Mul                        BPU  id(0)     HzLut                      0.829506           9.289845    int8/int8        
+/model.18/m.0/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.898498           7.965010    int8/int8        
+/model.18/m.0/cv2/act/Mul                        BPU  id(0)     HzLut                      0.849914           8.850468    int8/int8        
+/model.18/m.1/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.894688           8.268624    int8/int8        
+/model.18/m.1/cv1/act/Mul                        BPU  id(0)     HzLut                      0.853385           11.186851   int8/int8        
+/model.18/m.1/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.905922           11.142524   int8/int8        
+/model.18/m.1/cv2/act/Mul                        BPU  id(0)     HzLut                      0.870086           9.037498    int8/int8        
+/model.18/m.2/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.890028           7.794479    int8/int8        
+/model.18/m.2/cv1/act/Mul                        BPU  id(0)     HzLut                      0.826033           10.329518   int8/int8        
+/model.18/m.2/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.843163           7.821414    int8/int8        
+/model.18/m.2/cv2/act/Mul                        BPU  id(0)     HzLut                      0.834751           14.901852   int8/int8        
+/model.18/Split_output_0_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.18/Split_output_1_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.18/m.0/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.18/m.1/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.18/Concat                                 BPU  id(0)     Concat                     0.823818           8.170006    int8/int8        
+/model.18/cv2/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.880746           9.160543    int8/int8        
+/model.18/cv2/act/Mul                            BPU  id(0)     HzLut                      0.833254           24.410725   int8/int8        
+/model.19/conv/Conv                              BPU  id(0)     HzSQuantizedConv           0.871455           8.157714    int8/int8        
+/model.19/act/Mul                                BPU  id(0)     HzLut                      0.865324           8.068971    int8/int8        
+/model.20/Concat                                 BPU  id(0)     Concat                     0.872773           6.790454    int8/int8        
+/model.21/cv1/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.895841           6.790454    int8/int8        
+/model.21/cv1/act/Mul                            BPU  id(0)     HzLut                      0.880846           7.850839    int8/int8        
+/model.21/Split                                  BPU  id(0)     Split                                                     int8/int8        
+/model.21/m.0/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.923417           7.802173    int8/int8        
+/model.21/m.0/cv1/act/Mul                        BPU  id(0)     HzLut                      0.909597           8.696174    int8/int8        
+/model.21/m.0/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.930564           8.323177    int8/int8        
+/model.21/m.0/cv2/act/Mul                        BPU  id(0)     HzLut                      0.918806           9.249486    int8/int8        
+/model.21/m.1/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.943431           8.846750    int8/int8        
+/model.21/m.1/cv1/act/Mul                        BPU  id(0)     HzLut                      0.932389           8.886090    int8/int8        
+/model.21/m.1/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.950589           8.794986    int8/int8        
+/model.21/m.1/cv2/act/Mul                        BPU  id(0)     HzLut                      0.929283           9.402851    int8/int8        
+/model.21/m.2/cv1/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.945979           8.776968    int8/int8        
+/model.21/m.2/cv1/act/Mul                        BPU  id(0)     HzLut                      0.928407           9.419104    int8/int8        
+/model.21/m.2/cv2/conv/Conv                      BPU  id(0)     HzSQuantizedConv           0.938449           8.674045    int8/int8        
+/model.21/m.2/cv2/act/Mul                        BPU  id(0)     HzLut                      0.928510           13.403182   int8/int8        
+/model.21/Split_output_0_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.21/Split_output_1_Requantize              BPU  id(0)     HzRequantize                                              int8/int8        
+/model.21/m.0/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.21/m.1/cv2/act/Mul_output_0_Requantize    BPU  id(0)     HzRequantize                                              int8/int8        
+/model.21/Concat                                 BPU  id(0)     Concat                     0.906667           7.802173    int8/int8        
+/model.21/cv2/conv/Conv                          BPU  id(0)     HzSQuantizedConv           0.928928           9.566818    int8/int8        
+/model.21/cv2/act/Mul                            BPU  id(0)     HzLut                      0.904136           13.543215   int8/int8        
+/model.22/cv2.0/cv2.0.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           -0.006057          5.265540    int8/int8        
+/model.22/cv2.0/cv2.0.0/act/Mul                  BPU  id(0)     HzLut                      0.131878           10.194039   int8/int8        
+/model.22/cv2.0/cv2.0.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.055817           8.807141    int8/int8        
+/model.22/cv2.0/cv2.0.1/act/Mul                  BPU  id(0)     HzLut                      0.175833           31.978926   int8/int8        
+/model.22/cv2.0/cv2.0.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.981453           31.809803   int8/int8        
+/model.22/cv3.0/cv3.0.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.800383           5.265540    int8/int8        
+/model.22/cv3.0/cv3.0.0/act/Mul                  BPU  id(0)     HzLut                      0.793926           12.290405   int8/int8        
+/model.22/cv3.0/cv3.0.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.804545           6.906720    int8/int8        
+/model.22/cv3.0/cv3.0.1/act/Mul                  BPU  id(0)     HzLut                      0.866951           29.319223   int8/int8        
+/model.22/cv3.0/cv3.0.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.997691           26.253984   int8/int8        
+/model.22/Concat                                 BPU  id(0)     Concat                     0.999044           29.135120   int8/int8        
+/model.22/cv2.1/cv2.1.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.904448           8.157714    int8/int8        
+/model.22/cv2.1/cv2.1.0/act/Mul                  BPU  id(0)     HzLut                      0.912780           11.119903   int8/int8        
+/model.22/cv2.1/cv2.1.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.917590           10.582025   int8/int8        
+/model.22/cv2.1/cv2.1.1/act/Mul                  BPU  id(0)     HzLut                      0.942319           38.374607   int8/int8        
+/model.22/cv2.1/cv2.1.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.984442           38.374607   int8/int8        
+/model.22/cv3.1/cv3.1.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.840738           8.157714    int8/int8        
+/model.22/cv3.1/cv3.1.0/act/Mul                  BPU  id(0)     HzLut                      0.843157           16.684933   int8/int8        
+/model.22/cv3.1/cv3.1.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.889606           9.658446    int8/int8        
+/model.22/cv3.1/cv3.1.1/act/Mul                  BPU  id(0)     HzLut                      0.920272           23.846485   int8/int8        
+/model.22/cv3.1/cv3.1.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.999298           23.846485   int8/int8        
+/model.22/Concat_1                               BPU  id(0)     Concat                     0.999150           29.135120   int8/int8        
+/model.22/cv2.2/cv2.2.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.949887           8.289958    int8/int8        
+/model.22/cv2.2/cv2.2.0/act/Mul                  BPU  id(0)     HzLut                      0.953597           13.345893   int8/int8        
+/model.22/cv2.2/cv2.2.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.958504           13.345872   int8/int8        
+/model.22/cv2.2/cv2.2.1/act/Mul                  BPU  id(0)     HzLut                      0.964986           52.102974   int8/int8        
+/model.22/cv2.2/cv2.2.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.985234           52.102974   int8/int8        
+/model.22/cv3.2/cv3.2.0/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.903122           8.289958    int8/int8        
+/model.22/cv3.2/cv3.2.0/act/Mul                  BPU  id(0)     HzLut                      0.885466           13.060729   int8/int8        
+/model.22/cv3.2/cv3.2.1/conv/Conv                BPU  id(0)     HzSQuantizedConv           0.953285           11.828277   int8/int8        
+/model.22/cv3.2/cv3.2.1/act/Mul                  BPU  id(0)     HzLut                      0.960674           22.535295   int8/int8        
+/model.22/cv3.2/cv3.2.2/Conv                     BPU  id(0)     HzSQuantizedConv           0.999782           22.535295   int8/int8        
+/model.22/Concat_2                               BPU  id(0)     Concat                     0.999619           29.135120   int8/int8        
+/model.22/Reshape                                BPU  id(0)     Reshape                                                   int8/int8        
+/model.22/Reshape_1                              BPU  id(0)     Reshape                                                   int8/int8        
+/model.22/Reshape_2                              BPU  id(0)     Reshape                                                   int8/int8        
+/model.22/Concat_3                               BPU  id(0)     Concat                     0.999106           29.135120   int8/int8        
+/model.22/Split                                  BPU  id(0)     Split                                                     int8/int8        
+/model.22/dfl/Reshape                            BPU  id(0)     Reshape                                                   int8/int8        
+/model.22/dfl/Transpose                          BPU  id(0)     Transpose                                                 int8/int8        
+/model.22/dfl/Softmax                            CPU  --        Softmax                    0.950217           29.135120   float/float      
+/model.22/dfl/conv/Conv                          BPU  id(1)     HzSQuantizedConv           0.984082           0.932934    int8/int8        
+/model.22/Slice                                  BPU  id(1)     Slice                      0.984755           13.949049   int8/int8        
+/model.22/Slice_1                                BPU  id(1)     Slice                      0.983549           13.949049   int8/int8        
+/model.22/Sub                                    BPU  id(1)     HzSElementwiseSub          0.999830           79.500000   int8/int8        
+UNIT_CONV_FOR_/model.22/Add_1                    BPU  id(1)     HzSQuantizedConv           0.999856           13.949049   int8/int8        
+UNIT_CONV_FOR_/model.22/Add_2                    BPU  id(1)     HzSQuantizedConv           0.999934           79.409973   int8/int8        
+/model.22/Div_1_mul                              BPU  id(1)     HzSQuantizedConv           0.999934           159.369324  int8/int8        
+/model.22/Sub_1                                  BPU  id(1)     HzSElementwiseSub          0.988030           81.898079   int8/int8        
+/model.22/Concat_4                               BPU  id(1)     Concat                     0.999540           79.678955   int8/int8        
+/model.22/Mul_2                                  CPU  --        Mul                        0.999283           79.678955   float/float      
+/model.22/Sigmoid                                BPU  id(0)     HzLut                      0.997418           29.135120   int8/int8        
+/model.22/Concat_5                               CPU  --        Concat                     0.999283           --          float/float
+2023-10-04 18:45:24,966 file: build.py func: build line No: 530 The quantify model output:
+=====================================================================================
+Node                Cosine Similarity  L1 Distance  L2 Distance  Chebyshev Distance  
+-------------------------------------------------------------------------------------
+/model.22/Concat_5  0.999283           0.291225     0.002691     211.851105
+2023-10-04 18:45:24,967 file: build.py func: build line No: 37 [Wed Oct  4 18:45:24 2023] End to Horizon NN Model Convert.
+2023-10-04 18:45:25,543 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 592 start convert to *.bin file....
+2023-10-04 18:45:25,641 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4128 ONNX model output num : 1
+2023-10-04 18:45:25,662 file: layout_util.py func: layout_util line No: 15 set_featuremap_layout start
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3862 model_deps_info: {'hb_mapper_version': '1.18.2', 'hbdk_version': '3.46.4', 'hbdk_runtime_version': ' 3.15.29.0', 'horizon_nn_version': '0.19.3', 'onnx_model': '/home/clover/Downloads/yolov8x.onnx', 'march': 'bayes', 'layer_out_dump': False, 'log_level': 'DEBUG', 'working_dir': '/home/clover/sunriseX3_yolov8/project/config/model_output', 'model_prefix': 'horizon_ultra', 'input_names': ['images'], 'input_type_rt': ['nv12'], 'input_space_and_range': ['regular'], 'input_type_train': ['bgr'], 'input_layout_rt': [''], 'input_layout_train': ['NCHW'], 'norm_type': ['data_scale'], 'scale_value': ['0.00392156862745098,'], 'mean_value': [''], 'input_shape': ['1x3x640x640'], 'input_batch': ['1'], 'cal_dir': ['/home/clover/Downloads/coco128/images/calib_f32'], 'cal_data_type': ['float32'], 'preprocess_on': False, 'calibration_type': 'max', 'per_channel': 'False', 'max_percentile': 0.99999, 'hbdk_params': {'hbdk_pass_through_params': '--O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast ', 'input-source': {'images': 'pyramid', '_default_value': 'ddr'}}, 'debug': False, 'compile_mode': 'latency'}
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3985 ############# model deps info #############
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3986 hb_mapper version   : 1.18.2
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3989 hbdk version        : 3.46.4
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3991 hbdk runtime version: 3.15.29.0
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3994 horizon_nn version  : 0.19.3
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 3998 ############# model_parameters info #############
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4004 onnx_model          : /home/clover/Downloads/yolov8x.onnx
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4005 BPU march           : bayes
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4006 layer_out_dump      : False
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4007 log_level           : DEBUG
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4008 working dir         : /home/clover/sunriseX3_yolov8/project/config/model_output
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4009 output_model_file_prefix: horizon_ultra
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4030 ############# input_parameters info #############
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4048 ------------------------------------------
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4050 ---------input info : images ---------
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4051 input_name          : images
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4052 input_type_rt       : nv12
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4054 input_space&range   : regular
+2023-10-04 18:45:25,662 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4056 input_layout_rt     : None
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4057 input_type_train    : bgr
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4058 input_layout_train  : NCHW
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4059 norm_type           : data_scale
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4060 input_shape         : 1x3x640x640
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4062 input_batch         : 1
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4068 scale_value         : 0.00392156862745098,
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4070 cal_data_dir        : /home/clover/Downloads/coco128/images/calib_f32
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4072 cal_data_type       : float32
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4073 ---------input info : images end -------
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4074 ------------------------------------------
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4076 ############# calibration_parameters info #############
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4077 preprocess_on       : False
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4078 calibration_type:   : max
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4083 max_percentile      : 0.99999
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4086 per_channel         : False
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4105 ############# compiler_parameters info #############
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4107 debug               : False
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4109 compile_mode        : latency
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4112 hbdk_pass_through_params: --O3 --cache /home/clover/sunriseX3_yolov8/project/config/model_output/cache.json --core-num 1 --fast
+2023-10-04 18:45:25,663 file: onnx2horizonrt.py func: onnx2horizonrt line No: 4112 input-source        : {'images': 'pyramid', '_default_value': 'ddr'}
+2023-10-04 18:45:25,713 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 773 Convert to runtime bin file successfully!
+2023-10-04 18:45:25,713 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 774 End Model Convert
