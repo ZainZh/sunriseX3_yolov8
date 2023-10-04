@@ -1,0 +1,46 @@
+2023-10-04 16:11:42,834 file: tool_utils.py func: tool_utils line No: 73 log will be stored in /home/clover/sunriseX3_yolov8/project/tools/hb_mapper_makertbin.log
+2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 115 Start hb_mapper....
+2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 116 hbdk version 3.46.4
+2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 117 horizon_nn version 0.19.3
+2023-10-04 16:11:42,834 file: hb_mapper.py func: hb_mapper line No: 118 hb_mapper version 1.18.2
+2023-10-04 16:11:42,834 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 521 Start Model Convert....
+2023-10-04 16:11:42,838 file: mapper_conf_parser.py func: mapper_conf_parser line No: 103 validating model_parameters...
+2023-10-04 16:11:42,839 file: mapper_conf_parser.py func: mapper_conf_parser line No: 257 Using onnx model file: /home/clover/Downloads/yolov8x.onnx
+2023-10-04 16:11:42,998 file: helper.py func: helper line No: 145 Model input names: ['images']
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 261 Model has 1 inputs according to model file
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/clover/sunriseX3_yolov8/project/config/model_output
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 465 node_dict: {self.node_dict}
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 118 validating model_parameters finished
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 122 validating input_parameters...
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 519 Model name not given in yaml_file, using model name from model file: ['images']
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 568 Model input shape not given in yaml_file, using shape from model file: [[1, 3, 640, 640]]
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 133 validating input_parameters finished
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 137 validating calibration_parameters...
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 1306 Using abs path /home/clover/sunriseX3_yolov8/project/config/cal_data
+2023-10-04 16:11:42,998 file: mapper_conf_parser.py func: mapper_conf_parser line No: 150 Parse 'calibration_parameters' failed!
+2023-10-04 16:11:42,998 file: hb_mapper_makertbin.py func: hb_mapper_makertbin line No: 52 yaml file parse failed. Please double check your config file inputs
+2023-10-04 16:11:42,998 file: tool_utils.py func: tool_utils line No: 131 exception in command: makertbin
+2023-10-04 16:11:42,999 file: tool_utils.py func: tool_utils line No: 132 Traceback (most recent call last):
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/utils/tool_utils.py", line 129, in __decorator
+    func(*args, **kargs)
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper.py", line 131, in makertbin
+    MakertbinRunner(config, model_type).run(__version__)
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 522, in run
+    self._parse_model()
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 61, in _parse_model
+    self._parse_conf()
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 55, in _parse_conf
+    raise e
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/hb_mapper_makertbin.py", line 50, in _parse_conf
+    self.mp_conf = MpConf(self.conf_file, self.model_type)
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 95, in __init__
+    self._validate_parameters()
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 151, in _validate_parameters
+    raise e
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 140, in _validate_parameters
+    self._validate_cal_data_dir()
+  File "/home/clover/.horizon/lib/python3.8/site-packages/horizon_tc_ui/config/mapper_conf_parser.py", line 987, in _validate_cal_data_dir
+    raise ValueError("Cal_data_dir does not exist: "
+ValueError: Cal_data_dir does not exist: /home/clover/sunriseX3_yolov8/project/config/cal_data
+
+2023-10-04 16:11:42,999 file: tool_utils.py func: tool_utils line No: 133 Cal_data_dir does not exist: /home/clover/sunriseX3_yolov8/project/config/cal_data
