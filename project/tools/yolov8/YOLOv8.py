@@ -5,7 +5,7 @@ try:
     import onnxruntime as onnxruntime
 except ImportError:
     onnxruntime =None
-from .utils import xywh2xyxy, draw_detections, multiclass_nms
+from .utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
 from common import print_info
 try:
     from hobot_dnn import pyeasy_dnn as dnn
@@ -130,6 +130,18 @@ class YOLOv8ONNX(YOLOv8):
 
         return input_tensor
 
+    # def prepare_input(self, image):
+    #     self.img_height, self.img_width = image.shape[:2]
+    #
+    #     input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    #
+    #     # Resize input image
+    #     input_img = cv2.resize(input_img, (self.input_width, self.input_height))
+    #     input_img = bgr2nv12_opencv(input_img)
+    #     # Scale input pixel values to 0 to 1
+    #     print("1", input_img.size)
+
+
     def inference(self, input_tensor):
         start = time.perf_counter()
         outputs = self.session.run(
@@ -183,24 +195,10 @@ class YOLOv8BIN(YOLOv8):
 
         # Resize input image
         input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-        input_img = self.bgr2nv12_opencv(input_img)
+        input_img = bgr2nv12_opencv(input_img)
         # Scale input pixel values to 0 to 1
-        input_img = input_img.transpose(2, 0, 1)
-        
-        return input_img
-    @staticmethod
-    def bgr2nv12_opencv(image):
-        height, width = image.shape[:2]
-        area = height * width
-        yuv420p = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420).reshape((area * 3 // 2,))
-        y = yuv420p[:area]
-        uv_planar = yuv420p[area:].reshape((2, area // 4))
-        uv_packed = uv_planar.transpose((1, 0)).reshape((area // 2,))
 
-        nv12 = np.zeros_like(yuv420p)
-        nv12[:area] = y
-        nv12[area:] = uv_packed
-        return nv12
+        return input_img
 
     @staticmethod
     def print_model_info(property_name):

@@ -136,3 +136,16 @@ def draw_masks(image: np.ndarray, boxes: np.ndarray, classes: np.ndarray, mask_a
         cv2.rectangle(mask_img, (x1, y1), (x2, y2), color, -1)
 
     return cv2.addWeighted(mask_img, mask_alpha, image, 1 - mask_alpha, 0)
+
+def bgr2nv12_opencv(image: np.ndarray):
+    height, width = image.shape[:2]
+    area = height * width
+    yuv420p = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420).reshape((area * 3 // 2,))
+    y = yuv420p[:area]
+    uv_planar = yuv420p[area:].reshape((2, area // 4))
+    uv_packed = uv_planar.transpose((1, 0)).reshape((area // 2,))
+
+    nv12 = np.zeros_like(yuv420p)
+    nv12[:area] = y
+    nv12[area:] = uv_packed
+    return nv12
