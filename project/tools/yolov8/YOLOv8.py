@@ -4,7 +4,7 @@ import numpy as np
 try:
     import onnxruntime as onnxruntime
 except ImportError:
-    onnxruntime =None
+    from horizon_tc_ui import HB_ONNXRuntime as onnxruntime
 from .utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
 from common import print_info
 try:
@@ -94,9 +94,12 @@ class YOLOv8:
 
 class YOLOv8ONNX(YOLOv8):
     def __init__(self, model, conf_thres=0.7, iou_thres=0.5):
-        self.session = onnxruntime.InferenceSession(
-            model, providers=onnxruntime.get_available_providers()
-        )
+        try:
+            self.session = onnxruntime.InferenceSession(
+                model, providers=onnxruntime.get_available_providers()
+            )
+        except:
+            self.session = onnxruntime(model_file=model)
 
         # get input details
         model_inputs = self.session.get_inputs()
@@ -129,17 +132,6 @@ class YOLOv8ONNX(YOLOv8):
         input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
 
         return input_tensor
-
-    # def prepare_input(self, image):
-    #     self.img_height, self.img_width = image.shape[:2]
-    #
-    #     input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    #
-    #     # Resize input image
-    #     input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-    #     input_img = bgr2nv12_opencv(input_img)
-    #
-    #     return input_img
 
 
     def inference(self, input_tensor):
@@ -188,21 +180,6 @@ class YOLOv8BIN(YOLOv8):
         print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         outputs = [o.buffer[0] for o in outputs]
         return outputs
-
-    # def prepare_input(self, image):
-    #     self.img_height, self.img_width = image.shape[:2]
-    #
-    #     input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    #
-    #     # Resize input image
-    #     input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-    #
-    #     # Scale input pixel values to 0 to 1
-    #     input_img = input_img / 255.0
-    #     input_img = input_img.transpose(2, 0, 1)
-    #     input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
-    #
-    #     return input_tensor
 
     def prepare_input(self, image):
         self.img_height, self.img_width = image.shape[:2]
