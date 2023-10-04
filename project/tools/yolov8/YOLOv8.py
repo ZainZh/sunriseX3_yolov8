@@ -154,8 +154,8 @@ class YOLOv8BIN(YOLOv8):
         self.model_output_properties = self.model[0].outputs[0].properties
 
         # get input details
-        self.input_shape =  []     # get output details
-        self.output_shape = []
+        self.input_shape =  self.model_input_properties.shape    # get output details
+        self.output_shape = self.model_output_properties.shape
 
         print("model_input_properties:===============")
         self.print_model_info(self.model_input_properties)
