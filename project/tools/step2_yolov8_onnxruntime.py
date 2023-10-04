@@ -18,5 +18,5 @@ if __name__ == '__main__':
     combined_img = yolov8_detector.draw_detections(img)
     cv2.namedWindow("Detected Objects", cv2.WINDOW_NORMAL)
     cv2.imshow("Detected Objects", combined_img)
-    cv2.imwrite("doc/img/detected_objects.jpg", combined_img)
+    # cv2.imwrite("/home/clover/Downloads/detected_objects.jpg", combined_img)
     cv2.waitKey(0)
