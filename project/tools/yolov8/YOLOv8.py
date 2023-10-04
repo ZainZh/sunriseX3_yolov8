@@ -41,7 +41,7 @@ class YOLOv8:
 
     def process_output(self, output):
         predictions = np.squeeze(output[0]).T
-        print("output shape is", output.shape)
+        print("output shape is", np.array(output).shape)
         print("predictions shape is",predictions.shape)
         # Filter out object confidence scores below threshold
         scores = np.max(predictions[:, 4:], axis=1)
