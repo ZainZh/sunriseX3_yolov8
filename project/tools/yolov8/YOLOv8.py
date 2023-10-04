@@ -188,20 +188,6 @@ class YOLOv8BIN(YOLOv8):
         print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
 
-    def prepare_input(self, image):
-        self.img_height, self.img_width = image.shape[:2]
-
-        input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        # Resize input image
-        input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-
-        # Scale input pixel values to 0 to 1
-        input_img = input_img / 255.0
-        input_img = input_img.transpose(2, 0, 1)
-        input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
-
-        return input_tensor
     # def prepare_input(self, image):
     #     self.img_height, self.img_width = image.shape[:2]
     #
@@ -209,10 +195,22 @@ class YOLOv8BIN(YOLOv8):
     #
     #     # Resize input image
     #     input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-    #     input_img = bgr2nv12_opencv(input_img)
-    #     # Scale input pixel values to 0 to 1
     #
-    #     return input_img
+    #     # Scale input pixel values to 0 to 1
+    #     input_img = input_img / 255.0
+    #     input_img = input_img.transpose(2, 0, 1)
+    #     input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
+    #
+    #     return input_tensor
+
+    def prepare_input(self, image):
+        self.img_height, self.img_width = image.shape[:2]
+        # Resize input image
+        input_img = cv2.resize(image, (self.input_width, self.input_height))
+        input_img = bgr2nv12_opencv(input_img)
+        # Scale input pixel values to 0 to 1
+
+        return input_img
 
     @staticmethod
     def print_model_info(property_name):
