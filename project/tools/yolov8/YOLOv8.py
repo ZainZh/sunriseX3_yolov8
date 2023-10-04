@@ -183,12 +183,11 @@ class YOLOv8BIN(YOLOv8):
 
         # Resize input image
         input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-
+        input_img = self.bgr2nv12_opencv(input_img)
         # Scale input pixel values to 0 to 1
-        input_img = input_img / 255.0
         input_img = input_img.transpose(2, 0, 1)
-        input_tensor = self.bgr2nv12_opencv(input_img)
-        return input_tensor
+        
+        return input_img
     @staticmethod
     def bgr2nv12_opencv(image):
         height, width = image.shape[:2]
