@@ -29,7 +29,6 @@ class YOLOv8:
 
         # Perform inference on the image
         outputs = self.inference(input_tensor)
-        print(outputs[0])
         self.boxes, self.scores, self.class_ids = self.process_output(outputs)
 
         return self.boxes, self.scores, self.class_ids
@@ -42,6 +41,7 @@ class YOLOv8:
 
     def process_output(self, output):
         predictions = np.squeeze(output[0]).T
+        print("output shape is", output.shape)
         print("predictions shape is",predictions.shape)
         # Filter out object confidence scores below threshold
         scores = np.max(predictions[:, 4:], axis=1)
@@ -186,6 +186,7 @@ class YOLOv8BIN(YOLOv8):
         start = time.perf_counter()
         outputs = self.model[0].forward(input_tensor)
         print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
+        outputs = [o.buffer[0] for o in outputs]
         return outputs
 
     # def prepare_input(self, image):
