@@ -29,7 +29,7 @@ class YOLOv8:
 
         # Perform inference on the image
         outputs = self.inference(input_tensor)
-        print(outputs[0].shape)
+        print(outputs)
         self.boxes, self.scores, self.class_ids = self.process_output(outputs)
 
         return self.boxes, self.scores, self.class_ids
