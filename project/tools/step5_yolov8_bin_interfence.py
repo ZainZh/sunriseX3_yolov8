@@ -7,7 +7,7 @@ from yolov8 import YOLOv8BIN
 if __name__ == '__main__':
     # Initialize yolov8 object detector
     model_path = "/opt/hobot/model/rdkultra/basic/yolov8n_640x640_nv12.bin"
-    yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.7, iou_thres=0.5)
+    yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.8, iou_thres=0.8)
 
     img = cv2.imread("kite.jpg")
 
