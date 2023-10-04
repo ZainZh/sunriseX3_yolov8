@@ -5,9 +5,8 @@ try:
     import onnxruntime as onnxruntime
 except ImportError:
     onnxruntime =None
-from utils import xywh2xyxy, draw_detections, multiclass_nms
+from .utils import xywh2xyxy, draw_detections, multiclass_nms
 from common import print_info
-
 try:
     from hobot_dnn import pyeasy_dnn as dnn
 except ImportError:

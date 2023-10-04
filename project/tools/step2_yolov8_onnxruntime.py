@@ -1,7 +1,7 @@
 import cv2
 
 
-from yolov8 import YOLOv8,YOLOv8ONNX,YOLOv8BIN
+from yolov8 import YOLOv8ONNX
 
 
 if __name__ == '__main__':
