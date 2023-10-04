@@ -1,8 +1,10 @@
 import time
 import cv2
 import numpy as np
-import onnxruntime
-
+try:
+    import onnxruntime as onnxruntime
+except ImportError:
+    onnxruntime =None
 from utils import xywh2xyxy, draw_detections, multiclass_nms
 from common import print_info
 
