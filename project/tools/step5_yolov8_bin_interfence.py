@@ -9,7 +9,7 @@ if __name__ == '__main__':
     model_path = "/opt/hobot/model/rdkultra/basic/yolov8n_640x640_nv12.bin"
     yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.2, iou_thres=0.3)
 
-    img = cv2.imread(".kite.jpg")
+    img = cv2.imread("kite.jpg")
 
     # Detect Objects
     boxes, scores, class_ids = yolov8_detector(img)
