@@ -35,19 +35,7 @@ class YOLOv8:
         return self.boxes, self.scores, self.class_ids
 
     def prepare_input(self, image):
-        self.img_height, self.img_width = image.shape[:2]
-
-        input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-        # Resize input image
-        input_img = cv2.resize(input_img, (self.input_width, self.input_height))
-
-        # Scale input pixel values to 0 to 1
-        input_img = input_img / 255.0
-        input_img = input_img.transpose(2, 0, 1)
-        input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
-
-        return input_tensor
+        raise NotImplementedError
 
     def inference(self, input_tensor):
         raise NotImplementedError
@@ -127,6 +115,21 @@ class YOLOv8ONNX(YOLOv8):
     def __call__(self, image):
         return self.detect_objects(image)
 
+    def prepare_input(self, image):
+        self.img_height, self.img_width = image.shape[:2]
+
+        input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # Resize input image
+        input_img = cv2.resize(input_img, (self.input_width, self.input_height))
+
+        # Scale input pixel values to 0 to 1
+        input_img = input_img / 255.0
+        input_img = input_img.transpose(2, 0, 1)
+        input_tensor = input_img[np.newaxis, :, :, :].astype(np.float32)
+
+        return input_tensor
+
     def inference(self, input_tensor):
         start = time.perf_counter()
         outputs = self.session.run(
@@ -172,6 +175,33 @@ class YOLOv8BIN(YOLOv8):
         outputs = self.model[0].forward(input_tensor)
         print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
+
+    def prepare_input(self, image):
+        self.img_height, self.img_width = image.shape[:2]
+
+        input_img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+        # Resize input image
+        input_img = cv2.resize(input_img, (self.input_width, self.input_height))
+
+        # Scale input pixel values to 0 to 1
+        input_img = input_img / 255.0
+        input_img = input_img.transpose(2, 0, 1)
+        input_tensor = self.bgr2nv12_opencv(input_img)
+        return input_tensor
+    @staticmethod
+    def bgr2nv12_opencv(image):
+        height, width = image.shape[:2]
+        area = height * width
+        yuv420p = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420).reshape((area * 3 // 2,))
+        y = yuv420p[:area]
+        uv_planar = yuv420p[area:].reshape((2, area // 4))
+        uv_packed = uv_planar.transpose((1, 0)).reshape((area // 2,))
+
+        nv12 = np.zeros_like(yuv420p)
+        nv12[:area] = y
+        nv12[area:] = uv_packed
+        return nv12
 
     @staticmethod
     def print_model_info(property_name):
