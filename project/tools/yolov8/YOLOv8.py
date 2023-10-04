@@ -4,7 +4,7 @@ import numpy as np
 try:
     import onnxruntime as onnxruntime
 except ImportError:
-    from horizon_tc_ui import HB_ONNXRuntime as onnxruntime
+    onnxruntim = None
 from .utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
 from common import print_info
 try:
@@ -41,10 +41,9 @@ class YOLOv8:
 
     def process_output(self, output):
         predictions = np.squeeze(output[0]).T
-        print("output shape is", np.array(output).shape)
-        print("predictions shape is",predictions.shape)
         # Filter out object confidence scores below threshold
         scores = np.max(predictions[:, 4:], axis=1)
+        print(scores)
         predictions = predictions[scores > self.conf_threshold, :]
         scores = scores[scores > self.conf_threshold]
 
@@ -94,12 +93,9 @@ class YOLOv8:
 
 class YOLOv8ONNX(YOLOv8):
     def __init__(self, model, conf_thres=0.7, iou_thres=0.5):
-        try:
-            self.session = onnxruntime.InferenceSession(
-                model, providers=onnxruntime.get_available_providers()
-            )
-        except:
-            self.session = onnxruntime(model_file=model)
+        self.session = onnxruntime.InferenceSession(
+            model, providers=onnxruntime.get_available_providers()
+        )
 
         # get input details
         model_inputs = self.session.get_inputs()
