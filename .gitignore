@@ -16,3 +16,7 @@ project/config/model_output/
 project/tools/yolov8/__pycache__/
 
 .idea/
+
+*.onnx
+
+*.pt
