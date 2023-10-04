@@ -6,11 +6,10 @@ from yolov8 import YOLOv8BIN
 
 if __name__ == '__main__':
     # Initialize yolov8 object detector
-    model_path = "./yolov8n_smartbin.bin"
+    model_path = "/opt/hobot/model/rdkultra/basic/yolov8n_672x672_nv12.bin"
     yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.2, iou_thres=0.3)
 
-
-    img = cv2.imread("/home/clover/Downloads/coco128/images/train2017/test2.jpg")
+    img = cv2.imread(".kite.jpg")
 
     # Detect Objects
     boxes, scores, class_ids = yolov8_detector(img)
