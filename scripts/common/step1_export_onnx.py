@@ -1,7 +1,7 @@
 # 导入 YOLOv8
 import click
 from ultralytics import YOLO
-from common import print_info, print_error, print_help
+from src.common import print_info, print_error, print_help
 import os.path as osp
 
 

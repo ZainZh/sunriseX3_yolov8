@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 from numpy import ndarray
 
-from common import print_help, print_error, print_info
+from src.common import print_help, print_error, print_info
 
 
 def letterbox(

@@ -20,3 +20,7 @@ project/tools/yolov8/__pycache__/
 *.onnx
 
 *.pt
+
+*.log
+
+model_output/

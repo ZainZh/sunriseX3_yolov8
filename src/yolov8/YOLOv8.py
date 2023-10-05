@@ -5,8 +5,8 @@ try:
     import onnxruntime as onnxruntime
 except ImportError:
     onnxruntim = None
-from .utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
-from common import print_info
+from src.yolov8.utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
+from src.tools.common import print_info
 try:
     from hobot_dnn import pyeasy_dnn as dnn
 except ImportError:
