@@ -9,7 +9,7 @@ model_parameters:
 
   march: "bayes"
   layer_out_dump: False
-  working_dir: 'model_output'
+  working_dir: '../model_output'
   output_model_file_prefix: 'horizon_ultra'
 
 # 模型输入相关参数

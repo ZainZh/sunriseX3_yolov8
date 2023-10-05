@@ -24,3 +24,5 @@ project/tools/yolov8/__pycache__/
 *.log
 
 model_output/
+
+*.pyc
