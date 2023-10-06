@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ai_inference.iml" filepath="$PROJECT_DIR$/.idea/ai_inference.iml" />
-      <module fileurl="file://$USER_HOME$/Desktop/github/bpu_yolov8/.idea/bpu_yolov8.iml" filepath="$USER_HOME$/Desktop/github/bpu_yolov8/.idea/bpu_yolov8.iml" />
-    </modules>
-  </component>
-</project>

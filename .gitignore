@@ -8,3 +8,21 @@ project/05_web_display_camera_sample_smartbin/webservice/
 project/coco128/
 
 project/tools/__pycache__/
+
+project/tools/mapper/calibration_data_rgb_f32/
+
+project/config/model_output/
+
+project/tools/yolov8/__pycache__/
+
+.idea/
+
+*.onnx
+
+*.pt
+
+*.log
+
+model_output/
+
+*.pyc
