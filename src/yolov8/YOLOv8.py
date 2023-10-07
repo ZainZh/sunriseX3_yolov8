@@ -40,6 +40,7 @@ class YOLOv8:
         raise NotImplementedError
 
     def process_output(self, output):
+        start = time.perf_counter()
         predictions = np.squeeze(output[0]).T
         # Filter out object confidence scores below threshold
         scores = np.max(predictions[:, 4:], axis=1)
@@ -59,7 +60,7 @@ class YOLOv8:
         # Apply non-maxima suppression to suppress weak, overlapping bounding boxes
         # indices = nms(boxes, scores, self.iou_threshold)
         indices = multiclass_nms(boxes, scores, class_ids, self.iou_threshold)
-
+        print(f"Postprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return boxes[indices], scores[indices], class_ids[indices]
 
     def extract_boxes(self, predictions):
@@ -173,17 +174,18 @@ class YOLOv8BIN(YOLOv8):
     def inference(self, input_tensor):
         start = time.perf_counter()
         outputs = self.model[0].forward(input_tensor)
-        print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         outputs = [o.buffer[0] for o in outputs]
+        print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
 
     def prepare_input(self, image):
+        start = time.perf_counter()
         self.img_height, self.img_width = image.shape[:2]
         # Resize input image
         input_img = cv2.resize(image, (self.input_width, self.input_height))
         input_img = bgr2nv12_opencv(input_img)
         # Scale input pixel values to 0 to 1
-
+        print(f"Preprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return input_img
 
     @staticmethod
