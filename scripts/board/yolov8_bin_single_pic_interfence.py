@@ -1,6 +1,4 @@
 import cv2
-
-
 from src.yolov8.YOLOv8 import YOLOv8BIN
 
 

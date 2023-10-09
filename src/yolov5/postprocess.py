@@ -133,7 +133,7 @@ def draw_bboxs(image, bboxes, gt_classes_index=None, classes=get_classes()):
         print("{} is in the picture with confidence:{:.4f}".format(
             classes_name, score))
         fig_name = f'result.jpg'
-        cv2.imwrite(fig_name, image)
+        # cv2.imwrite(fig_name, image)
     return image
 
 

@@ -1,6 +1,9 @@
 import numpy as np
 import click
-
+import time
+import cv2
+from omegaconf import OmegaConf
+import os.path as osp
 def _preprocess_print(*args):
     """Preprocess the input for colorful printing.
 
@@ -47,3 +50,29 @@ def print_help():
     ctx = click.get_current_context()
     click.echo(ctx.get_help())
     ctx.exit()
+
+def bgr2nv12_opencv(image):
+    height, width = image.shape[0], image.shape[1]
+    area = height * width
+    yuv420p = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420).reshape((area * 3 // 2,))
+    y = yuv420p[:area]
+    uv_planar = yuv420p[area:].reshape((2, area // 4))
+    uv_packed = uv_planar.transpose((1, 0)).reshape((area // 2,))
+
+    nv12 = np.zeros_like(yuv420p)
+    nv12[:height * width] = y
+    nv12[height * width:] = uv_packed
+    return nv12
+
+def load_omega_config(config_name):
+    """Load the configs listed in config_name.yaml.
+
+    Args:
+        config_name (str): Name of the config file.
+
+    Returns:
+        (dict): A dict of configs.
+    """
+    return OmegaConf.load(
+        osp.join(osp.dirname(__file__), "../../config/{}.yaml".format(config_name))
+    )
