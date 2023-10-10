@@ -76,3 +76,30 @@ def load_omega_config(config_name):
     return OmegaConf.load(
         osp.join(osp.dirname(__file__), "../../config/{}.yaml".format(config_name))
     )
+
+def camera_self_healing(camera, camera_connect_status = True):
+    """
+
+    Args:
+        camera: The Camera instance.
+        camera_connect_status: bool If true, the camera will be considered as connected with the USB port.
+
+    Returns:
+        _camera: The Camera instance.
+    """
+    from src.tools.mvsdk import Camera
+
+    if camera_connect_status:
+        print_info("camera reconnecting...")
+        for _ in range(5):
+            camera.close()
+            _camera = Camera.reconnect_camera()
+            if _camera is not None:
+                return _camera
+            else:
+                print_info("Failed to reconnect, try again.")
+                time.sleep(1)
+        return None
+
+    else:
+        raise RuntimeError("Failed to reconnect the camera, check the USB connector.")

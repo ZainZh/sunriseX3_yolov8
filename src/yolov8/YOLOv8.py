@@ -40,6 +40,15 @@ class YOLOv8:
         raise NotImplementedError
 
     def process_output(self, output):
+        """
+        Process the output from the model to get the bounding boxes, class IDs, and scores.
+        The shape of bbox is xyxy.
+        Args:
+            output:
+
+        Returns:
+
+        """
         start = time.perf_counter()
         predictions = np.squeeze(output[0]).T
         # Filter out object confidence scores below threshold

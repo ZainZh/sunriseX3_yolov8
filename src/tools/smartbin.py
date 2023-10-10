@@ -5,9 +5,10 @@ import importlib.util
 
 import os.path as osp
 from src.tools.modbus_control import ModbusController
-from src.tools.common import load_omega_config
+from src.tools.common import load_omega_config,print_info,camera_self_healing
+from src.tools.data_types import DetectionOutput
 from src.yolov8.YOLOv8 import YOLOv8BIN
-from hobot_spdev import libsppydev as srcampy
+from src.tools.mvsdk import Camera
 
 __all__ = ["SmartBin"]
 
@@ -72,7 +73,8 @@ class SmartBin(object):
             self.model = None
 
         self._round_flag = 0
-        self._camera = srcampy.Camera()
+        self._camera = Camera.init_camera()
+        self.sorting_module = SortingModuleHandle("sorting_module")
         self._segmentation_loop = rospy.Timer(
             rospy.Duration.from_sec(0.2), self._task_callback
         )
@@ -89,20 +91,17 @@ class SmartBin(object):
             None if no valid grasps are detected.
             GraspInfoCollection if valid grasps are detected.
         """
-        for robot_handle in self._robot_handles:
-            robot_handle.update_encoder_values()
 
         rgb_image = self._camera.grab()
         if rgb_image is None:
-            camera_connect_status = self.usb_devices.check_devices("camera")
-            self._camera = camera_self_healing(self._camera, camera_connect_status)
+            self._camera = camera_self_healing(self._camera)
             rgb_image = self._camera.grab()
 
-        grasp_info_list = self._segmentation_server.get_grasp_info_list(rgb_image)
-        if not grasp_info_list:
+        boxes, scores, labels = self.model(rgb_image)
+        if boxes is []:
             return None
 
-        return grasp_info_list
+        return boxes, scores, labels
 
     def _print_grasp_info(self, grasp_info_list):
         """Prints the number of objects detected in this round and the number of each type of objects detected."""
@@ -118,48 +117,33 @@ class SmartBin(object):
                 print_info("Class: {}, item num {}".format(label, label_count))
         print_info("---------------------------------------------------------")
 
-    def _do_segmentation(self):
+    def _do_detection(self):
         """This function first calls the segmentation service to provide the GraspInfo list.
         Then it filter the grasps already known in the last round and processes only new objects to grasp.
 
         Returns:
             None
         """
-        grasp_info_list = self._call_segmentation_service()
-        if grasp_info_list is None:
-            return
+        bboxes, scores, labels = self._call_segmentation_service()
 
-        # In theory, all absolute encoder values read by robot encoders should be the same,
-        # so here we use the reading from the first robot's encoder.
-        if not self._system_test:
-            filtered_grasp_info_list = self._item_filter.select_new_instances(
-                grasp_info_list, self._robot_handles[0].absolute_encoder_value
-            )
-        else:
-            filtered_grasp_info_list = grasp_info_list
-        self._print_grasp_info(filtered_grasp_info_list)
+        return DetectionOutput(bboxes, scores, labels)
 
-        for grasp_info in filtered_grasp_info_list:
-            # assert isinstance(grasp_info, GraspInfo)
-            for robot_handle in self._robot_handles:
-                if robot_handle.try_to_grasp(grasp_info):
-                    self._grasp_counts[grasp_info.label] += 1
-                    # The break makes sure that the object is processed by only one robot
-                    break
-
-    def _publish_grasp_counts(self):
-        """Publishes counts for grasping the objects with a String type ROS msg whose content is in JSON format.
+    def post_process(self, detection_output: DetectionOutput):
+        """
+        This function takes the detection output and returns the index of the sorting module to execute.
+        Args:
+            detection_output:
 
         Returns:
-            None
+
         """
-        grasp_counts_json = json.dumps(self._grasp_counts)
-        self._grasp_counts_publisher.publish(String(grasp_counts_json))
+        sorting_module_index = 0
+        return sorting_module_index
 
     def _task_callback(self, event):
         """Main callback function for executing the task."""
-        prediction_results = self._do_segmentation()
-        sorting_module_index = self.post_process(prediction_results)
+        detection_output= self._do_detection()
+        sorting_module_index = self.post_process(detection_output)
         self.sorting_module.execute(sorting_module_index)
         self._round_flag += 1
         if rospy.is_shutdown():

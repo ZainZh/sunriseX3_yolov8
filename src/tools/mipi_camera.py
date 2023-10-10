@@ -9,9 +9,13 @@ import time
 class MipiCamera(object):
     def __init__(self):
         self.camera = srcampy.Camera()
-        self.open_camera()
+        ret = self.camera.open_cam(-1, [[1920, 1080]])
+        # ret = self.camera.open_cam(video_index,[width, height])
+        if ret != 0:
+            raise RuntimeError("Open camera failed")
+        # self.open_camera()
 
-    def open_camera(self,  video_index: int = -1, width: int = 1920, height: int = 1080):
+    def open_camera(self,  video_index: int = 0, width: int = 1920, height: int = 1080):
         """
         open camera and set parameters
         Args:
@@ -24,7 +28,8 @@ class MipiCamera(object):
         Returns:
 
         """
-        ret = self.camera.open_vps([1920, 1080], [640, 640])
+        # ret = self.camera.open_vps([1920, 1080], [640, 640])
+        ret = self.camera.open_cam(-1, [[1920, 1080], [512, 512], [1920, 1080]])
         # ret = self.camera.open_cam(video_index,[width, height])
         if ret != 0:
             raise RuntimeError("Open camera failed")
@@ -40,6 +45,7 @@ class MipiCamera(object):
 if __name__ == "__main__":
     camera = MipiCamera()
     img = camera.get_frame(1920, 1080)
+    print(img)
     cv2.imwrite("test.png", img)
 
     print("a")
