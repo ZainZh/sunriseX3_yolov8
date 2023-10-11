@@ -4,7 +4,6 @@ import cv2
 from src.yolov5.utils import postprocess
 from src.tools.common import bgr2nv12_opencv
 from hobot_dnn import pyeasy_dnn as dnn
-from src.tools.mipi_camera import MipiCamera
 import time
 
 
@@ -30,20 +29,18 @@ if __name__ == "__main__":
     print(len(models[0].outputs))
     for output in models[0].outputs:
         print_properties(output.properties)
-    camera = MipiCamera()
-    img = camera.get_frame_bgr(1920, 1080)
 
-    # img_file = cv2.imread("../../images/kite.jpg")
+    img_file = cv2.imread("../../images/kite.jpg")
     time1 = time.time()
     h, w = get_hw(models[0].inputs[0].properties)
     des_dim = (w, h)
-    resized_data = cv2.resize(img, des_dim, interpolation=cv2.INTER_AREA)
+    resized_data = cv2.resize(img_file, des_dim, interpolation=cv2.INTER_AREA)
     nv12_data = bgr2nv12_opencv(resized_data)
     time2 = time.time()
     outputs = models[0].forward(nv12_data)
     time3 = time.time()
     prediction_bbox = postprocess(
-        outputs, model_hw_shape=(672, 672), origin_image=img
+        outputs, model_hw_shape=(672, 672), origin_image=img_file
     )
     time4 = time.time()
     print("pre_process:", time2 - time1)
