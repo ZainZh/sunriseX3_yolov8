@@ -9,6 +9,9 @@ class_names: ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'trai
                'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',
                'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
-model_path: "/opt/hobot/model/rdkultra/basic/yolov8n_640x640_nv12.bin"
+#class_names: ['bottle', 'can']
+
+
+
 onf_thres: 0.7
 iou_thres: 0.5

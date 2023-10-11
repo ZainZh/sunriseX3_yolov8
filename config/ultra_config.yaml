@@ -5,7 +5,7 @@ model_parameters:
 
   # 必选参数
   # Onnx浮点网络数据模型文件, 例如：onnx_model: './horizon_ultra_onnx.onnx'
-  onnx_model: '/home/clover/Downloads/yolov8x.onnx'
+  onnx_model: '/home/clover/ultralytics/runs/detect/train7/weights/best.onnx'
 
   march: "bayes"
   layer_out_dump: False
@@ -36,17 +36,17 @@ input_parameters:
   # data_mean 减去通道均值mean_value，对应的 mean_value 需要配置，并注释掉scale_value
   # data_scale 对图像像素乘以data_scale系数，对应的 scale_value需要配置，并注释掉mean_value
   # data_mean_and_scale 减去通道均值后再乘以scale系数，标识下方对应的 mean_value  和 scale_value 均需配置
-  norm_type: 'data_scale'
+  norm_type: 'data_mean_and_scale'
 
   # 必选参数
   # 图像减去的均值, 如果是通道均值，value之间必须用空格分隔
   # 例如：mean_value: 128.0 或者 mean_value: 111.0 109.0 118.0
-  mean_value:
+  mean_value: 111.0 109.0 118.0
 
   # 必选参数
   # 图像预处理缩放比例，如果是通道缩放比例，value之间必须用空格分隔，计算公式：scale = 1/std
   # 例如：scale_value: 0.0078125 或者 scale_value: 0.0078125 0.001215 0.003680
-  scale_value: 0.00392156862745098
+  scale_value: 0.0078125 0.001215 0.003680
 
 # 模型量化相关参数
 calibration_parameters:
@@ -54,7 +54,7 @@ calibration_parameters:
   # 必选参数
   # 模型量化的参考图像的存放目录，图片格式支持Jpeg、Bmp等格式，图片来源一般是从测试集中选择100张图片，并要覆盖典型场景，不要是偏僻场景，如过曝光、饱和、模糊、纯黑、纯白等图片
   # 请根据 02_preprocess.sh 脚本中的文件夹路径来配置，例如：cal_data_dir: './calibration_data_yuv_f32'
-  cal_data_dir: '/home/clover/Downloads/coco128/images/calib_f32'
+  cal_data_dir: '/home/clover/Downloads/calibrate/calib_f32'
 
   cal_data_type: 'float32'
   calibration_type: 'max'

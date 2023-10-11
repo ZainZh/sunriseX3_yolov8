@@ -1,14 +1,17 @@
-import rospy
+
 import json
 import importlib
 import importlib.util
 
 import os.path as osp
+import time
+
 from src.tools.modbus_control import ModbusController
 from src.tools.common import load_omega_config,print_info,camera_self_healing
 from src.tools.data_types import DetectionOutput
 from src.yolov8.YOLOv8 import YOLOv8BIN
-from src.tools.mvsdk import Camera
+# from src.tools.mvsdk import Camera
+from src.tools.mipi_camera import MipiCamera as Camera
 
 __all__ = ["SmartBin"]
 
@@ -22,8 +25,8 @@ class SortingModuleHandle(object):
         """
         self.config = load_omega_config(sorting_module_config_name)
         self.modbus_address = self.config["modbus_address"]
-        self.modbus_band_rate = self.config["modbus_band_rate"]
-        self.modbus_timeout = self.config["modbus_timeout"]
+        self.modbus_band_rate = self.config["modbus_baud_rate"]
+        self.modbus_timeout = self.config["execution_timeout"]
         self.sorting_module = ModbusController(
             address=self.modbus_address,
             baud_rate=self.modbus_band_rate,
@@ -38,7 +41,7 @@ class SortingModuleHandle(object):
         """
         # Turn on the sorting module
         self.sorting_module.write_coil(sorting_module_index, True)
-        rospy.sleep(0.1)
+        time.sleep(0.1)
         # Turn off the sorting module
         self.sorting_module.write_coil(sorting_module_index, False)
 
@@ -65,7 +68,7 @@ class SmartBin(object):
 
         if self.model_structure == "YOLOv8":
             self.model = YOLOv8BIN(
-                self.model_config["model_path"],
+                self.config["model_path"],
                 self.model_config["onf_thres"],
                 self.model_config["iou_thres"],
             )
@@ -73,11 +76,10 @@ class SmartBin(object):
             self.model = None
 
         self._round_flag = 0
-        self._camera = Camera.init_camera()
-        self.sorting_module = SortingModuleHandle("sorting_module")
-        self._segmentation_loop = rospy.Timer(
-            rospy.Duration.from_sec(0.2), self._task_callback
-        )
+        self._camera = Camera()
+        # self.sorting_module = SortingModuleHandle("sorting_module")
+        while True:
+            self._task_callback()
 
     def __del__(self):
         if self._camera:
@@ -92,7 +94,7 @@ class SmartBin(object):
             GraspInfoCollection if valid grasps are detected.
         """
 
-        rgb_image = self._camera.grab()
+        rgb_image = self._camera.get_frame_bgr(width=1920, height=1080)
         if rgb_image is None:
             self._camera = camera_self_healing(self._camera)
             rgb_image = self._camera.grab()
@@ -100,22 +102,8 @@ class SmartBin(object):
         boxes, scores, labels = self.model(rgb_image)
         if boxes is []:
             return None
-
+        print("bbox:", boxes, "scores:", scores, "labels:", labels)
         return boxes, scores, labels
-
-    def _print_grasp_info(self, grasp_info_list):
-        """Prints the number of objects detected in this round and the number of each type of objects detected."""
-        print_info(
-            f"Round {self._round_flag} | Detected {len(grasp_info_list)} new items |"
-        )
-        if not grasp_info_list:
-            print_info("---------------------------------------------------------")
-            return
-        for label in self.all_classes:
-            label_count = sum(1 for info in grasp_info_list if info.label == label)
-            if label_count > 0:
-                print_info("Class: {}, item num {}".format(label, label_count))
-        print_info("---------------------------------------------------------")
 
     def _do_detection(self):
         """This function first calls the segmentation service to provide the GraspInfo list.
@@ -128,7 +116,8 @@ class SmartBin(object):
 
         return DetectionOutput(bboxes, scores, labels)
 
-    def post_process(self, detection_output: DetectionOutput):
+    @staticmethod
+    def post_process(detection_output: DetectionOutput):
         """
         This function takes the detection output and returns the index of the sorting module to execute.
         Args:
@@ -140,11 +129,9 @@ class SmartBin(object):
         sorting_module_index = 0
         return sorting_module_index
 
-    def _task_callback(self, event):
+    def _task_callback(self):
         """Main callback function for executing the task."""
         detection_output= self._do_detection()
         sorting_module_index = self.post_process(detection_output)
-        self.sorting_module.execute(sorting_module_index)
+        # self.sorting_module.execute(sorting_module_index)
         self._round_flag += 1
-        if rospy.is_shutdown():
-            self._camera.close()

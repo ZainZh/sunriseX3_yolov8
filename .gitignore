@@ -26,3 +26,5 @@ project/tools/yolov8/__pycache__/
 model_output/
 
 *.pyc
+
+*.txt

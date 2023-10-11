@@ -25,8 +25,10 @@ class YOLOv8:
         self.input_height, self.input_width = input_shape[2], input_shape[3]
 
     def detect_objects(self, image):
-        input_tensor = self.prepare_input(image)
-
+        if image.ndim == 3:
+            input_tensor = self.prepare_input(image)
+        else:
+            input_tensor = image
         # Perform inference on the image
         outputs = self.inference(input_tensor)
         self.boxes, self.scores, self.class_ids = self.process_output(outputs)

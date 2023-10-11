@@ -3,5 +3,5 @@
 
 # export
 hb_mapper makertbin \
-  --config ../config/ultra_config.yaml \
+  --config ../../config/ultra_config.yaml \
   --model-type onnx
