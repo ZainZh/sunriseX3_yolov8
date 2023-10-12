@@ -13,5 +13,5 @@ class_names: ['bottle', 'can']
 
 
 
-conf_thres: 0.7
+conf_thres: 0.6
 iou_thres: 0.5

@@ -23,7 +23,7 @@ class YOLOv8:
         self.iou_threshold = self.config["iou_thres"]
 
         self.boxes, self.scores, self.class_ids = [], [], []
-        self.img_height, self.img_width = 0, 0
+        self.img_height, self.img_width = input_shape[2], input_shape[3]
         self.input_height, self.input_width = input_shape[2], input_shape[3]
 
     def detect_objects(self, image):
@@ -57,7 +57,6 @@ class YOLOv8:
         predictions = np.squeeze(output[0]).T
         # Filter out object confidence scores below threshold
         scores = np.max(predictions[:, 4:], axis=1)
-        print(scores)
         predictions = predictions[scores > self.conf_threshold, :]
         scores = scores[scores > self.conf_threshold]
 
@@ -73,8 +72,8 @@ class YOLOv8:
         # Apply non-maxima suppression to suppress weak, overlapping bounding boxes
         # indices = nms(boxes, scores, self.iou_threshold)
         indices = multiclass_nms(boxes, scores, class_ids, self.iou_threshold)
-        print(f"Postprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
-        return boxes[indices], scores[indices], self.class_names[int(class_ids[indices][0])]
+        # print(f"Postprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
+        return boxes[indices], scores[indices], class_ids[indices]
 
     def extract_boxes(self, predictions):
         # Extract boxes from predictions
@@ -150,7 +149,7 @@ class YOLOv8ONNX(YOLOv8):
             self.output_names, {self.input_names[0]: input_tensor}
         )
 
-        print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
+        # print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
 
     def print_model_info(self):
@@ -188,7 +187,7 @@ class YOLOv8BIN(YOLOv8):
         start = time.perf_counter()
         outputs = self.model[0].forward(input_tensor)
         outputs = [o.buffer[0] for o in outputs]
-        print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
+        # print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
 
     def prepare_input(self, image):
@@ -197,7 +196,7 @@ class YOLOv8BIN(YOLOv8):
         # Resize input image
         input_img = cv2.resize(image, (self.input_width, self.input_height))
         input_img = bgr2nv12_opencv(input_img)
-        print(f"Preprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
+        # print(f"Preprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return input_img
 
     @staticmethod

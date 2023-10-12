@@ -1,17 +1,24 @@
-
 import json
 import importlib
 import importlib.util
 
 import os.path as osp
+import os
 import time
-
+import cv2
 from src.tools.modbus_control import ModbusController
-from src.tools.common import load_omega_config,print_info,camera_self_healing
+from src.tools.common import (
+    load_omega_config,
+    print_info,
+    camera_self_healing,
+    nv12_2_bgr_opencv,
+)
 from src.tools.data_types import DetectionOutput
 from src.yolov8.YOLOv8 import YOLOv8BIN
+
 # from src.tools.mvsdk import Camera
 from src.tools.mipi_camera import MipiCamera as Camera
+from datetime import datetime
 
 __all__ = ["SmartBin"]
 
@@ -46,7 +53,6 @@ class SortingModuleHandle(object):
         self.sorting_module.write_coil(sorting_module_index, False)
 
 
-
 class SmartBin(object):
     def __init__(self, config_name="smartbin"):
         """Initializer of the TaskManager.
@@ -67,15 +73,17 @@ class SmartBin(object):
             )
 
         if self.model_structure == "YOLOv8":
-            self.model = YOLOv8BIN(
-                self.config["model_path"]
-            )
+            self.model = YOLOv8BIN(self.config["model_path"])
         else:
             self.model = None
-
         self._round_flag = 0
         self._camera = Camera()
+        self.class_names = self.model_config["class_names"]
         # self.sorting_module = SortingModuleHandle("sorting_module")
+        self._save_path = "../../images/output"
+        self._labeled_image_dir = osp.join(self._save_path, "labeled")
+        if not osp.exists(self._labeled_image_dir):
+            os.makedirs(self._labeled_image_dir)
         while True:
             self._task_callback()
 
@@ -92,16 +100,39 @@ class SmartBin(object):
             GraspInfoCollection if valid grasps are detected.
         """
 
-        rgb_image = self._camera.get_frame_bgr(width=512, height=512)
-        if rgb_image is None:
+        nv12_image = self._camera.get_frame(width=512, height=512)
+        if nv12_image is None:
             self._camera = camera_self_healing(self._camera)
-            rgb_image = self._camera.grab()
+            nv12_image = self._camera.grab()
 
-        boxes, scores, labels = self.model(rgb_image)
-        if len(boxes) ==0:
-            return [],[],[]
-        print_info("bbox:", boxes, "scores:", scores, "labels:", labels)
+        boxes, scores, labels = self.model(nv12_image)
+        if len(boxes) == 0:
+            return [], [], []
+        self.draw_detections(nv12_image)
+        print_info(
+            "bbox:",
+            boxes,
+            "scores:",
+            scores,
+            "labels:",
+            self.class_names[int(labels[0])],
+        )
         return boxes, scores, labels
+
+    def draw_detections(self, nv12_image):
+        """
+
+        Args:
+            nv12_image:
+
+        Returns:
+
+        """
+        bgr_image = nv12_2_bgr_opencv(nv12_image, 512, 512)
+        draw_image = self.model.draw_detections(bgr_image)
+        name_prefix = "{}".format(datetime.now().strftime("%Y%m%d_%H%M%S%f")[:-3])
+        bbox_image_name = "{}_bbox.png".format(name_prefix)
+        cv2.imwrite(osp.join(self._labeled_image_dir, bbox_image_name), draw_image)
 
     def _do_detection(self):
         """This function first calls the segmentation service to provide the GraspInfo list.
@@ -129,7 +160,7 @@ class SmartBin(object):
 
     def _task_callback(self):
         """Main callback function for executing the task."""
-        detection_output= self._do_detection()
+        detection_output = self._do_detection()
         sorting_module_index = self.post_process(detection_output)
         # self.sorting_module.execute(sorting_module_index)
         self._round_flag += 1
