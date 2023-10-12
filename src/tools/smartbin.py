@@ -68,9 +68,7 @@ class SmartBin(object):
 
         if self.model_structure == "YOLOv8":
             self.model = YOLOv8BIN(
-                self.config["model_path"],
-                self.model_config["onf_thres"],
-                self.model_config["iou_thres"],
+                self.config["model_path"]
             )
         else:
             self.model = None
@@ -94,15 +92,15 @@ class SmartBin(object):
             GraspInfoCollection if valid grasps are detected.
         """
 
-        rgb_image = self._camera.get_frame_bgr(width=1920, height=1080)
+        rgb_image = self._camera.get_frame_bgr(width=512, height=512)
         if rgb_image is None:
             self._camera = camera_self_healing(self._camera)
             rgb_image = self._camera.grab()
 
         boxes, scores, labels = self.model(rgb_image)
-        if boxes is []:
-            return None
-        print("bbox:", boxes, "scores:", scores, "labels:", labels)
+        if len(boxes) ==0:
+            return [],[],[]
+        print_info("bbox:", boxes, "scores:", scores, "labels:", labels)
         return boxes, scores, labels
 
     def _do_detection(self):

@@ -15,7 +15,7 @@ from src.tools.common import print_help, print_error, print_info
 
 def letterbox(
     im: ndarray,
-    new_shape: Union[Tuple, List] = (640, 640),
+    new_shape: Union[Tuple, List] = (512,512),
     color: Union[Tuple, List] = (114, 114, 114),
 ) -> Tuple[ndarray, float, Tuple[float, float]]:
     # Resize and pad image while meeting stride-multiple constraints
@@ -53,6 +53,7 @@ def blob(im: ndarray) -> ndarray:
 @click.option(
     "--images_path",
     help="Path of the training pictures for calibrate models",
+    default="/home/clover/Downloads/calibrate/cali",
 )
 def main(images_path):
     if not images_path or not osp.exists(images_path):

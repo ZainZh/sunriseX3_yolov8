@@ -35,7 +35,7 @@ def postprocess(model_output,
     sbbox_buffer = model_output[0].buffer.astype(float)
 
     for index, sbbox in enumerate(sbbox_buffer):
-        sbbox_buffer[index] = sbbox * model_output[0].properties.scale_data
+        sbbox_buffer[index] = (sbbox * model_output[0].properties.scale_data)
 
     mbbox_buffer = model_output[1].buffer.astype(float)
 

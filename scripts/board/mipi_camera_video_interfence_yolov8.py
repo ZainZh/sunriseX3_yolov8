@@ -1,3 +1,4 @@
+
 # !/usr/bin/env python3
 import sys
 import signal
@@ -13,9 +14,6 @@ from threading import BoundedSemaphore
 from hobot_spdev import libsppydev as srcampy
 from hobot_dnn import pyeasy_dnn as dnn
 import threading
-from src.yolov8.YOLOv8 import YOLOv8BIN
-
-from src.tools.common import nv12_2_bgr_opencv
 
 image_counter = None
 is_running = 1
@@ -47,7 +45,19 @@ disp_w, disp_h = get_display_res()
 # detection model class names
 def get_classes():
     return np.array([
-        "bottle", "can",
+        "person", "bicycle", "car", "motorcycle", "airplane", "bus", "train",
+        "truck", "boat", "traffic light", "fire hydrant", "stop sign",
+        "parking meter", "bench", "bird", "cat", "dog", "horse", "sheep",
+        "cow", "elephant", "bear", "zebra", "giraffe", "backpack", "umbrella",
+        "handbag", "tie", "suitcase", "frisbee", "skis", "snowboard",
+        "sports ball", "kite", "baseball bat", "baseball glove", "skateboard",
+        "surfboard", "tennis racket", "bottle", "wine glass", "cup", "fork",
+        "knife", "spoon", "bowl", "banana", "apple", "sandwich", "orange",
+        "broccoli", "carrot", "hot dog", "pizza", "donut", "cake", "chair",
+        "couch", "potted plant", "bed", "dining table", "toilet", "tv",
+        "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave",
+        "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase",
+        "scissors", "teddy bear", "hair drier", "toothbrush"
     ])
 
 
@@ -194,13 +204,13 @@ class ParallelExector(object):
                                               maxtasksperchild=5)
             self.workers = BoundedSemaphore(self.parallel_num)
 
-    def infer(self, bbox, score, class_id):
+    def infer(self, output):
         if self.parallel_num == 1:
-            run(bbox, score, class_id)
+            run(output)
         else:
             self.workers.acquire()
             self._pool.apply_async(func=run,
-                                   args=(bbox, score, class_id,),
+                                   args=(output,),
                                    callback=self.task_done,
                                    error_callback=print)
 
@@ -223,10 +233,15 @@ def limit_display_cord(coor):
     return coor
 
 
-def run(bboxes, scores, class_ids):
+def run(outputs):
     global image_counter
     # Do post process
-    for index, bbox in enumerate(bboxes):
+    pp_start_time = time()
+    prediction_bbox = postprocess(outputs)
+    pp_finish_time = time()
+
+    box_draw_start_time = time()
+    for index, bbox in enumerate(prediction_bbox):
         # get bbox coordinates
         coor = np.array(bbox[:4], dtype=np.int32)
         coor = limit_display_cord(coor)
@@ -277,17 +292,25 @@ def run(bboxes, scores, class_ids):
 
 if __name__ == '__main__':
     signal.signal(signal.SIGINT, signal_handler)
-    model_path = "../../model_output/horizon_ultra.bin"
-    yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.4, iou_thres=0.3)
+
+    models = dnn.load('/opt/hobot/model/rdkultra/basic/yolov8n_512x512_nv12.bin')
+    print("--- model input properties ---")
+    # 打印输入 tensor 的属性
+    print_properties(models[0].inputs[0].properties)
+    print("--- model output properties ---")
+    # 打印输出 tensor 的属性
+    for output in models[0].outputs:
+        print_properties(output.properties)
 
     # Camera API, get camera object
     cam = srcampy.Camera()
 
     # get model info
-
+    h, w = get_hw(models[0].inputs[0].properties)
+    input_shape = (h, w)
     # Open f37 camera
     # For the meaning of parameters, please refer to the relevant documents of camera
-    a = cam.open_cam(-1, [[1920, 1080]])
+    a=cam.open_cam(-1, [[1920, 1080], [w, h], [disp_w, disp_h]])
     if a != 0:
         raise RuntimeError("Open camera failed")
     # Get HDMI display object
@@ -320,8 +343,7 @@ if __name__ == '__main__':
     while is_running:
         try:
             cam_start_time = time()
-            img = cam.get_frame(2, [1920, 1080])
-            img = nv12_2_bgr_opencv(img, 1080, 1920)
+            img = cam.get_frame(2, [512, 512])
             cam_finish_time = time()
 
             if img is None:
@@ -329,9 +351,17 @@ if __name__ == '__main__':
                 pass
             else:
                 buffer_start_time = time()
-                boxes, scores, class_ids = yolov8_detector(img)
+                img = np.frombuffer(img, dtype=np.uint8)
+                buffer_finish_time = time()
+
+                infer_start_time = time()
+                outputs = models[0].forward(img)
                 infer_finish_time = time()
-                parallel_exe.infer(boxes, scores, class_ids)
+
+                output_array = []
+                for item in outputs:
+                    output_array.append(item.buffer)
+                parallel_exe.infer(output_array)
 
         except Exception as e:
             parallel_exe.close()
@@ -343,3 +373,4 @@ if __name__ == '__main__':
     srcampy.unbind(cam, disp)
     cam.close()
     disp.close()
+

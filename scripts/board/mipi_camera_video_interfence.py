@@ -310,7 +310,7 @@ if __name__ == '__main__':
     input_shape = (h, w)
     # Open f37 camera
     # For the meaning of parameters, please refer to the relevant documents of camera
-    a=cam.open_cam(-1, [[1920, 1080], [w, h], [disp_w, disp_h]])
+    a=cam.open_cam(-1, [[w, h]])
     if a != 0:
         raise RuntimeError("Open camera failed")
     # Get HDMI display object

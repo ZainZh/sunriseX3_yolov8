@@ -5,10 +5,11 @@ from src.yolov8.YOLOv8 import YOLOv8BIN
 
 if __name__ == '__main__':
     # Initialize yolov8 object detector
-    model_path = "../../model_output/horizon_ultra.bin"
+    # model_path = "../../model_output/horizon_ultra.bin"
+    model_path = "/opt/hobot/model/rdkultra/basic/yolov8n_512x512_nv12.bin"
     yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.4, iou_thres=0.3)
 
-    img = cv2.imread("../../images/test/1.jpg")
+    img = cv2.imread("../../images/test/37.jpg")
 
     # Detect Objects
     boxes, scores, class_ids = yolov8_detector(img)

@@ -1,4 +1,4 @@
 model_structure: 'YOLOv8'
 #model_path: '../../model_output/horizon_ultra.bin'
 
-model_path : "/opt/hobot/model/rdkultra/basic/yolov8n_640x640_nv12.bin"
+model_path : "/opt/hobot/model/rdkultra/basic/yolov8n_512x512_nv12.bin"

@@ -12,7 +12,7 @@ import numpy as np
 class MipiCamera(object):
     def __init__(self):
         self.camera = srcampy.Camera()
-        ret = self.camera.open_cam(-1, [[1920, 1080]])
+        ret = self.camera.open_cam(-1, [[512, 512]])
         # ret = self.camera.open_cam(video_index,[width, height])
         if ret != 0:
             raise RuntimeError("Open camera failed")
@@ -60,7 +60,7 @@ class MipiCamera(object):
 if __name__ == "__main__":
     camera = MipiCamera()
     model_path = "../../model_output/horizon_ultra.bin"
-    yolov8_detector = YOLOv8BIN(model_path, conf_thres=0.4, iou_thres=0.3)
+    yolov8_detector = YOLOv8BIN(model_path)
     # img = camera.get_frame_bgr(512,512)
     img =cv2.imread("../../images/test/18.jpg")
     boxes, scores, class_ids = yolov8_detector(img)
