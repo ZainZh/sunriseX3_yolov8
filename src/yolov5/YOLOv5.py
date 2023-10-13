@@ -1,23 +1,24 @@
 import time
 import cv2
 import numpy as np
+
 try:
     import onnxruntime as onnxruntime
 except ImportError:
     onnxruntim = None
-from src.yolov8.utils import xywh2xyxy, draw_detections, multiclass_nms, bgr2nv12_opencv
-from src.tools.common import print_info,load_omega_config
+from src.yolov5.utils import postprocess
+from src.yolov8.utils import draw_detections
+from src.tools.common import print_info, load_omega_config, bgr2nv12_opencv
+
 try:
     from hobot_dnn import pyeasy_dnn as dnn
 except ImportError:
     dnn = None
 
 
-class YOLOv8:
-    def __init__(
-            self,  input_shape: list = (1, 3, 640, 640)
-    ):
-        self.config = load_omega_config("YOLOv8")
+class YOLOv5:
+    def __init__(self, input_shape: list = (1, 3, 640, 640)):
+        self.config = load_omega_config("YOLOv5")
         self.class_names = self.config["class_names"]
         self.conf_threshold = self.config["conf_thres"]
         self.iou_threshold = self.config["iou_thres"]
@@ -30,11 +31,10 @@ class YOLOv8:
         if image.ndim == 3:
             # RGB image
             input_tensor = self.prepare_input(image)
-            self.img_height, self.img_width = image.shape[:2]
         else:
             # NV12 image
             input_tensor = image
-            self.img_width, self.img_height = self.input_width, self.input_height
+            self.input_width, self.input_height = self.input_width, self.input_height
         # Perform inference on the image
         outputs = self.inference(input_tensor)
         self.boxes, self.scores, self.class_ids = self.process_output(outputs)
@@ -47,6 +47,13 @@ class YOLOv8:
     def inference(self, input_tensor):
         raise NotImplementedError
 
+    def get_boxes_labels_scores(self, nms_bboxes):
+        for i, bbox in enumerate(nms_bboxes):
+            class_index = int(bbox[5])
+            score = bbox[4]
+            self.boxes.append(bbox[:4])
+            self.scores.append(score)
+            self.class_ids.append(class_index)
     def process_output(self, output):
         """
         Process the output from the model to get the bounding boxes, class IDs, and scores.
@@ -57,50 +64,14 @@ class YOLOv8:
         Returns:
 
         """
-        start = time.perf_counter()
-        predictions = np.squeeze(output[0]).T
-        # Filter out object confidence scores below threshold
-        scores = np.max(predictions[:, 4:], axis=1)
-        predictions = predictions[scores > self.conf_threshold, :]
-        scores = scores[scores > self.conf_threshold]
-
-        if len(scores) == 0:
-            return [], [], []
-
-        # Get the class with the highest confidence
-        class_ids = np.argmax(predictions[:, 4:], axis=1)
-
-        # Get bounding boxes for each object
-        boxes = self.extract_boxes(predictions)
-
-        # Apply non-maxima suppression to suppress weak, overlapping bounding boxes
-        # indices = nms(boxes, scores, self.iou_threshold)
-        indices = multiclass_nms(boxes, scores, class_ids, self.iou_threshold)
-        # print(f"Postprocess time: {(time.perf_counter() - start) * 1000:.2f} ms")
-        return boxes[indices], scores[indices], class_ids[indices]
-
-    def extract_boxes(self, predictions):
-        # Extract boxes from predictions
-        boxes = predictions[:, :4]
-
-        # Scale boxes to original image dimensions
-        boxes = self.rescale_boxes(boxes)
-
-        # Convert boxes to xyxy format
-        boxes = xywh2xyxy(boxes)
-
-        return boxes
-
-    def rescale_boxes(self, boxes):
-        # Rescale boxes to original image dimensions
-        input_shape = np.array(
-            [self.input_width, self.input_height, self.input_width, self.input_height]
+        nms_bboxes = postprocess(
+            output,
+            model_hw_shape=(self.input_width, self.input_height),
+            origin_img_shape=(self.img_width, self.img_height),
         )
-        boxes = np.divide(boxes, input_shape, dtype=np.float32)
-        boxes *= np.array(
-            [self.img_width, self.img_height, self.img_width, self.img_height]
-        )
-        return boxes
+        self.get_boxes_labels_scores(nms_bboxes)
+        return self.boxes, self.scores, self.class_ids
+
 
     def draw_detections(self, image, draw_scores=True, mask_alpha=0.4):
         return draw_detections(
@@ -108,8 +79,8 @@ class YOLOv8:
         )
 
 
-class YOLOv8ONNX(YOLOv8):
-    def __init__(self, model ):
+class YOLOv5ONNX(YOLOv5):
+    def __init__(self, model):
         self.session = onnxruntime.InferenceSession(
             model, providers=onnxruntime.get_available_providers()
         )
@@ -146,7 +117,6 @@ class YOLOv8ONNX(YOLOv8):
 
         return input_tensor
 
-
     def inference(self, input_tensor):
         start = time.perf_counter()
         outputs = self.session.run(
@@ -167,14 +137,14 @@ class YOLOv8ONNX(YOLOv8):
             print_info(f"{key}:", value)
 
 
-class YOLOv8BIN(YOLOv8):
+class YOLOv5BIN(YOLOv5):
     def __init__(self, model):
         self.model = dnn.load(str(model))
         self.model_input_properties = self.model[0].inputs[0].properties
         self.model_output_properties = self.model[0].outputs[0].properties
 
         # get input details
-        self.input_shape =  self.model_input_properties.shape    # get output details
+        self.input_shape = self.model_input_properties.shape  # get output details
         self.output_shape = self.model_output_properties.shape
 
         print("model_input_properties:===============")
@@ -182,15 +152,22 @@ class YOLOv8BIN(YOLOv8):
         print("model_output_properties:===============")
         self.print_model_info(self.model_output_properties)
 
-        super().__init__( input_shape=self.input_shape)
+        super().__init__(input_shape=self.input_shape)
 
     def __call__(self, image):
         return self.detect_objects(image)
 
     def inference(self, input_tensor):
+        """
+
+        Args:
+            input_tensor: NV12 image
+
+        Returns:
+
+        """
         start = time.perf_counter()
         outputs = self.model[0].forward(input_tensor)
-        outputs = [o.buffer[0] for o in outputs]
         # print(f"Inference time: {(time.perf_counter() - start) * 1000:.2f} ms")
         return outputs
 
@@ -214,5 +191,3 @@ class YOLOv8BIN(YOLOv8):
 
         for key, value in model_info.items():
             print_info(f"{key}:", value)
-
-

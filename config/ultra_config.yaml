@@ -5,7 +5,7 @@ model_parameters:
 
   # 必选参数
   # Onnx浮点网络数据模型文件, 例如：onnx_model: './horizon_ultra_onnx.onnx'
-  onnx_model: '/home/clover/ultralytics/runs/detect/train6/weights/best.onnx'
+  onnx_model: '/home/clover/ultralytics/runs/detect/train11/weights/best.onnx'
 
   march: "bayes"
   layer_out_dump: False

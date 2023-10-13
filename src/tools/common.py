@@ -4,6 +4,7 @@ import time
 import cv2
 from omegaconf import OmegaConf
 import os.path as osp
+from functools import wraps
 def _preprocess_print(*args):
     """Preprocess the input for colorful printing.
 
@@ -66,7 +67,7 @@ def bgr2nv12_opencv(image):
 
 def nv12_2_bgr_opencv(nv12_data, height, width):
     yuv_image = np.frombuffer(nv12_data, dtype=np.uint8)
-    img_bgr = cv2.cvtColor(yuv_image.reshape((height * 3 // 2, width)), 103)
+    img_bgr = cv2.cvtColor(yuv_image.reshape((height * 3 // 2, width)), cv2.COLOR_YUV420P2BGR)
     return img_bgr
 
 def load_omega_config(config_name):
@@ -108,3 +109,17 @@ def camera_self_healing(camera, camera_connect_status = True):
 
     else:
         raise RuntimeError("Failed to reconnect the camera, check the USB connector.")
+
+
+def timeit(func):
+    """A timer decorator."""
+    @wraps(func)
+    def timeit_wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        total_time = end_time - start_time
+        print_info(f"Function {func.__name__} took {total_time:.3f} seconds")
+        return result
+
+    return timeit_wrapper

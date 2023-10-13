@@ -12,6 +12,7 @@ from src.tools.common import (
     print_info,
     camera_self_healing,
     nv12_2_bgr_opencv,
+    timeit
 )
 from src.tools.data_types import DetectionOutput
 from src.yolov8.YOLOv8 import YOLOv8BIN
@@ -79,7 +80,7 @@ class SmartBin(object):
         self._round_flag = 0
         self._camera = Camera()
         self.class_names = self.model_config["class_names"]
-        # self.sorting_module = SortingModuleHandle("sorting_module")
+        self.sorting_module = SortingModuleHandle("sorting_module")
         self._save_path = "../../images/output"
         self._labeled_image_dir = osp.join(self._save_path, "labeled")
         if not osp.exists(self._labeled_image_dir):
@@ -99,8 +100,10 @@ class SmartBin(object):
             None if no valid grasps are detected.
             GraspInfoCollection if valid grasps are detected.
         """
-
         nv12_image = self._camera.get_frame(width=512, height=512)
+        # warm-up camera
+        if self._round_flag <= 10:
+            return [], [], []
         if nv12_image is None:
             self._camera = camera_self_healing(self._camera)
             nv12_image = self._camera.grab()
@@ -109,13 +112,16 @@ class SmartBin(object):
         if len(boxes) == 0:
             return [], [], []
         self.draw_detections(nv12_image)
+        class_name = []
+        for label in labels:
+            class_name.append(self.class_names[int(label)])
         print_info(
             "bbox:",
             boxes,
             "scores:",
             scores,
             "labels:",
-            self.class_names[int(labels[0])],
+            class_name
         )
         return boxes, scores, labels
 
@@ -130,7 +136,7 @@ class SmartBin(object):
         """
         bgr_image = nv12_2_bgr_opencv(nv12_image, 512, 512)
         draw_image = self.model.draw_detections(bgr_image)
-        name_prefix = "{}".format(datetime.now().strftime("%Y%m%d_%H%M%S%f")[:-3])
+        name_prefix = "{}".format(datetime.now().strftime("%H%M%S%f")[:-3])
         bbox_image_name = "{}_bbox.png".format(name_prefix)
         cv2.imwrite(osp.join(self._labeled_image_dir, bbox_image_name), draw_image)
 
@@ -155,12 +161,15 @@ class SmartBin(object):
         Returns:
 
         """
-        sorting_module_index = 0
+        sorting_module_index = 2
         return sorting_module_index
 
+    @timeit
     def _task_callback(self):
         """Main callback function for executing the task."""
         detection_output = self._do_detection()
-        sorting_module_index = self.post_process(detection_output)
-        # self.sorting_module.execute(sorting_module_index)
+        if len(detection_output) != 0:
+            sorting_module_index = self.post_process(detection_output)
+            self.sorting_module.execute(sorting_module_index)
+        time.sleep(0.5)
         self._round_flag += 1

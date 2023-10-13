@@ -8,6 +8,7 @@ import os.path as osp
 @click.command()
 @click.option(
     "--model_path",
+    default="/home/clover/ultralytics/runs/detect/train11/weights/best.pt",
     help="Path of the trained 'pt' type model that you want to transform to the 'onnx' type.",
 )
 def main(model_path):

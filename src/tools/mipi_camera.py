@@ -11,12 +11,9 @@ from src.yolov8.utils import draw_detections
 
 
 class MipiCamera(object):
-    def __init__(self, config_name="mipicamera"):
+    def __init__(self):
         self.camera = srcampy.Camera()
-        self.config = load_omega_config(config_name)
-        self.input_height = self.config["input_height"]
-        self.input_width = self.config["input_width"]
-        ret = self.camera.open_cam(-1, [[self.input_width, self.input_height]])
+        ret = self.camera.open_cam(-1, [[512,512]])
         # ret = self.camera.open_cam(video_index,[width, height])
         if ret != 0:
             raise RuntimeError("Open camera failed")
@@ -59,11 +56,11 @@ if __name__ == "__main__":
     # bgr_img = nv12_2_bgr_opencv(img, 512,512)
     # combined_img = yolov8_detector.draw_detections(bgr_img)
     #
-    n=0
-    while n<5:
-        img = camera.get_frame_bgr(512,512)
-        cv2.imwrite(f"test1_{n}.png", img)
-        n+=1
+    # n=0
+    # while n<5:
+    #     img = camera.get_frame_bgr(512,512)
+    #     cv2.imwrite(f"test1_{n}.png", img)
+    #     n+=1
     # img = camera.get_frame_bgr(1024,1024)
     # # cv2.imwrite("detected_objects.jpg", combined_img)
     # cv2.imwrite("test.png", img)

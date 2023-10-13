@@ -28,3 +28,5 @@ model_output/
 *.pyc
 
 *.txt
+
+scripts/common/.hb_check/
