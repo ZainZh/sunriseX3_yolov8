@@ -7,8 +7,8 @@ from src.yolov8.YOLOv8 import YOLOv8ONNX
 if __name__ == '__main__':
     # Initialize yolov8 object detector
     # model_path = "/home/clover/Downloads/yolov8x.onnx"
-    model_path = "/home/clover/ultralytics/runs/detect/train6/weights/best.onnx"
-    yolov8_detector = YOLOv8ONNX(model_path, conf_thres=0.2, iou_thres=0.3)
+    model_path = "/home/clover/ultralytics/runs/detect/train20/weights/best.onnx"
+    yolov8_detector = YOLOv8ONNX(model_path)
 
 
     img = cv2.imread("../../images/test/100.jpg")

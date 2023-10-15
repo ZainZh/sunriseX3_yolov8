@@ -67,7 +67,7 @@ def bgr2nv12_opencv(image):
 
 def nv12_2_bgr_opencv(nv12_data, height, width):
     yuv_image = np.frombuffer(nv12_data, dtype=np.uint8)
-    img_bgr = cv2.cvtColor(yuv_image.reshape((height * 3 // 2, width)), cv2.COLOR_YUV420P2BGR)
+    img_bgr = cv2.cvtColor(yuv_image.reshape((height * 3 // 2, width)), cv2.COLOR_YUV2BGR_NV12)
     return img_bgr
 
 def load_omega_config(config_name):

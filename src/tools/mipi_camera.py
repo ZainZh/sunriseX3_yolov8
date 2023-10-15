@@ -13,6 +13,7 @@ from src.yolov8.utils import draw_detections
 class MipiCamera(object):
     def __init__(self):
         self.camera = srcampy.Camera()
+        # ret = self.camera.open_cam(-1, [[512,512]])
         ret = self.camera.open_cam(-1, [[512,512]])
         # ret = self.camera.open_cam(video_index,[width, height])
         if ret != 0:

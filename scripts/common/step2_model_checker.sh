@@ -4,7 +4,7 @@
 
 hb_mapper checker \
   --model-type onnx \
-  --model /home/clover/ultralytics/runs/detect/train11/weights/best.onnx \
+  --model /home/clover/ultralytics/runs/detect/train20/weights/best.onnx \
   --march bayes\
   --input-shape images 1x3x512x512
 

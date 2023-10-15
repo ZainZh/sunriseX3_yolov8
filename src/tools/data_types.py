@@ -483,6 +483,16 @@ class BBox(collections.abc.Sequence):
     def bottom_right_y(self):
         return self._bbox[3]
 
+    @property
+    def center(self):
+        """Returns the center point of the bounding box.
+
+        Returns:
+            Point2D: The center point of the bounding box.
+        """
+        return Point2D(
+            self._bbox[0] + self.width / 2, self._bbox[1] + self.height / 2
+        )
     def _draw_label(self, image, caption):
         """Draw the label caption on the image.
 

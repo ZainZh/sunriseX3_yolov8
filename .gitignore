@@ -30,3 +30,5 @@ model_output/
 *.txt
 
 scripts/common/.hb_check/
+
+images/

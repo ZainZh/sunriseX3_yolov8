@@ -12,7 +12,7 @@ from src.tools.common import (
     print_info,
     camera_self_healing,
     nv12_2_bgr_opencv,
-    timeit
+    timeit,
 )
 from src.tools.data_types import DetectionOutput
 from src.yolov8.YOLOv8 import YOLOv8BIN
@@ -41,17 +41,18 @@ class SortingModuleHandle(object):
             timeout=self.modbus_timeout,
         )
 
-    def execute(self, sorting_module_index: int):
+    def execute(self, sorting_module_list: list):
         """Executes the sorting module.
 
         Args:
-            sorting_module_index (int): The index of the sorting module to execute.
+            sorting_module_list (int): The index of the sorting module to execute.
         """
         # Turn on the sorting module
-        self.sorting_module.write_coil(sorting_module_index, True)
-        time.sleep(0.1)
-        # Turn off the sorting module
-        self.sorting_module.write_coil(sorting_module_index, False)
+        for sorting_module_index in sorting_module_list:
+            self.sorting_module.write_coil(sorting_module_index, True)
+            time.sleep(0.1)
+            # Turn off the sorting module
+            self.sorting_module.write_coil(sorting_module_index, False)
 
 
 class SmartBin(object):
@@ -106,23 +107,16 @@ class SmartBin(object):
             return [], [], []
         if nv12_image is None:
             self._camera = camera_self_healing(self._camera)
-            nv12_image = self._camera.grab()
-
+            nv12_image = self._camera.get_frame(width=512, height=512)
+        # self.draw_detections(nv12_image)
         boxes, scores, labels = self.model(nv12_image)
         if len(boxes) == 0:
             return [], [], []
-        self.draw_detections(nv12_image)
+        # self.draw_detections(nv12_image)
         class_name = []
         for label in labels:
             class_name.append(self.class_names[int(label)])
-        print_info(
-            "bbox:",
-            boxes,
-            "scores:",
-            scores,
-            "labels:",
-            class_name
-        )
+        print_info("bbox:", boxes, "scores:", scores, "labels:", class_name)
         return boxes, scores, labels
 
     def draw_detections(self, nv12_image):
@@ -140,6 +134,7 @@ class SmartBin(object):
         bbox_image_name = "{}_bbox.png".format(name_prefix)
         cv2.imwrite(osp.join(self._labeled_image_dir, bbox_image_name), draw_image)
 
+    @timeit
     def _do_detection(self):
         """This function first calls the segmentation service to provide the GraspInfo list.
         Then it filter the grasps already known in the last round and processes only new objects to grasp.
@@ -151,25 +146,34 @@ class SmartBin(object):
 
         return DetectionOutput(bboxes, scores, labels)
 
-    @staticmethod
-    def post_process(detection_output: DetectionOutput):
+    def post_process(self,detection_outputs: DetectionOutput):
         """
         This function takes the detection output and returns the index of the sorting module to execute.
         Args:
-            detection_output:
+            detection_outputs:
 
         Returns:
 
         """
-        sorting_module_index = 2
-        return sorting_module_index
+        sorting_module_list = []
+        for i, [label, bbox, _] in enumerate(detection_outputs):
+            sorting_module_index = int(5 - bbox.center.x // (512 / 6))
+            print("label:", label, "index:", sorting_module_index)
+            if (self.class_names[int(label)] == "bottle" and sorting_module_index in [3, 4, 5]) or (
+                self.class_names[int(label)] == "can" and sorting_module_index in [0, 1, 2]
+            ):
+                print_info("index:", sorting_module_index)
+                if sorting_module_index == 5:
+                    sorting_module_index =4
+                sorting_module_list.append(sorting_module_index)
+        return sorting_module_list
 
-    @timeit
     def _task_callback(self):
         """Main callback function for executing the task."""
         detection_output = self._do_detection()
         if len(detection_output) != 0:
             sorting_module_index = self.post_process(detection_output)
             self.sorting_module.execute(sorting_module_index)
-        time.sleep(0.5)
+            for i in range(15):
+                nv12_image = self._camera.get_frame(width=512, height=512)
         self._round_flag += 1

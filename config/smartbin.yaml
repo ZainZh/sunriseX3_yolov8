@@ -2,3 +2,6 @@ model_structure: 'YOLOv8'
 #model_path: '../../model_output/horizon_ultra.bin'
 
 model_path : "/opt/hobot/model/rdkultra/basic/yolov8n_512x512_nv12_2.bin"
+
+# speed: 0.12m/s
+conveyor_speed: 0.12
