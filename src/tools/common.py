@@ -1,6 +1,10 @@
 import numpy as np
 import click
-
+import time
+import cv2
+from omegaconf import OmegaConf
+import os.path as osp
+from functools import wraps
 def _preprocess_print(*args):
     """Preprocess the input for colorful printing.
 
@@ -47,3 +51,75 @@ def print_help():
     ctx = click.get_current_context()
     click.echo(ctx.get_help())
     ctx.exit()
+
+def bgr2nv12_opencv(image):
+    height, width = image.shape[0], image.shape[1]
+    area = height * width
+    yuv420p = cv2.cvtColor(image, cv2.COLOR_BGR2YUV_I420).reshape((area * 3 // 2,))
+    y = yuv420p[:area]
+    uv_planar = yuv420p[area:].reshape((2, area // 4))
+    uv_packed = uv_planar.transpose((1, 0)).reshape((area // 2,))
+
+    nv12 = np.zeros_like(yuv420p)
+    nv12[:height * width] = y
+    nv12[height * width:] = uv_packed
+    return nv12
+
+def nv12_2_bgr_opencv(nv12_data, height, width):
+    yuv_image = np.frombuffer(nv12_data, dtype=np.uint8)
+    img_bgr = cv2.cvtColor(yuv_image.reshape((height * 3 // 2, width)), cv2.COLOR_YUV2BGR_NV12)
+    return img_bgr
+
+def load_omega_config(config_name):
+    """Load the configs listed in config_name.yaml.
+
+    Args:
+        config_name (str): Name of the config file.
+
+    Returns:
+        (dict): A dict of configs.
+    """
+    return OmegaConf.load(
+        osp.join(osp.dirname(__file__), "../../config/{}.yaml".format(config_name))
+    )
+
+def camera_self_healing(camera, camera_connect_status = True):
+    """
+
+    Args:
+        camera: The Camera instance.
+        camera_connect_status: bool If true, the camera will be considered as connected with the USB port.
+
+    Returns:
+        _camera: The Camera instance.
+    """
+    from src.tools.mvsdk import Camera
+
+    if camera_connect_status:
+        print_info("camera reconnecting...")
+        for _ in range(5):
+            camera.close()
+            _camera = Camera.reconnect_camera()
+            if _camera is not None:
+                return _camera
+            else:
+                print_info("Failed to reconnect, try again.")
+                time.sleep(1)
+        return None
+
+    else:
+        raise RuntimeError("Failed to reconnect the camera, check the USB connector.")
+
+
+def timeit(func):
+    """A timer decorator."""
+    @wraps(func)
+    def timeit_wrapper(*args, **kwargs):
+        start_time = time.perf_counter()
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()
+        total_time = end_time - start_time
+        print_info(f"Function {func.__name__} took {total_time:.3f} seconds")
+        return result
+
+    return timeit_wrapper

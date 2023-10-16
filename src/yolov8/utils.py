@@ -1,18 +1,21 @@
 import numpy as np
 import cv2
+from src.tools.common import load_omega_config
 
-class_names = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light',
-               'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
-               'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
-               'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard',
-               'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
-               'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
-               'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard',
-               'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',
-               'scissors', 'teddy bear', 'hair drier', 'toothbrush']
-
+# class_names = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light',
+#                'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow',
+#                'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
+#                'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard',
+#                'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple',
+#                'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
+#                'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard',
+#                'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase',
+#                'scissors', 'teddy bear', 'hair drier', 'toothbrush']
+class_names = ['bottle', 'can']
 # Create a list of colors for each class where each color is a tuple of 3 integer values
+yolov8_config=load_omega_config("YOLOv8")
 rng = np.random.default_rng(3)
+
 colors = rng.uniform(0, 255, size=(len(class_names), 3))
 
 
@@ -87,8 +90,8 @@ def draw_detections(image, boxes, scores, class_ids, mask_alpha=0.3):
     det_img = image.copy()
 
     img_height, img_width = image.shape[:2]
-    font_size = min([img_height, img_width]) * 0.0006
-    text_thickness = int(min([img_height, img_width]) * 0.001)
+    font_size = 0.8
+    text_thickness = 1
 
     det_img = draw_masks(det_img, boxes, class_ids, mask_alpha)
 
@@ -112,7 +115,7 @@ def draw_box( image: np.ndarray, box: np.ndarray, color: [int, int, int] = (0, 0
 
 
 def draw_text(image: np.ndarray, text: str, box: np.ndarray, color: [int, int, int] = (0, 0, 255),
-              font_size: float = 0.001, text_thickness: int = 2) -> np.ndarray:
+              font_size: float = 0.001, text_thickness: int = 1) -> np.ndarray:
     x1, y1, x2, y2 = box.astype(int)
     (tw, th), _ = cv2.getTextSize(text=text, fontFace=cv2.FONT_HERSHEY_SIMPLEX,
                                   fontScale=font_size, thickness=text_thickness)

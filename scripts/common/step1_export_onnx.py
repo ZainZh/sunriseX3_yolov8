@@ -1,13 +1,14 @@
 # 导入 YOLOv8
 import click
 from ultralytics import YOLO
-from src.common import print_info, print_error, print_help
+from src.tools.common import print_info, print_error, print_help
 import os.path as osp
 
 
 @click.command()
 @click.option(
     "--model_path",
+    default="/home/clover/ultralytics/runs/detect/train20/weights/best.pt",
     help="Path of the trained 'pt' type model that you want to transform to the 'onnx' type.",
 )
 def main(model_path):

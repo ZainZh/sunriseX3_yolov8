@@ -49,7 +49,7 @@ X3派自带的铝壳上有一个小风扇，风扇接线按下图所示接在40P
 
 ```bash
 cd /app/ai_inference/03_mipi_camera_sample/
-sudo python3 ./mipi_camera.py
+sudo python3 ./mipi_camera_video_interfence.py
 ```
 
 # 远程登录设置

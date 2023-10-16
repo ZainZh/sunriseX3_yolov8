@@ -1,0 +1,5 @@
+
+num_of_actuator: 5
+modbus_address: "/dev/ttyUSB0"
+modbus_baud_rate: 38400
+execution_timeout: 0.01

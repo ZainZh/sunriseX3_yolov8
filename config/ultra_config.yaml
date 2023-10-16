@@ -5,30 +5,30 @@ model_parameters:
 
   # 必选参数
   # Onnx浮点网络数据模型文件, 例如：onnx_model: './horizon_ultra_onnx.onnx'
-  onnx_model: '/home/clover/Downloads/yolov8x.onnx'
+  onnx_model: '/home/clover/ultralytics/runs/detect/train20/weights/best.onnx'
 
   march: "bayes"
   layer_out_dump: False
   working_dir: '../model_output'
   output_model_file_prefix: 'horizon_ultra'
-
+  remove_node_type: "Dequantize"
 # 模型输入相关参数
 input_parameters:
 
   input_name: "images"
-  input_shape: '1x3x640x640'
+  input_shape: '1x3x512x512'
   input_type_rt: 'nv12'
   input_layout_rt: ''
 
   # 必选参数
   # 原始浮点模型训练框架中所使用训练的数据类型，可选的值为rgb/bgr/gray/featuremap/yuv444, 例如：input_type_train: 'bgr'
-  input_type_train: 'bgr'
+  input_type_train: 'rgb'
 
   # 必选参数
   # 原始浮点模型训练框架中所使用训练的数据排布, 可选值为 NHWC/NCHW, 例如：input_layout_train: 'NHWC'
   input_layout_train: 'NCHW'
 
-  input_batch: 1
+#  input_batch: 1
 
   # 必选参数
   # 原始浮点模型训练框架中所使用数据预处理方法，可配置：no_preprocess/data_mean/data_scale/data_mean_and_scale
@@ -46,7 +46,7 @@ input_parameters:
   # 必选参数
   # 图像预处理缩放比例，如果是通道缩放比例，value之间必须用空格分隔，计算公式：scale = 1/std
   # 例如：scale_value: 0.0078125 或者 scale_value: 0.0078125 0.001215 0.003680
-  scale_value: 0.00392156862745098
+  scale_value: 0.00392157
 
 # 模型量化相关参数
 calibration_parameters:
@@ -54,11 +54,11 @@ calibration_parameters:
   # 必选参数
   # 模型量化的参考图像的存放目录，图片格式支持Jpeg、Bmp等格式，图片来源一般是从测试集中选择100张图片，并要覆盖典型场景，不要是偏僻场景，如过曝光、饱和、模糊、纯黑、纯白等图片
   # 请根据 02_preprocess.sh 脚本中的文件夹路径来配置，例如：cal_data_dir: './calibration_data_yuv_f32'
-  cal_data_dir: '/home/clover/Downloads/coco128/images/calib_f32'
+  cal_data_dir: '/home/clover/Downloads/calibrate/calib_f32'
 
   cal_data_type: 'float32'
-  calibration_type: 'max'
-  max_percentile: 0.99999
+  calibration_type: 'default'
+#  max_percentile: 0.99999
 
 # 编译器相关参数
 compiler_parameters:
