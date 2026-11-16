@@ -1,3 +1,5 @@
+
+
 # sunriseX3_yolov8
 
 - [sunriseX3\_yolov8](#sunrisex3_yolov8)
@@ -55,7 +57,7 @@ pip install -r requirements.txt
 标定图片可以帮助我们将后续获得的onnx模型进行校准。校准后的图片将被存在地平线开发板工具文件夹的`calib_f32`文件中供后续使用。
 
 ```bash
-python step2_make_calib.py images_path ../images
+python step2_make_calib.py <path_to_dataset> ../images
 ```
 ### 导出onnx模型，bin模型
 
